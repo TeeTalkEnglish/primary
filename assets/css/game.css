@@ -167,3 +167,45 @@ button{
     background:#217dbb;
 
 }
+
+.floating-back{
+
+    position:fixed;
+
+    top:20px;
+
+    left:20px;
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    font-size:26px;
+
+    color:#333;
+
+    z-index:1000;
+
+    transition:.2s;
+
+}
+
+.floating-back:hover{
+
+    transform:scale(1.08);
+
+}

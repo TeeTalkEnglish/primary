@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grade 5 Unit</title>
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<a class="back" href="index.html">
+← Grade 5
+</a>
+
+<h1 id="unitTitle"></h1>
+
+<p id="unitSubtitle"></p>
+
+<div class="cards">
+
+    <a id="vocabCard">
+        📚 Vocabulary
+    </a>
+
+    <a id="rearrangeCard">
+        🔤 Rearrange Letters
+    </a>
+
+    <a id="sentenceCard">
+        📝 Rearrange Sentence
+    </a>
+
+    <a id="matchingCard">
+        🎯 Matching
+    </a>
+
+    <a id="listeningCard">
+        🎧 Listening
+    </a>
+
+</div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const unit = params.get("unit");
+
+document.getElementById("unitTitle").textContent =
+`⭐ Unit ${unit}`;
+
+// Load unit information
+fetch(`../assets/data/grade5/unit${unit}.json`)
+.then(response => response.json())
+.then(data=>{
+
+    document.getElementById("unitSubtitle").textContent =
+        data.title;
+
+    document.getElementById("sentenceCard").href =
+        `../games/sentence.html?grade=5&unit=${unit}`;
+
+    document.getElementById("rearrangeCard").href =
+        `../games/rearrange.html?grade=5&unit=${unit}`;
+
+    document.getElementById("matchingCard").href =
+        `../games/matching.html?grade=5&unit=${unit}`;
+
+    document.getElementById("listeningCard").href =
+        `../games/listening.html?grade=5&unit=${unit}`;
+
+    document.getElementById("vocabCard").href =
+        `../games/vocabulary.html?grade=5&unit=${unit}`;
+
+});
+
+</script>
+
+</body>
+</html>

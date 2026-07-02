@@ -1,0 +1,68 @@
+{
+  "id": 2,
+  "grade": 5,
+  "title": "Sample Unit 2",
+
+  "sentences": [
+    {
+      "id": 1,
+      "text": "I GO TO SCHOOL BY BUS",
+      "emoji": "🚌",
+      "audio": "i-go-to-school-by-bus.mp3"
+    },
+    {
+      "id": 2,
+      "text": "MY BROTHER LIKES PLAYING FOOTBALL",
+      "emoji": "⚽",
+      "audio": "my-brother-likes-playing-football.mp3"
+    },
+    {
+      "id": 3,
+      "text": "SHE DOES HER HOMEWORK EVERY DAY",
+      "emoji": "📚",
+      "audio": "she-does-her-homework-every-day.mp3"
+    },
+    {
+      "id": 4,
+      "text": "WE VISIT OUR GRANDPARENTS ON SUNDAY",
+      "emoji": "👵",
+      "audio": "we-visit-our-grandparents-on-sunday.mp3"
+    },
+    {
+      "id": 5,
+      "text": "THEY ARE WATCHING TELEVISION NOW",
+      "emoji": "📺",
+      "audio": "they-are-watching-television-now.mp3"
+    },
+    {
+      "id": 6,
+      "text": "MY FAVOURITE SUBJECT IS ENGLISH",
+      "emoji": "🇬🇧",
+      "audio": "my-favourite-subject-is-english.mp3"
+    },
+    {
+      "id": 7,
+      "text": "WHAT DO YOU DO IN YOUR FREE TIME",
+      "emoji": "🎮",
+      "audio": "what-do-you-do-in-your-free-time.mp3"
+    },
+    {
+      "id": 8,
+      "text": "I USUALLY READ BOOKS AFTER SCHOOL",
+      "emoji": "📖",
+      "audio": "i-usually-read-books-after-school.mp3"
+    },
+    {
+      "id": 9,
+      "text": "MY SISTER CAN PLAY THE PIANO",
+      "emoji": "🎹",
+      "audio": "my-sister-can-play-the-piano.mp3"
+    },
+    {
+      "id": 10,
+      "text": "IT IS SUNNY TODAY",
+      "emoji": "☀️",
+      "audio": "it-is-sunny-today.mp3"
+    }
+  ]
+}
