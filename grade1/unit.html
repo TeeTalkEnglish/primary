@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unit</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="index.html">← Back to Grade 1</a>
+
+    <h1 id="unitTitle"></h1>
+
+    <p id="unitSubtitle"></p>
+
+    <div class="cards">
+
+        <a id="vocabCard">📚 Vocabulary</a>
+
+        <a id="rearrangeCard">🔤 Rearrange Letters</a>
+
+        <a id="sentenceCard" href="../games/sentence.html?grade=1&unit=5">📝 Rearrange Sentence</a>
+
+        <a id="matchingCard">🎯 Matching</a>
+
+        <a id="listeningCard">🎧 Listening</a>
+
+    </div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const unit = params.get("unit");
+
+fetch(`../assets/data/grade1/unit${unit}.json`)
+    .then(response => response.json())
+    .then(data => {
+
+        document.getElementById("unitTitle").textContent =
+            `⭐ Unit ${data.id}`;
+
+        document.getElementById("unitSubtitle").textContent =
+            data.title;
+
+    });
+
+</script>
+
+</body>
+</html>

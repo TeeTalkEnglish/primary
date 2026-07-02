@@ -1,0 +1,120 @@
+{
+  "id": 5,
+  "title": "At the Fish and Chip Shop",
+  "book": "Global Success",
+  "grade": 1,
+
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "FISH",
+      "phonics": "/fɪʃ/",
+      "emoji": "🐟",
+      "image": "fish.png",
+      "audio": "fish.mp3"
+    },
+    {
+      "id": 2,
+      "word": "CHIPS",
+      "phonics": "/tʃɪps/",
+      "emoji": "🍟",
+      "image": "chips.png",
+      "audio": "chips.mp3"
+    },
+    {
+      "id": 3,
+      "word": "MILK",
+      "phonics": "/mɪlk/",
+      "emoji": "🥛",
+      "image": "milk.png",
+      "audio": "milk.mp3"
+    },
+    {
+      "id": 4,
+      "word": "CHICKEN",
+      "phonics": "/ˈtʃɪkɪn/",
+      "emoji": "🍗",
+      "image": "chicken.png",
+      "audio": "chicken.mp3"
+    }
+  ],
+
+  "sentences": [
+    {
+      "id": 1,
+      "text": "I LIKE FISH",
+      "emoji": "🐟",
+      "audio": "i-like-fish.mp3"
+    },
+    {
+      "id": 2,
+      "text": "I LIKE CHIPS",
+      "emoji": "🍟",
+      "audio": "i-like-chips.mp3"
+    },
+    {
+      "id": 3,
+      "text": "I LIKE MILK",
+      "emoji": "🥛",
+      "audio": "i-like-milk.mp3"
+    },
+    {
+      "id": 4,
+      "text": "I LIKE CHICKEN",
+      "emoji": "🍗",
+      "audio": "i-like-chicken.mp3"
+    },
+    {
+      "id": 5,
+      "text": "DO YOU LIKE FISH",
+      "emoji": "🐟",
+      "audio": "do-you-like-fish.mp3"
+    },
+    {
+      "id": 6,
+      "text": "DO YOU LIKE CHIPS",
+      "emoji": "🍟",
+      "audio": "do-you-like-chips.mp3"
+    },
+    {
+      "id": 7,
+      "text": "YES I DO",
+      "emoji": "😊",
+      "audio": "yes-i-do.mp3"
+    },
+    {
+      "id": 8,
+      "text": "NO I DONT",
+      "emoji": "🙅",
+      "audio": "no-i-dont.mp3"
+    }
+  ],
+
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "DO YOU LIKE FISH?"
+    },
+    {
+      "speaker": "B",
+      "text": "YES, I DO"
+    },
+    {
+      "speaker": "A",
+      "text": "DO YOU LIKE CHICKEN?"
+    },
+    {
+      "speaker": "B",
+      "text": "NO, I DONT"
+    }
+  ],
+
+  "games": [
+    "vocabulary",
+    "rearrange-word",
+    "rearrange-sentence",
+    "matching",
+    "listening",
+    "memory"
+  ]
+}

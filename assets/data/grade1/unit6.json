@@ -1,0 +1,24 @@
+{
+  "id": 6,
+  "title": "At the School Canteen",
+
+  "vocabulary": [
+    {
+      "word": "RICE",
+      "emoji": "🍚"
+    },
+    {
+      "word": "JUICE",
+      "emoji": "🧃"
+    },
+    {
+      "word": "EGG",
+      "emoji": "🥚"
+    }
+  ],
+
+  "sentences": [
+    "I LIKE RICE.",
+    "I LIKE JUICE."
+  ]
+}

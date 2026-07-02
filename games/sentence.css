@@ -1,0 +1,137 @@
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    margin:0;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    text-align:center;
+}
+
+.emoji{
+    font-size:70px;
+    margin:20px;
+}
+
+.answer{
+
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:30px 0;
+    flex-wrap:wrap;
+
+}
+
+.slot{
+
+    min-width:100px;
+    min-height:50px;
+
+    border:2px dashed #999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:10px;
+
+    background:white;
+
+    font-size:24px;
+
+}
+
+.words{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+
+}
+
+.word{
+
+    padding:15px 25px;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:12px;
+
+}
+
+.word:disabled{
+
+    opacity:.35;
+
+}
+
+.buttons{
+
+    margin-top:40px;
+
+}
+
+button{
+
+    margin:10px;
+
+    padding:15px 30px;
+
+    font-size:20px;
+
+}
+
+#message{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    height:40px;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:20px;
+
+    background:#ddd;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+}
+
+#progressFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#4CAF50;
+
+    transition:.4s;
+
+}
+
+#progressText{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
