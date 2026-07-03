@@ -17,23 +17,24 @@
 
     <div class="cards">
 
-        <a id="vocabCard">📚 Vocabulary</a>
+    <a id="vocabCard">📚 Vocabulary</a>
 
-        <a id="rearrangeCard">🔤 Rearrange Letters</a>
+    <a id="rearrangeCard">🔤 Rearrange Letters</a>
 
-        <a id="sentenceCard" href="../games/sentence.html?grade=1&unit=5">📝 Rearrange Sentence</a>
+    <a id="sentenceCard">📝 Rearrange Sentence</a>
 
-        <a id="matchingCard">🎯 Matching</a>
+    <a id="matchingCard">🎯 Matching</a>
 
-        <a id="listeningCard">🎧 Listening</a>
+    <a id="listeningCard">🎧 Listening</a>
 
-    </div>
-
+</div>
 </div>
 
 <script>
 
 const params = new URLSearchParams(window.location.search);
+
+const grade = 1;
 
 const unit = params.get("unit");
 
@@ -41,12 +42,20 @@ fetch(`../assets/data/grade1/unit${unit}.json`)
     .then(response => response.json())
     .then(data => {
 
-        document.getElementById("unitTitle").textContent =
-            `⭐ Unit ${data.id}`;
+       document.getElementById("vocabCard").href =
+`../games/vocabulary/index.html?grade=1&unit=${unit}`;
 
-        document.getElementById("unitSubtitle").textContent =
-            data.title;
+document.getElementById("rearrangeCard").href =
+`../games/rearrange/index.html?grade=1&unit=${unit}`;
 
+document.getElementById("sentenceCard").href =
+`../games/sentence/index.html?grade=1&unit=${unit}`;
+
+document.getElementById("matchingCard").href =
+`../games/matching/index.html?grade=1&unit=${unit}`;
+
+document.getElementById("listeningCard").href =
+`../games/listening/index.html?grade=1&unit=${unit}`;
     });
 
 </script>

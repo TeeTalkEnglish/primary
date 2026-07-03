@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rearrange Letters</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Floating Back Button -->
+    <a id="backBtn" class="floating-back" title="Back to Unit">
+        ←
+    </a>
+
+    <div class="container">
+
+        <!-- Game Title -->
+        <h1>🔤 Rearrange the Letters</h1>
+
+        <!-- Unit Name -->
+        <h2 id="unitTitle"></h2>
+
+        <!-- Progress -->
+        <div class="progress">
+
+            <div id="progressFill"></div>
+
+        </div>
+
+        <p id="progressText">
+            Homework Progress
+        </p>
+
+        <!-- Picture -->
+        <div class="image-box">
+
+            <img id="wordImage"
+                 src=""
+                 alt="Vocabulary Image">
+
+        </div>
+
+        <!-- Emoji -->
+        <div id="emoji" class="emoji"></div>
+
+        <!-- Listen Button -->
+        <button id="listenBtn" class="listen-btn">
+            🔊 Listen
+        </button>
+
+        <!-- Letter Boxes -->
+        <div id="answer" class="answer"></div>
+
+        <!-- Scrambled Letters -->
+        <div id="letters" class="letters"></div>
+
+        <!-- Result -->
+        <p id="message"></p>
+
+        <!-- Bottom Buttons -->
+
+        <div class="bottom-buttons">
+
+            <button id="hintBtn">
+                💡 Hint
+            </button>
+
+            <button id="resetBtn">
+                🔄 Reset
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Floating Next -->
+    <button id="nextBtn" class="floating-next">
+        ➜
+    </button>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
