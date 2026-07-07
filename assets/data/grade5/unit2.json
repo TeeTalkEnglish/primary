@@ -3,64 +3,139 @@
   "grade": 5,
   "title": "Sample Unit 2",
 
+  "vocabulary": [
+    {
+      "word": "bus",
+      "emoji": "🚌",
+      "image": "bus.png",
+      "audio": "bus.mp3"
+    },
+    {
+      "word": "school",
+      "emoji": "🏫",
+      "image": "school.png",
+      "audio": "school.mp3"
+    },
+    {
+      "word": "brother",
+      "emoji": "👦",
+      "image": "brother.png",
+      "audio": "brother.mp3"
+    },
+    {
+      "word": "football",
+      "emoji": "⚽",
+      "image": "football.png",
+      "audio": "football.mp3"
+    },
+    {
+      "word": "homework",
+      "emoji": "📚",
+      "image": "homework.png",
+      "audio": "homework.mp3"
+    },
+    {
+      "word": "grandparents",
+      "emoji": "👵",
+      "image": "grandparents.png",
+      "audio": "grandparents.mp3"
+    },
+    {
+      "word": "television",
+      "emoji": "📺",
+      "image": "television.png",
+      "audio": "television.mp3"
+    },
+    {
+      "word": "english",
+      "emoji": "🇬🇧",
+      "image": "english.png",
+      "audio": "english.mp3"
+    },
+    {
+      "word": "books",
+      "emoji": "📖",
+      "image": "books.png",
+      "audio": "books.mp3"
+    },
+    {
+      "word": "piano",
+      "emoji": "🎹",
+      "image": "piano.png",
+      "audio": "piano.mp3"
+    },
+    {
+      "word": "sunny",
+      "emoji": "☀️",
+      "image": "sunny.png",
+      "audio": "sunny.mp3"
+    },
+    {
+      "word": "free",
+      "emoji": "🎮",
+      "image": "free.png",
+      "audio": "free.mp3"
+    }
+  ],
+
   "sentences": [
     {
       "id": 1,
-      "text": "I GO TO SCHOOL BY BUS",
+      "text": "I go to school by bus.",
       "emoji": "🚌",
       "audio": "i-go-to-school-by-bus.mp3"
     },
     {
       "id": 2,
-      "text": "MY BROTHER LIKES PLAYING FOOTBALL",
+      "text": "My brother likes playing football.",
       "emoji": "⚽",
       "audio": "my-brother-likes-playing-football.mp3"
     },
     {
       "id": 3,
-      "text": "SHE DOES HER HOMEWORK EVERY DAY",
+      "text": "She does her homework every day.",
       "emoji": "📚",
       "audio": "she-does-her-homework-every-day.mp3"
     },
     {
       "id": 4,
-      "text": "WE VISIT OUR GRANDPARENTS ON SUNDAY",
+      "text": "We visit our grandparents on Sunday.",
       "emoji": "👵",
       "audio": "we-visit-our-grandparents-on-sunday.mp3"
     },
     {
       "id": 5,
-      "text": "THEY ARE WATCHING TELEVISION NOW",
+      "text": "They are watching television now.",
       "emoji": "📺",
       "audio": "they-are-watching-television-now.mp3"
     },
     {
       "id": 6,
-      "text": "MY FAVOURITE SUBJECT IS ENGLISH",
+      "text": "My favourite subject is English.",
       "emoji": "🇬🇧",
       "audio": "my-favourite-subject-is-english.mp3"
     },
     {
       "id": 7,
-      "text": "WHAT DO YOU DO IN YOUR FREE TIME",
+      "text": "What do you do in your free time?",
       "emoji": "🎮",
       "audio": "what-do-you-do-in-your-free-time.mp3"
     },
     {
       "id": 8,
-      "text": "I USUALLY READ BOOKS AFTER SCHOOL",
+      "text": "I usually read books after school.",
       "emoji": "📖",
       "audio": "i-usually-read-books-after-school.mp3"
     },
     {
       "id": 9,
-      "text": "MY SISTER CAN PLAY THE PIANO",
+      "text": "My sister can play the piano.",
       "emoji": "🎹",
       "audio": "my-sister-can-play-the-piano.mp3"
     },
     {
       "id": 10,
-      "text": "IT IS SUNNY TODAY",
+      "text": "It is sunny today.",
       "emoji": "☀️",
       "audio": "it-is-sunny-today.mp3"
     }

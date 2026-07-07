@@ -28,6 +28,9 @@ async function loadGame() {
     document.getElementById("unitTitle").textContent =
         data.title;
 
+        console.log(data);
+console.log(data.vocabulary);
+
     game.words = shuffle(data.vocabulary);
 
     loadWord();
@@ -151,6 +154,10 @@ function resetWord() {
         letter.used = false;
 
     });
+
+    document.getElementById("message").textContent = "";
+
+    document.getElementById("nextBtn").style.display = "none";
 
     render();
 

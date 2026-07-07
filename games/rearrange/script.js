@@ -21,17 +21,25 @@ const game = {
 
 };
 
+// --------------------
+// Read URL
+// --------------------
+
 const params = new URLSearchParams(window.location.search);
 
 game.grade = params.get("grade");
 game.unit = params.get("unit");
 
+// --------------------
 // Back Button
+// --------------------
 
 document.getElementById("backBtn").href =
 `../../grade${game.grade}/unit.html?unit=${game.unit}`;
 
+// --------------------
 // Sounds
+// --------------------
 
 const clickSound =
 new Audio("../../assets/sounds/click.mp3");
@@ -45,22 +53,28 @@ new Audio("../../assets/sounds/wrong.mp3");
 function play(sound){
 
     sound.currentTime = 0;
-
     sound.play();
 
 }
 
+// --------------------
+// Hide Next Button
+// --------------------
+
+document.getElementById("nextBtn").style.display = "none";
+
+// --------------------
 // Button Events
+// --------------------
 
-document.getElementById("nextBtn").onclick =
-nextWord;
+document.getElementById("nextBtn").onclick = nextWord;
 
-document.getElementById("resetBtn").onclick =
-resetWord;
+document.getElementById("resetBtn").onclick = resetWord;
 
-document.getElementById("hintBtn").onclick =
-hintWord;
+document.getElementById("hintBtn").onclick = hintWord;
 
-// Start
+// --------------------
+// Start Game
+// --------------------
 
 loadGame();
