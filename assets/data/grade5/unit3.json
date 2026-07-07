@@ -1,0 +1,67 @@
+{
+  "id": 3,
+  "grade": 5,
+  "title": "My Foreign Friends",
+
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "Australia",
+      "phonetic": "/ɒˈstreɪliə/",
+      "meaning": "nước Úc",
+      "emoji": "🇦🇺",
+      "image": "australia.png",
+      "audio": "australia.mp3"
+    },
+    {
+      "id": 2,
+      "word": "Australian",
+      "phonetic": "/ɒˈstreɪliən/",
+      "meaning": "người Úc",
+      "emoji": "🇦🇺",
+      "image": "australian.png",
+      "audio": "australian.mp3"
+    },
+    {
+      "id": 3,
+      "word": "America",
+      "phonetic": "/əˈmerɪkə/",
+      "meaning": "nước Mỹ",
+      "emoji": "🇺🇸",
+      "image": "america.png",
+      "audio": "america.mp3"
+    },
+    {
+      "id": 4,
+      "word": "American",
+      "phonetic": "/əˈmerɪkən/",
+      "meaning": "người Mỹ",
+      "emoji": "🇺🇸",
+      "image": "american.png",
+      "audio": "american.mp3"
+    }
+  ],
+
+  "sentences": [
+    {
+      "id": 1,
+      "text": "She is American.",
+      "emoji": "🇺🇸"
+    },
+    {
+      "id": 2,
+      "text": "He is Australian.",
+      "emoji": "🇦🇺"
+    },
+    {
+      "id": 3,
+      "text": "They are Japanese.",
+      "emoji": "🇯🇵"
+    },
+    {
+      "id": 4,
+      "text": "She is friendly.",
+      "emoji": "😊"
+    }
+  ]
+}
