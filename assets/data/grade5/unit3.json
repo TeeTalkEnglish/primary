@@ -39,6 +39,114 @@
       "emoji": "🇺🇸",
       "image": "american.png",
       "audio": "american.mp3"
+    },
+    {
+      "id": 5,
+      "word": "Japan",
+      "phonetic": "/dʒəˈpæn/",
+      "meaning": "nước Nhật",
+      "emoji": "🇯🇵",
+      "image": "japan.png",
+      "audio": "japan.mp3"
+    },
+    {
+      "id": 6,
+      "word": "Japanese",
+      "phonetic": "/ˌdʒæpəˈniːz/",
+      "meaning": "người Nhật",
+      "emoji": "🇯🇵",
+      "image": "japanese.png",
+      "audio": "japanese.mp3"
+    },
+    {
+      "id": 7,
+      "word": "England",
+      "phonetic": "/ˈɪŋɡlənd/",
+      "meaning": "nước Anh",
+      "emoji": "🇬🇧",
+      "image": "england.png",
+      "audio": "england.mp3"
+    },
+    {
+      "id": 8,
+      "word": "English",
+      "phonetic": "/ˈɪŋɡlɪʃ/",
+      "meaning": "người Anh",
+      "emoji": "🇬🇧",
+      "image": "english.png",
+      "audio": "english.mp3"
+    },
+    {
+      "id": 9,
+      "word": "Vietnam",
+      "phonetic": "/ˌvjetˈnæm/",
+      "meaning": "Việt Nam",
+      "emoji": "🇻🇳",
+      "image": "vietnam.png",
+      "audio": "vietnam.mp3"
+    },
+    {
+      "id": 10,
+      "word": "Vietnamese",
+      "phonetic": "/ˌvjetnəˈmiːz/",
+      "meaning": "người Việt Nam",
+      "emoji": "🇻🇳",
+      "image": "vietnamese.png",
+      "audio": "vietnamese.mp3"
+    },
+    {
+      "id": 11,
+      "word": "China",
+      "phonetic": "/ˈtʃaɪnə/",
+      "meaning": "Trung Quốc",
+      "emoji": "🇨🇳",
+      "image": "china.png",
+      "audio": "china.mp3"
+    },
+    {
+      "id": 12,
+      "word": "Chinese",
+      "phonetic": "/ˌtʃaɪˈniːz/",
+      "meaning": "người Trung Quốc",
+      "emoji": "🇨🇳",
+      "image": "chinese.png",
+      "audio": "chinese.mp3"
+    },
+    {
+      "id": 13,
+      "word": "friendly",
+      "phonetic": "/ˈfrendli/",
+      "meaning": "thân thiện",
+      "emoji": "😊",
+      "image": "friendly.png",
+      "audio": "friendly.mp3"
+    },
+    {
+      "id": 14,
+      "word": "kind",
+      "phonetic": "/kaɪnd/",
+      "meaning": "tốt bụng",
+      "emoji": "❤️",
+      "image": "kind.png",
+      "audio": "kind.mp3"
+    },
+    {
+      "id": 15,
+      "word": "funny",
+      "phonetic": "/ˈfʌni/",
+      "meaning": "vui tính",
+      "emoji": "😂",
+      "image": "funny.png",
+      "audio": "funny.mp3"
+    },
+    {
+      "id": 16,
+      "word": "helpful",
+      "phonetic": "/ˈhelpfəl/",
+      "meaning": "hay giúp đỡ",
+      "emoji": "🤝",
+      "image": "helpful.png",
+      "audio": "helpful.mp3"
     }
   ],
 
@@ -60,8 +168,63 @@
     },
     {
       "id": 4,
+      "text": "I am Vietnamese.",
+      "emoji": "🇻🇳"
+    },
+    {
+      "id": 5,
+      "text": "My friend is Chinese.",
+      "emoji": "🇨🇳"
+    },
+    {
+      "id": 6,
+      "text": "She comes from England.",
+      "emoji": "🇬🇧"
+    },
+    {
+      "id": 7,
+      "text": "He comes from Australia.",
+      "emoji": "🇦🇺"
+    },
+    {
+      "id": 8,
+      "text": "Her name is Lucy.",
+      "emoji": "👧"
+    },
+    {
+      "id": 9,
+      "text": "His name is Tom.",
+      "emoji": "👦"
+    },
+    {
+      "id": 10,
       "text": "She is friendly.",
       "emoji": "😊"
+    },
+    {
+      "id": 11,
+      "text": "He is kind.",
+      "emoji": "❤️"
+    },
+    {
+      "id": 12,
+      "text": "They are funny.",
+      "emoji": "😂"
+    },
+    {
+      "id": 13,
+      "text": "My new friend is helpful.",
+      "emoji": "🤝"
+    },
+    {
+      "id": 14,
+      "text": "We are good friends.",
+      "emoji": "👫"
+    },
+    {
+      "id": 15,
+      "text": "Nice to meet you.",
+      "emoji": "👋"
     }
   ]
 }

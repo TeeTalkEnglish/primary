@@ -167,3 +167,33 @@ button{
     background:#217dbb;
 
 }
+
+.next-game-btn{
+
+    display:none;
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    padding:16px 24px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#27ae60;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+
+}

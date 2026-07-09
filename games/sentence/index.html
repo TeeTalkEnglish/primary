@@ -8,8 +8,8 @@
 
 <title>Sentence Builder</title>
 
-<link rel="stylesheet" href="sentence.css">
-<link rel="stylesheet" href="../assets/css/game.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../../assets/css/game.css">
 
 </head>
 
@@ -31,18 +31,25 @@
     </a>
 
 </div> -->
-
 <h1>📝 Rearrange the Sentence</h1>
 
+<h2 id="unitTitle"></h2>
+
+<p id="loading">Loading...</p>
+
 <div class="progress">
-
     <div id="progressFill"></div>
-
 </div>
+
+<p id="exerciseCounter"></p>
 
 <p id="progressText"></p>
 
 <div id="emoji" class="emoji"></div>
+
+<button id="listenBtn">
+    🔊 Listen
+</button>
 
 <div id="answer" class="answer"></div>
 
@@ -52,19 +59,32 @@
 
 <div class="buttons">
 
-<button id="resetBtn">
-🔄 Reset
+    <button id="hintBtn">
+        💡 Hint
+    </button>
+
+    <button id="resetBtn">
+        🔄 Reset
+    </button>
+
+</div>
+
+<button id="nextBtn" class="floating-next">
+    ➜
 </button>
 
-<button id="nextBtn">
-➡ Next
+<button
+    id="nextGameBtn"
+    class="next-game-btn"
+    style="display:none;">
+    🎯 Next Game
 </button>
 
 </div>
 
-</div>
 
-<script src="sentence.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>

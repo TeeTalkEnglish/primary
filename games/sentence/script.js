@@ -8,14 +8,20 @@ const grade = params.get("grade");
 const unit = params.get("unit");
 
 document.getElementById("backBtn").href =
-    `../grade${grade}/unit.html?unit=${unit}`;
-// --------------------
-// Sounds
-// --------------------
+`../../grade${grade}/unit.html?unit=${unit}`;
 
-const clickSound = new Audio("../assets/sounds/click.mp3");
-const successSound = new Audio("../assets/sounds/success.mp3");
-const wrongSound = new Audio("../assets/sounds/wrong.mp3");
+const clickSound =
+new Audio("../../assets/sounds/click.mp3");
+
+const successSound =
+new Audio("../../assets/sounds/success.mp3");
+
+const wrongSound =
+new Audio("../../assets/sounds/wrong.mp3");
+
+fetch(
+`../../assets/data/grade${grade}/unit${unit}.json`
+)
 
 function play(sound) {
     sound.currentTime = 0;
@@ -49,7 +55,7 @@ function shuffle(array) {
 // Load JSON
 // --------------------
 
-fetch(`../assets/data/grade${grade}/unit${unit}.json`)
+fetch(`../../assets/data/grade${grade}/unit${unit}.json`)
 .then(response => response.json())
 .then(data => {
 
@@ -67,34 +73,60 @@ function nextQuestion() {
 
     if (currentIndex >= questions.length) {
 
-        document.getElementById("emoji").textContent = "🏆";
+    finishHomework();
 
-        document.getElementById("answer").innerHTML = "";
+    return;
 
-        document.getElementById("words").innerHTML = "";
-
-        document.getElementById("message").innerHTML =
-            "🎉 Homework Complete!";
-
-        updateProgress();
-
-        document.getElementById("nextBtn").style.display = "none";
-
-        document.getElementById("resetBtn").style.display = "none";
-
-        return;
-
-    }
-
+}
     currentQuestion = questions[currentIndex];
 
     answer = [];
 
-    shuffled = shuffle(
-        currentQuestion.text.split(" ")
-    );
+shuffled = shuffle(
+    currentQuestion.text
+        .split(" ")
+        .map((word, index) => ({
+            id: index,
+            text: word,
+            used: false
+        }))
+);
 
     render();
+
+}
+
+// --------------------
+// Finish Homework
+// --------------------
+
+function finishHomework() {
+
+    document.getElementById("emoji").textContent = "🏆";
+
+    document.getElementById("answer").innerHTML = "";
+
+    document.getElementById("words").innerHTML = "";
+
+    document.getElementById("message").innerHTML =
+        "🎉 Homework Complete!";
+
+    updateProgress();
+
+    document.getElementById("nextBtn").style.display = "none";
+
+    document.getElementById("resetBtn").style.display = "none";
+
+    document.getElementById("hintBtn").style.display = "none";
+
+    document.getElementById("nextGameBtn").style.display = "block";
+
+    document.getElementById("nextGameBtn").onclick = () => {
+
+        window.location.href =
+        `../matching/?grade=${grade}&unit=${unit}`;
+
+    };
 
 }
 
@@ -129,17 +161,35 @@ function renderAnswer() {
 
     area.innerHTML = "";
 
-    const words = currentQuestion.text.split(" ");
+    const totalWords = currentQuestion.text.split(" ");
 
-    words.forEach((word, index) => {
+    for (let i = 0; i < totalWords.length; i++) {
 
-        area.innerHTML += `
-            <div class="slot">
-                ${answer[index] || ""}
-            </div>
-        `;
+        const slot = document.createElement("button");
 
-    });
+        slot.className = "slot";
+
+        if (answer[i]) {
+
+            slot.textContent = answer[i].text;
+
+            slot.onclick = () => {
+
+                play(clickSound);
+
+                answer[i].used = false;
+
+                answer.splice(i, 1);
+
+                render();
+
+            };
+
+        }
+
+        area.appendChild(slot);
+
+    }
 
 }
 
@@ -155,21 +205,23 @@ function renderWords() {
 
     shuffled.forEach(word => {
 
+        if (word.used) return;
+
         const btn = document.createElement("button");
 
         btn.className = "word";
 
-        btn.textContent = word;
+        btn.textContent = word.text;
 
         btn.onclick = () => {
 
             play(clickSound);
 
+            word.used = true;
+
             answer.push(word);
 
-            btn.disabled = true;
-
-            renderAnswer();
+            render();
 
             check();
 
@@ -192,8 +244,12 @@ function check() {
         currentQuestion.text.split(" ").length
     ) return;
 
+    const studentAnswer = answer
+    .map(word => word.text)
+    .join(" ");
+
     if (
-        answer.join(" ") === currentQuestion.text
+      studentAnswer  === currentQuestion.text
     ) {
 
         play(successSound);
@@ -244,6 +300,10 @@ function updateProgress() {
 document.getElementById("resetBtn").onclick = () => {
 
     answer = [];
+
+    shuffled.forEach(word => {
+        word.used = false;
+    });
 
     render();
 
