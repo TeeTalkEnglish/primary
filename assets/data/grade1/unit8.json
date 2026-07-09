@@ -6,7 +6,7 @@
   "vocabulary": [
     {
       "id": 1,
-      "word": "HEAD",
+      "word": "head",
       "phonetic": "/hed/",
       "meaning": "đầu",
       "emoji": "🧑",
@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "word": "HAND",
+      "word": "hand",
       "phonetic": "/hænd/",
       "meaning": "tay",
       "emoji": "✋",
@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "word": "HAIR",
+      "word": "hair",
       "phonetic": "/heə(r)/",
       "meaning": "tóc",
       "emoji": "💇",
@@ -33,7 +33,7 @@
     },
     {
       "id": 4,
-      "word": "HORSE",
+      "word": "horse",
       "phonetic": "/hɔːs/",
       "meaning": "con ngựa",
       "emoji": "🐴",
@@ -45,22 +45,22 @@
   "sentences": [
     {
       "id": 1,
-      "text": "THIS IS MY HEAD",
+      "text": "This is my head.",
       "emoji": "🧑"
     },
     {
       "id": 2,
-      "text": "THIS IS MY HAND",
+      "text": "This is my hand.",
       "emoji": "✋"
     },
     {
       "id": 3,
-      "text": "I HAVE LONG HAIR",
+      "text": "I have long hair.",
       "emoji": "💇"
     },
     {
       "id": 4,
-      "text": "I CAN SEE A HORSE",
+      "text": "I can see a horse.",
       "emoji": "🐴"
     }
   ]

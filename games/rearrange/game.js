@@ -18,12 +18,16 @@ function shuffle(array) {
 // --------------------
 
 async function loadGame() {
+const url =
+    `../../assets/data/grade${game.grade}/unit${game.unit}.json`;
 
-    const response = await fetch(
-        `../../assets/data/grade${game.grade}/unit${game.unit}.json`
-    );
+console.log(url);
 
-    const data = await response.json();
+const response = await fetch(url);
+
+const data = await response.json();
+
+console.log(data);
 
     document.getElementById("unitTitle").textContent =
         data.title;
