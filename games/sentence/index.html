@@ -8,8 +8,11 @@
 
 <title>Sentence Builder</title>
 
-<link rel="stylesheet" href="style.css">
+
+   <link rel="stylesheet" href="../../assets/css/layout.css">
 <link rel="stylesheet" href="../../assets/css/game.css">
+<link rel="stylesheet" href="../../assets/css/buttons.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -17,37 +20,31 @@
 
 <body>
 
-<a id="backBtn" class="floating-back">
+<a id="backBtn" class="floating-back" title="Back to Unit">
     ←
 </a>
 
-
 <div class="container">
 
-<!-- <div class="top-bar">
+    <h1 id="gameTitle"></h1>
 
-    <a id="backBtn" class="back-btn">
-        ← Back to Unit
-    </a>
+    <h2 id="unitTitle"></h2>
 
-</div> -->
-<h1>📝 Rearrange the Sentence</h1>
+    <p id="loading">Loading...</p>
 
-<h2 id="unitTitle"></h2>
+    <div class="progress">
+        <div id="progressFill"></div>
+    </div>
 
-<p id="loading">Loading...</p>
+    <p id="exerciseCounter"></p>
 
-<div class="progress">
-    <div id="progressFill"></div>
-</div>
+    <p id="progressText"></p>
 
-<p id="exerciseCounter"></p>
-
-<p id="progressText"></p>
+    <!-- Game-specific content -->
 
 <div id="emoji" class="emoji"></div>
 
-<button id="listenBtn">
+<button id="listenBtn" class="listen-btn">
     🔊 Listen
 </button>
 
@@ -57,15 +54,17 @@
 
 <p id="message"></p>
 
-<div class="buttons">
+    <div class="bottom-buttons">
 
-    <button id="hintBtn">
-        💡 Hint
-    </button>
+        <button id="hintBtn" class="btn secondary">
+            💡 Hint
+        </button>
 
-    <button id="resetBtn">
-        🔄 Reset
-    </button>
+        <button id="resetBtn" class="btn secondary">
+            🔄 Reset
+        </button>
+
+    </div>
 
 </div>
 
@@ -73,17 +72,14 @@
     ➜
 </button>
 
-<button
-    id="nextGameBtn"
-    class="next-game-btn"
-    style="display:none;">
+<button id="nextGameBtn" class="next-game-btn">
     🎯 Next Game
 </button>
 
-</div>
 
-
-
+<script src="../../assets/js/utils.js"></script>
+<script src="render.js"></script>
+<script src="game.js"></script>
 <script src="script.js"></script>
 
 </body>

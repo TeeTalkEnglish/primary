@@ -1,0 +1,196 @@
+{
+  "id": 1,
+  "grade": 3,
+  "title": "Hello",
+
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "am",
+      "phonetic": "/æm/",
+      "meaning": "thì, là, ở",
+      "emoji": "🙋",
+      "image": "am.png",
+      "audio": "am.mp3"
+    },
+    {
+      "id": 2,
+      "word": "and",
+      "phonetic": "/ænd/",
+      "meaning": "và",
+      "emoji": "➕",
+      "image": "and.png",
+      "audio": "and.mp3"
+    },
+    {
+      "id": 3,
+      "word": "goodbye",
+      "phonetic": "/ɡʊdˈbaɪ/",
+      "meaning": "tạm biệt",
+      "emoji": "👋",
+      "image": "goodbye.png",
+      "audio": "goodbye.mp3"
+    },
+    {
+      "id": 4,
+      "word": "bye",
+      "phonetic": "/baɪ/",
+      "meaning": "tạm biệt",
+      "emoji": "🙋",
+      "image": "bye.png",
+      "audio": "bye.mp3"
+    },
+    {
+      "id": 5,
+      "word": "fine",
+      "phonetic": "/faɪn/",
+      "meaning": "tốt, ổn",
+      "emoji": "😊",
+      "image": "fine.png",
+      "audio": "fine.mp3"
+    },
+    {
+      "id": 6,
+      "word": "I",
+      "phonetic": "/aɪ/",
+      "meaning": "tôi",
+      "emoji": "🙋",
+      "image": "i.png",
+      "audio": "i.mp3"
+    },
+    {
+      "id": 7,
+      "word": "hello",
+      "phonetic": "/həˈləʊ/",
+      "meaning": "xin chào",
+      "emoji": "👋",
+      "image": "hello.png",
+      "audio": "hello.mp3"
+    },
+    {
+      "id": 8,
+      "word": "hi",
+      "phonetic": "/haɪ/",
+      "meaning": "xin chào",
+      "emoji": "😊",
+      "image": "hi.png",
+      "audio": "hi.mp3"
+    },
+    {
+      "id": 9,
+      "word": "Miss",
+      "phonetic": "/mɪs/",
+      "meaning": "cô, cách gọi người nữ",
+      "emoji": "👩",
+      "image": "miss.png",
+      "audio": "miss.mp3"
+    },
+    {
+      "id": 10,
+      "word": "Mr",
+      "phonetic": "/ˈmɪstə(r)/",
+      "meaning": "ông, cách gọi người nam",
+      "emoji": "👨",
+      "image": "mr.png",
+      "audio": "mr.mp3"
+    },
+    {
+      "id": 11,
+      "word": "nice",
+      "phonetic": "/naɪs/",
+      "meaning": "tốt, vui",
+      "emoji": "😄",
+      "image": "nice.png",
+      "audio": "nice.mp3"
+    },
+    {
+      "id": 12,
+      "word": "meet",
+      "phonetic": "/miːt/",
+      "meaning": "gặp",
+      "emoji": "🤝",
+      "image": "meet.png",
+      "audio": "meet.mp3"
+    },
+    {
+      "id": 13,
+      "word": "Nice to meet you",
+      "phonetic": "/naɪs tuː miːt juː/",
+      "meaning": "rất vui được gặp bạn",
+      "emoji": "🤝",
+      "image": "nice-to-meet-you.png",
+      "audio": "nice-to-meet-you.mp3"
+    },
+    {
+      "id": 14,
+      "word": "class",
+      "phonetic": "/klɑːs/",
+      "meaning": "lớp",
+      "emoji": "🏫",
+      "image": "class.png",
+      "audio": "class.mp3"
+    },
+    {
+      "id": 15,
+      "word": "thanks",
+      "phonetic": "/θæŋks/",
+      "meaning": "cảm ơn",
+      "emoji": "🙏",
+      "image": "thanks.png",
+      "audio": "thanks.mp3"
+    }
+  ],
+
+  "sentences": [
+  {
+    "id": 1,
+    "text": "Hello, I'm Mary.",
+    "emoji": "👋"
+  },
+  {
+    "id": 2,
+    "text": "Hi, I'm Nam.",
+    "emoji": "😊"
+  },
+  {
+    "id": 3,
+    "text": "I'm fine, thanks.",
+    "emoji": "😊"
+  },
+  {
+    "id": 4,
+    "text": "Nice to meet you.",
+    "emoji": "🤝"
+  },
+  {
+    "id": 5,
+    "text": "Nice to meet you too.",
+    "emoji": "😄"
+  },
+  {
+    "id": 6,
+    "text": "Goodbye.",
+    "emoji": "👋"
+  },
+  {
+    "id": 7,
+    "text": "Bye.",
+    "emoji": "🙋"
+  },
+  {
+    "id": 8,
+    "text": "Thanks.",
+    "emoji": "🙏"
+  },
+  {
+    "id": 9,
+    "text": "Hello, Miss Hoa.",
+    "emoji": "👩"
+  },
+  {
+    "id": 10,
+    "text": "Hello, Mr Brown.",
+    "emoji": "👨"
+  }
+]
+}

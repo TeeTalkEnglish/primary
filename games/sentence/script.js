@@ -73,11 +73,12 @@ function nextQuestion() {
 
     if (currentIndex >= questions.length) {
 
-    finishHomework();
+        finishHomework();
 
-    return;
+        return;
 
-}
+    }
+
     currentQuestion = questions[currentIndex];
 
     answer = [];

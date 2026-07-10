@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Unit</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="index.html">
+        ← Back to Grade 3
+    </a>
+
+    <h1 id="unitTitle"></h1>
+
+    <p id="unitSubtitle"></p>
+
+    <div class="cards">
+
+        <a id="vocabCard">
+            📚 Vocabulary
+        </a>
+
+        <a id="rearrangeCard">
+            🔤 Rearrange Letters
+        </a>
+
+        <a id="sentenceCard">
+            📝 Rearrange Sentence
+        </a>
+
+        <a id="matchingCard">
+            🎯 Matching
+        </a>
+
+        <a id="listeningCard">
+            🎧 Listening
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const grade = 3;
+
+const unit = params.get("unit");
+
+fetch(`../assets/data/grade${grade}/unit${unit}.json`)
+.then(response => response.json())
+.then(data => {
+
+    document.getElementById("unitTitle").textContent =
+        `Unit ${unit}: ${data.title}`;
+
+    document.getElementById("unitSubtitle").textContent =
+        `Choose an activity for Unit ${unit}.`;
+
+    document.getElementById("vocabCard").href =
+        `../games/vocabulary/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("rearrangeCard").href =
+        `../games/rearrange/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("sentenceCard").href =
+        `../games/sentence/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("matchingCard").href =
+        `../games/matching/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("listeningCard").href =
+        `../games/listening/index.html?grade=${grade}&unit=${unit}`;
+
+})
+.catch(error => {
+
+    console.error(error);
+
+    document.getElementById("unitTitle").textContent =
+        "Unit not found.";
+
+});
+
+</script>
+
+</body>
+
+</html>

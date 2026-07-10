@@ -197,3 +197,33 @@ button{
     box-shadow:0 8px 20px rgba(0,0,0,.2);
 
 }
+
+.words{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:35px;
+
+}
+
+.word{
+
+    padding:15px 25px;
+
+    border-radius:14px;
+
+    background:#3498db;
+
+    color:white;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+}

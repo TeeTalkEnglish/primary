@@ -9,93 +9,80 @@
 
     <title>Rearrange Letters</title>
 
-    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/game.css">
+<link rel="stylesheet" href="../../assets/css/buttons.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- Floating Back Button -->
-    <a id="backBtn" class="floating-back" title="Back to Unit">
-        ←
-    </a>
+<a id="backBtn" class="floating-back">
+    ←
+</a>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Game Title -->
-        <h1>🔤 Rearrange the Letters</h1>
+    <h1 id="gameTitle"></h1>
 
-        <!-- Unit Name -->
-        <h2 id="unitTitle"></h2>
+    <h2 id="unitTitle"></h2>
 
-        <p id="loading">Loading...</p>
+    <p id="loading">Loading...</p>
 
-        <!-- Progress -->
-        <div class="progress">
+    <div class="progress">
+        <div id="progressFill"></div>
+    </div>
 
-            <div id="progressFill"></div>
+    <p id="exerciseCounter"></p>
 
-        </div>
+    <p id="progressText"></p>
 
-        <p id="exerciseCounter"></p>
+    <!-- Game-specific content -->
 
-        <p id="progressText">
-            Homework Progress
-        </p>
+<div class="image-box">
+    <img id="wordImage">
+</div>
 
-        <!-- Picture -->
-        <div class="image-box">
-<img
-    id="wordImage"
-    src=""
-    alt="Vocabulary"
->
+<div id="emoji" class="emoji"></div>
 
-        </div>
+<button id="listenBtn" class="listen-btn">
+    🔊 Listen
+</button>
 
-        <!-- Emoji -->
-        <div id="emoji" class="emoji"></div>
+<div id="answer" class="answer"></div>
 
-        <!-- Listen Button -->
-        <button id="listenBtn" class="listen-btn">
-            🔊 Listen
+<div id="letters" class="letters"></div>
+
+<p id="message"></p>
+
+    <div class="bottom-buttons">
+
+        <button id="hintBtn" class="btn secondary">
+            💡 Hint
         </button>
 
-        <!-- Letter Boxes -->
-        <div id="answer" class="answer"></div>
-
-        <!-- Scrambled Letters -->
-        <div id="letters" class="letters"></div>
-
-        <!-- Result -->
-        <p id="message"></p>
-
-        <!-- Bottom Buttons -->
-
-        <div class="bottom-buttons">
-
-            <button id="hintBtn">
-                💡 Hint
-            </button>
-
-            <button id="resetBtn">
-                🔄 Reset
-            </button>
-
-        </div>
+        <button id="resetBtn" class="btn secondary">
+            🔄 Reset
+        </button>
 
     </div>
 
-    <!-- Floating Next -->
-    <button id="nextBtn" class="floating-next">
-        ➜
-    </button>
-    
-<script src="../../shared/utils.js"></script>
+</div>
+
+<button id="nextBtn" class="floating-next">
+    ➜
+</button>
+
+<button id="nextGameBtn" class="next-game-btn">
+    🎯 Next Game
+</button>
+
+</body>
+
+<script src="../../assets/js/utils.js"></script>
 <script src="render.js"></script>
 <script src="game.js"></script>
 <script src="script.js"></script>
-
-</body>
 
 </html>

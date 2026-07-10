@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Grade 3</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="../index.html">
+        ← Back to Home
+    </a>
+
+    <h1>📘 Grade 3</h1>
+
+    <p>
+        Choose a unit to start learning.
+    </p>
+
+    <div id="unitList" class="cards"></div>
+
+</div>
+
+<script>
+
+fetch("../assets/data/grade3/units.json")
+
+.then(response => response.json())
+
+.then(units => {
+
+    const container =
+        document.getElementById("unitList");
+
+    units.forEach(unit => {
+
+        const card =
+            document.createElement("a");
+
+        card.className = "card";
+
+        card.href =
+            `unit.html?unit=${unit.id}`;
+
+        card.innerHTML = `
+            <h3>Unit ${unit.id}</h3>
+            <p>${unit.title}</p>
+        `;
+
+        container.appendChild(card);
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>
