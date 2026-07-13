@@ -3,152 +3,179 @@
   "grade": 5,
   "title": "My Foreign Friends",
 
-  "vocabulary": [
-    {
-      "id": 1,
-      "word": "Australia",
-      "phonetic": "/ɒˈstreɪliə/",
-      "meaning": "nước Úc",
-      "emoji": "🇦🇺",
-      "image": "australia.png",
-      "audio": "australia.mp3"
-    },
-    {
-      "id": 2,
-      "word": "Australian",
-      "phonetic": "/ɒˈstreɪliən/",
-      "meaning": "người Úc",
-      "emoji": "🇦🇺",
-      "image": "australian.png",
-      "audio": "australian.mp3"
-    },
-    {
-      "id": 3,
-      "word": "America",
-      "phonetic": "/əˈmerɪkə/",
-      "meaning": "nước Mỹ",
-      "emoji": "🇺🇸",
-      "image": "america.png",
-      "audio": "america.mp3"
-    },
-    {
-      "id": 4,
-      "word": "American",
-      "phonetic": "/əˈmerɪkən/",
-      "meaning": "người Mỹ",
-      "emoji": "🇺🇸",
-      "image": "american.png",
-      "audio": "american.mp3"
-    },
-    {
-      "id": 5,
-      "word": "Japan",
-      "phonetic": "/dʒəˈpæn/",
-      "meaning": "nước Nhật",
-      "emoji": "🇯🇵",
-      "image": "japan.png",
-      "audio": "japan.mp3"
-    },
-    {
-      "id": 6,
-      "word": "Japanese",
-      "phonetic": "/ˌdʒæpəˈniːz/",
-      "meaning": "người Nhật",
-      "emoji": "🇯🇵",
-      "image": "japanese.png",
-      "audio": "japanese.mp3"
-    },
-    {
-      "id": 7,
-      "word": "England",
-      "phonetic": "/ˈɪŋɡlənd/",
-      "meaning": "nước Anh",
-      "emoji": "🇬🇧",
-      "image": "england.png",
-      "audio": "england.mp3"
-    },
-    {
-      "id": 8,
-      "word": "English",
-      "phonetic": "/ˈɪŋɡlɪʃ/",
-      "meaning": "người Anh",
-      "emoji": "🇬🇧",
-      "image": "english.png",
-      "audio": "english.mp3"
-    },
-    {
-      "id": 9,
-      "word": "Vietnam",
-      "phonetic": "/ˌvjetˈnæm/",
-      "meaning": "Việt Nam",
-      "emoji": "🇻🇳",
-      "image": "vietnam.png",
-      "audio": "vietnam.mp3"
-    },
-    {
-      "id": 10,
-      "word": "Vietnamese",
-      "phonetic": "/ˌvjetnəˈmiːz/",
-      "meaning": "người Việt Nam",
-      "emoji": "🇻🇳",
-      "image": "vietnamese.png",
-      "audio": "vietnamese.mp3"
-    },
-    {
-      "id": 11,
-      "word": "China",
-      "phonetic": "/ˈtʃaɪnə/",
-      "meaning": "Trung Quốc",
-      "emoji": "🇨🇳",
-      "image": "china.png",
-      "audio": "china.mp3"
-    },
-    {
-      "id": 12,
-      "word": "Chinese",
-      "phonetic": "/ˌtʃaɪˈniːz/",
-      "meaning": "người Trung Quốc",
-      "emoji": "🇨🇳",
-      "image": "chinese.png",
-      "audio": "chinese.mp3"
-    },
-    {
-      "id": 13,
-      "word": "friendly",
-      "phonetic": "/ˈfrendli/",
-      "meaning": "thân thiện",
-      "emoji": "😊",
-      "image": "friendly.png",
-      "audio": "friendly.mp3"
-    },
-    {
-      "id": 14,
-      "word": "kind",
-      "phonetic": "/kaɪnd/",
-      "meaning": "tốt bụng",
-      "emoji": "❤️",
-      "image": "kind.png",
-      "audio": "kind.mp3"
-    },
-    {
-      "id": 15,
-      "word": "funny",
-      "phonetic": "/ˈfʌni/",
-      "meaning": "vui tính",
-      "emoji": "😂",
-      "image": "funny.png",
-      "audio": "funny.mp3"
-    },
-    {
-      "id": 16,
-      "word": "helpful",
-      "phonetic": "/ˈhelpfəl/",
-      "meaning": "hay giúp đỡ",
-      "emoji": "🤝",
-      "image": "helpful.png",
-      "audio": "helpful.mp3"
-    }
-  ],
+"vocabulary": [
+  {
+    "id": 1,
+    "word": "American",
+    "phonetic": "/əˈmerɪkən/",
+    "meaning": "người Mỹ",
+    "emoji": "🇺🇸",
+    "image": "american.png",
+    "audio": "american.mp3"
+  },
+  {
+    "id": 2,
+    "word": "Australian",
+    "phonetic": "/ɒˈstreɪliən/",
+    "meaning": "người Úc",
+    "emoji": "🇦🇺",
+    "image": "australian.png",
+    "audio": "australian.mp3"
+  },
+  {
+    "id": 3,
+    "word": "Chinese",
+    "phonetic": "/ˌtʃaɪˈniːz/",
+    "meaning": "người Trung Quốc",
+    "emoji": "🇨🇳",
+    "image": "chinese.png",
+    "audio": "chinese.mp3"
+  },
+  {
+    "id": 4,
+    "word": "foreign",
+    "phonetic": "/ˈfɒrən/",
+    "meaning": "nước ngoài",
+    "emoji": "🌍",
+    "image": "foreign.png",
+    "audio": "foreign.mp3"
+  },
+  {
+    "id": 5,
+    "word": "fun",
+    "phonetic": "/fʌn/",
+    "meaning": "vui vẻ",
+    "emoji": "🎉",
+    "image": "fun.png",
+    "audio": "fun.mp3"
+  },
+  {
+    "id": 6,
+    "word": "Indian",
+    "phonetic": "/ˈɪndiən/",
+    "meaning": "người Ấn Độ",
+    "emoji": "🇮🇳",
+    "image": "indian.png",
+    "audio": "indian.mp3"
+  },
+  {
+    "id": 7,
+    "word": "Japanese",
+    "phonetic": "/ˌdʒæpəˈniːz/",
+    "meaning": "người Nhật",
+    "emoji": "🇯🇵",
+    "image": "japanese.png",
+    "audio": "japanese.mp3"
+  },
+  {
+    "id": 8,
+    "word": "lake",
+    "phonetic": "/leɪk/",
+    "meaning": "hồ",
+    "emoji": "🏞️",
+    "image": "lake.png",
+    "audio": "lake.mp3"
+  },
+  {
+    "id": 9,
+    "word": "land",
+    "phonetic": "/lænd/",
+    "meaning": "đất liền",
+    "emoji": "🌱",
+    "image": "land.png",
+    "audio": "land.mp3"
+  },
+  {
+    "id": 10,
+    "word": "Malaysia",
+    "phonetic": "/məˈleɪʒə/",
+    "meaning": "Malaysia",
+    "emoji": "🇲🇾",
+    "image": "malaysia.png",
+    "audio": "malaysia.mp3"
+  },
+  {
+    "id": 11,
+    "word": "nationality",
+    "phonetic": "/ˌnæʃəˈnæləti/",
+    "meaning": "quốc tịch",
+    "emoji": "🪪",
+    "image": "nationality.png",
+    "audio": "nationality.mp3"
+  },
+  {
+    "id": 12,
+    "word": "sun",
+    "phonetic": "/sʌn/",
+    "meaning": "mặt trời",
+    "emoji": "☀️",
+    "image": "sun.png",
+    "audio": "sun.mp3"
+  },
+  {
+    "id": 13,
+    "word": "active",
+    "phonetic": "/ˈæktɪv/",
+    "meaning": "năng động",
+    "emoji": "🏃",
+    "image": "active.png",
+    "audio": "active.mp3"
+  },
+  {
+    "id": 14,
+    "word": "clever",
+    "phonetic": "/ˈklevə(r)/",
+    "meaning": "thông minh",
+    "emoji": "🧠",
+    "image": "clever.png",
+    "audio": "clever.mp3"
+  },
+  {
+    "id": 15,
+    "word": "friendly",
+    "phonetic": "/ˈfrendli/",
+    "meaning": "thân thiện",
+    "emoji": "😊",
+    "image": "friendly.png",
+    "audio": "friendly.mp3"
+  },
+  {
+    "id": 16,
+    "word": "helpful",
+    "phonetic": "/ˈhelpfəl/",
+    "meaning": "hay giúp đỡ",
+    "emoji": "🤝",
+    "image": "helpful.png",
+    "audio": "helpful.mp3"
+  },
+  {
+    "id": 17,
+    "word": "appearance",
+    "phonetic": "/əˈpɪərəns/",
+    "meaning": "ngoại hình",
+    "emoji": "👦",
+    "image": "appearance.png",
+    "audio": "appearance.mp3"
+  },
+  {
+    "id": 18,
+    "word": "country",
+    "phonetic": "/ˈkʌntri/",
+    "meaning": "đất nước",
+    "emoji": "🗺️",
+    "image": "country.png",
+    "audio": "country.mp3"
+  },
+  {
+    "id": 19,
+    "word": "personality",
+    "phonetic": "/ˌpɜːsəˈnæləti/",
+    "meaning": "tính cách",
+    "emoji": "🙂",
+    "image": "personality.png",
+    "audio": "personality.mp3"
+  }
+],
 
   "sentences": [
     {

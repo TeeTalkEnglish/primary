@@ -26,11 +26,10 @@ function render() {
 
 function renderImage() {
 
-    document.getElementById("emoji").textContent =
-        game.currentWord.emoji;
+  
 
-    document.getElementById("wordImage").src =
-        `../../assets/images/grade${game.grade}/unit${game.unit}/${game.currentWord.image}`;
+  document.getElementById("wordImage").src =
+`../../assets/images/vocabulary/grade${game.grade}/unit${game.unit}/${game.currentWord.image}`;
 
 }
 

@@ -71,6 +71,13 @@ fetch(`../../assets/data/grade${grade}/unit${unit}.json`)
 
 function nextQuestion() {
 
+       console.log(
+        "Current Index:",
+        currentIndex,
+        "Total:",
+        questions.length
+    );
+
     if (currentIndex >= questions.length) {
 
         finishHomework();
