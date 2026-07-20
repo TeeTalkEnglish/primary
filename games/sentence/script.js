@@ -121,11 +121,33 @@ function finishHomework() {
 
     updateProgress();
 
-    document.getElementById("nextBtn").style.display = "none";
+// --------------------
+// Hide Next Button
+// --------------------
 
-    document.getElementById("resetBtn").style.display = "none";
+bindButton("nextBtn", () => {
 
-    document.getElementById("hintBtn").style.display = "none";
+    nextWord();
+
+});
+// --------------------
+// Button Events
+// --------------------
+
+bindButton("resetBtn", () => {
+
+    resetWord();
+
+});
+
+bindButton("hintBtn", () => {
+
+    play(clickSound);
+
+    document.getElementById("message").textContent =
+        "💡 " + currentQuestion.text;
+
+});
 
     document.getElementById("nextGameBtn").style.display = "block";
 

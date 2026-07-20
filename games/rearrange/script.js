@@ -61,17 +61,28 @@ function play(sound){
 // Hide Next Button
 // --------------------
 
-document.getElementById("nextBtn").style.display = "none";
+bindButton("nextBtn", () => {
 
+    nextWord();
+
+});
 // --------------------
 // Button Events
 // --------------------
 
-document.getElementById("nextBtn").onclick = nextWord;
+bindButton("resetBtn", () => {
 
-document.getElementById("resetBtn").onclick = resetWord;
+    resetWord();
 
-document.getElementById("hintBtn").onclick = hintWord;
+});
+bindButton("hintBtn", () => {
+
+    play(clickSound);
+
+    document.getElementById("message").textContent =
+        "💡 " + game.currentWord.word;
+
+});
 
 // --------------------
 // Start Game

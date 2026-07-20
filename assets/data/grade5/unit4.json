@@ -1,0 +1,239 @@
+{
+  "id": 4,
+  "grade": 5,
+  "title": "Free Time Activities",
+
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "cartoon",
+      "phonetic": "/kɑːˈtuːn/",
+      "meaning": "phim hoạt hình",
+      "image": "cartoon.png",
+      "audio": "cartoon.mp3"
+    },
+    {
+      "id": 2,
+      "word": "free time",
+      "phonetic": "/friː taɪm/",
+      "meaning": "thời gian rảnh rỗi",
+      "image": "free-time.png",
+      "audio": "free-time.mp3"
+    },
+    {
+      "id": 3,
+      "word": "go",
+      "phonetic": "/ɡəʊ/",
+      "meaning": "đi",
+      "image": "go.png",
+      "audio": "go.mp3"
+    },
+    {
+      "id": 4,
+      "word": "go for a walk",
+      "phonetic": "/ɡəʊ fə(r) ə wɔːk/",
+      "meaning": "đi dạo, đi bộ",
+      "image": "go-for-a-walk.png",
+      "audio": "go-for-a-walk.mp3"
+    },
+    {
+      "id": 5,
+      "word": "play",
+      "phonetic": "/pleɪ/",
+      "meaning": "chơi",
+      "image": "play.png",
+      "audio": "play.mp3"
+    },
+    {
+      "id": 6,
+      "word": "surf the internet",
+      "phonetic": "/sɜːf ðiː ˈɪntənet/",
+      "meaning": "lướt mạng Internet",
+      "image": "surf-the-internet.png",
+      "audio": "surf-the-internet.mp3"
+    },
+    {
+      "id": 7,
+      "word": "violin",
+      "phonetic": "/ˌvaɪəˈlɪn/",
+      "meaning": "đàn vi-ô-lông",
+      "image": "violin.png",
+      "audio": "violin.mp3"
+    },
+    {
+      "id": 8,
+      "word": "watch",
+      "phonetic": "/wɒtʃ/",
+      "meaning": "xem",
+      "image": "watch.png",
+      "audio": "watch.mp3"
+    },
+    {
+      "id": 9,
+      "word": "water the flowers",
+      "phonetic": "/ˈwɔːtə(r) ðə ˈflaʊəz/",
+      "meaning": "tưới hoa",
+      "image": "water-the-flowers.png",
+      "audio": "water-the-flowers.mp3"
+    },
+    {
+      "id": 10,
+      "word": "always",
+      "phonetic": "/ˈɔːlweɪz/",
+      "meaning": "luôn luôn",
+      "image": "always.png",
+      "audio": "always.mp3"
+    },
+    {
+      "id": 11,
+      "word": "just",
+      "phonetic": "/dʒʌst/",
+      "meaning": "chỉ",
+      "image": "just.png",
+      "audio": "just.mp3"
+    },
+    {
+      "id": 12,
+      "word": "listen",
+      "phonetic": "/ˈlɪsn/",
+      "meaning": "nghe",
+      "image": "listen.png",
+      "audio": "listen.mp3"
+    },
+    {
+      "id": 13,
+      "word": "never",
+      "phonetic": "/ˈnevə(r)/",
+      "meaning": "không bao giờ",
+      "image": "never.png",
+      "audio": "never.mp3"
+    },
+    {
+      "id": 14,
+      "word": "often",
+      "phonetic": "/ˈɒfn/",
+      "meaning": "hay, thường",
+      "image": "often.png",
+      "audio": "often.mp3"
+    },
+    {
+      "id": 15,
+      "word": "rarely",
+      "phonetic": "/ˈreəli/",
+      "meaning": "hiếm khi",
+      "image": "rarely.png",
+      "audio": "rarely.mp3"
+    },
+    {
+      "id": 16,
+      "word": "read stories",
+      "phonetic": "/riːd ˈstɔːriz/",
+      "meaning": "đọc truyện",
+      "image": "read-stories.png",
+      "audio": "read-stories.mp3"
+    },
+    {
+      "id": 17,
+      "word": "ride a bike",
+      "phonetic": "/raɪd ə baɪk/",
+      "meaning": "đạp xe",
+      "image": "ride-a-bike.png",
+      "audio": "ride-a-bike.mp3"
+    },
+    {
+      "id": 18,
+      "word": "sometimes",
+      "phonetic": "/ˈsʌmtaɪmz/",
+      "meaning": "thỉnh thoảng",
+      "image": "sometimes.png",
+      "audio": "sometimes.mp3"
+    },
+    {
+      "id": 19,
+      "word": "usually",
+      "phonetic": "/ˈjuːʒuəli/",
+      "meaning": "thường thường",
+      "image": "usually.png",
+      "audio": "usually.mp3"
+    }
+  ],
+
+  "sentences": [
+    {
+      "id": 1,
+      "text": "I watch cartoons in my free time."
+    },
+    {
+      "id": 2,
+      "text": "I often go for a walk."
+    },
+    {
+      "id": 3,
+      "text": "She likes to play the violin."
+    },
+    {
+      "id": 4,
+      "text": "He surfs the internet every day."
+    },
+    {
+      "id": 5,
+      "text": "I water the flowers after school."
+    },
+    {
+      "id": 6,
+      "text": "I always read stories before bed."
+    },
+    {
+      "id": 7,
+      "text": "She usually rides a bike on Sundays."
+    },
+    {
+      "id": 8,
+      "text": "He sometimes watches cartoons."
+    },
+    {
+      "id": 9,
+      "text": "I never surf the internet at school."
+    },
+    {
+      "id": 10,
+      "text": "We often play together."
+    },
+    {
+      "id": 11,
+      "text": "They rarely go for a walk."
+    },
+    {
+      "id": 12,
+      "text": "I just listen to music."
+    },
+    {
+      "id": 13,
+      "text": "She always waters the flowers."
+    },
+    {
+      "id": 14,
+      "text": "He usually reads stories."
+    },
+    {
+      "id": 15,
+      "text": "What do you do in your free time?"
+    },
+    {
+      "id": 16,
+      "text": "I like to watch cartoons."
+    },
+    {
+      "id": 17,
+      "text": "She often plays the violin."
+    },
+    {
+      "id": 18,
+      "text": "We sometimes ride our bikes."
+    },
+    {
+      "id": 19,
+      "text": "They always have fun together."
+    }
+  ]
+}
