@@ -43,25 +43,85 @@
   ],
 
   "sentences": [
-    {
-      "id": 1,
-      "text": "This is my head.",
-      "emoji": "🧑"
-    },
-    {
-      "id": 2,
-      "text": "This is my hand.",
-      "emoji": "✋"
-    },
-    {
-      "id": 3,
-      "text": "I have long hair.",
-      "emoji": "💇"
-    },
-    {
-      "id": 4,
-      "text": "I can see a horse.",
-      "emoji": "🐴"
-    }
-  ]
+  {
+    "id": 1,
+    "text": "This is my head."
+  },
+  {
+    "id": 2,
+    "text": "This is my hand."
+  },
+  {
+    "id": 3,
+    "text": "I have long hair."
+  },
+  {
+    "id": 4,
+    "text": "I can see a horse."
+  },
+  {
+    "id": 5,
+    "text": "What is this?"
+  },
+  {
+    "id": 6,
+    "text": "It is a head."
+  },
+  {
+    "id": 7,
+    "text": "Is this your head?"
+  },
+  {
+    "id": 8,
+    "text": "Yes, it is."
+  },
+  {
+    "id": 9,
+    "text": "What is this?"
+  },
+  {
+    "id": 10,
+    "text": "It is a hand."
+  },
+  {
+    "id": 11,
+    "text": "Is this your hand?"
+  },
+  {
+    "id": 12,
+    "text": "Yes, it is."
+  },
+  {
+    "id": 13,
+    "text": "Do you have long hair?"
+  },
+  {
+    "id": 14,
+    "text": "Yes, I do."
+  },
+  {
+    "id": 15,
+    "text": "Can you see a horse?"
+  },
+  {
+    "id": 16,
+    "text": "Yes, I can."
+  },
+  {
+    "id": 17,
+    "text": "No, I cannot."
+  },
+  {
+    "id": 18,
+    "text": "Touch your head."
+  },
+  {
+    "id": 19,
+    "text": "Show me your hand."
+  },
+  {
+    "id": 20,
+    "text": "I have two hands."
+  }
+]
 }

@@ -234,6 +234,68 @@
     {
       "id": 19,
       "text": "They always have fun together."
-    }
+    },
+    {
+  "id": 20,
+  "text": "What do you do in your free time?"
+},
+{
+  "id": 21,
+  "text": "Do you like watching cartoons?"
+},
+{
+  "id": 22,
+  "text": "Do you often go for a walk?"
+},
+{
+  "id": 23,
+  "text": "Do you play the violin?"
+},
+{
+  "id": 24,
+  "text": "Do you surf the internet every day?"
+},
+{
+  "id": 25,
+  "text": "Do you water the flowers?"
+},
+{
+  "id": 26,
+  "text": "Do you read stories?"
+},
+{
+  "id": 27,
+  "text": "Do you ride a bike?"
+},
+{
+  "id": 28,
+  "text": "What do you usually do after school?"
+},
+{
+  "id": 29,
+  "text": "How often do you watch cartoons?"
+},
+{
+  "id": 30,
+  "text": "How often do you read stories?"
+},
+{
+  "id": 31,
+  "text": "How often do you ride a bike?"
+},
+{
+  "id": 32,
+  "text": "What do you usually do at the weekend?"
+},
+{
+  "id": 33,
+  "text": "Do you have free time every day?"
+},
+{
+  "id": 34,
+  "text": "What do you like doing in your free time?"
+}
+
+
   ]
 }
