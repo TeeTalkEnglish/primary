@@ -17,3 +17,19 @@
     margin-bottom:25px;
 
 }
+
+.hint-text{
+
+    min-height:32px;
+
+    margin-top:20px;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    color:#24B7BD;
+
+    text-align:center;
+
+}

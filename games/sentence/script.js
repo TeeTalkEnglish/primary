@@ -36,6 +36,7 @@ let questions = [];
 let currentIndex = 0;
 
 let currentQuestion;
+let wrongAttempts = 0;
 
 let answer = [];
 
@@ -71,34 +72,38 @@ fetch(`../../assets/data/grade${grade}/unit${unit}.json`)
 
 function nextQuestion() {
 
-       console.log(
-        "Current Index:",
-        currentIndex,
-        "Total:",
-        questions.length
-    );
-
     if (currentIndex >= questions.length) {
 
         finishHomework();
-
         return;
 
     }
 
     currentQuestion = questions[currentIndex];
 
+    // Register hint
+    setHint(() => currentQuestion.text);
+
+    // Reset wrong attempts
+    wrongAttempts = 0;
+
+    // Clear previous hint
+    const hint = document.getElementById("hintText");
+    if (hint) {
+        hint.textContent = "";
+    }
+
     answer = [];
 
-shuffled = shuffle(
-    currentQuestion.text
-        .split(" ")
-        .map((word, index) => ({
-            id: index,
-            text: word,
-            used: false
-        }))
-);
+    shuffled = shuffle(
+        currentQuestion.text
+            .split(" ")
+            .map((word,index)=>({
+                id:index,
+                text:word,
+                used:false
+            }))
+    );
 
     render();
 
@@ -121,33 +126,8 @@ function finishHomework() {
 
     updateProgress();
 
-// --------------------
-// Hide Next Button
-// --------------------
 
-bindButton("nextBtn", () => {
 
-    nextWord();
-
-});
-// --------------------
-// Button Events
-// --------------------
-
-bindButton("resetBtn", () => {
-
-    resetWord();
-
-});
-
-bindButton("hintBtn", () => {
-
-    play(clickSound);
-
-    document.getElementById("message").textContent =
-        "💡 " + currentQuestion.text;
-
-});
 
     document.getElementById("nextGameBtn").style.display = "block";
 
@@ -296,12 +276,21 @@ function check() {
     }
     else {
 
-        play(wrongSound);
+    play(wrongSound);
 
-        document.getElementById("message").textContent =
-            "❌ Try Again";
+    wrongAttempts++;
+
+    document.getElementById("message").textContent =
+        "❌ Try Again";
+
+    if (wrongAttempts >= 2) {
+
+        document.getElementById("hintText").textContent =
+            "💡 " + currentQuestion.text;
 
     }
+
+}
 
 }
 
@@ -335,10 +324,27 @@ document.getElementById("resetBtn").onclick = () => {
         word.used = false;
     });
 
+    const hint = document.getElementById("hintText");
+    if (hint) {
+        hint.textContent = "";
+    }
+
     render();
 
-};
+  
 
+};
+// --------------------
+// Hint buttons
+// --------------------
+  document.getElementById("hintBtn").onclick = () => {
+
+    play(clickSound);
+
+    document.getElementById("hintText").textContent =
+        "💡 " + currentQuestion.text;
+
+};
 document.getElementById("nextBtn").onclick = () => {
 
     nextQuestion();
