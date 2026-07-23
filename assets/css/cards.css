@@ -1,0 +1,99 @@
+/* =================================
+   Cards
+================================= */
+
+.unit-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+margin-top:30px;
+
+}
+
+.unit-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:28px;
+
+text-decoration:none;
+
+color:#2c3e50;
+
+box-shadow:0 8px 22px rgba(0,0,0,.08);
+
+transition:.25s;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+}
+
+.unit-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.unit-number{
+
+font-size:22px;
+
+font-weight:700;
+
+color:#24B7BD;
+
+margin-bottom:15px;
+
+}
+
+.unit-card h3{
+
+font-size:26px;
+
+margin-bottom:10px;
+
+}
+
+.unit-card p{
+
+color:#777;
+
+margin-bottom:25px;
+
+}
+
+.start-btn{
+
+display:inline-block;
+
+padding:12px 24px;
+
+background:#24B7BD;
+
+color:white;
+
+border-radius:30px;
+
+font-weight:600;
+
+transition:.2s;
+
+}
+
+.unit-card:hover .start-btn{
+
+background:#17a3a8;
+
+}

@@ -1,106 +1,82 @@
-{
-  "grade": 5,
-  "book": "Global Success",
-  "units": [
-    {
-      "id": 1,
-      "title": "Unit 1",
-      "status": "available"
-    },
-    {
-      "id": 2,
-      "title": "Unit 2",
-      "status": "current"
-    },
-    {
-      "id": 3,
-      "title": "Unit 3",
-      "status": "available"
-    },
-    {
-      "id": 4,
-      "title": "Unit 4",
-      "status": "available"
-    },
-    {
-      "id": 5,
-      "title": "Unit 5",
-      "status": "available"
-    },
-    {
-      "id": 6,
-      "title": "Unit 6",
-      "status": "available"
-    },
-    {
-      "id": 7,
-      "title": "Unit 7",
-      "status": "available"
-    },
-    {
-      "id": 8,
-      "title": "Unit 8",
-      "status": "available"
-    },
-    {
-      "id": 9,
-      "title": "Unit 9",
-      "status": "available"
-    },
-    {
-      "id": 10,
-      "title": "Unit 10",
-      "status": "available"
-    },
-    {
-      "id": 11,
-      "title": "Unit 11",
-      "status": "available"
-    },
-    {
-      "id": 12,
-      "title": "Unit 12",
-      "status": "available"
-    },
-    {
-      "id": 13,
-      "title": "Unit 13",
-      "status": "available"
-    },
-    {
-      "id": 14,
-      "title": "Unit 14",
-      "status": "available"
-    },
-    {
-      "id": 15,
-      "title": "Unit 15",
-      "status": "available"
-    },
-    {
-      "id": 16,
-      "title": "Unit 16",
-      "status": "available"
-    },
-    {
-      "id": 17,
-      "title": "Unit 17",
-      "status": "available"
-    },
-    {
-      "id": 18,
-      "title": "Unit 18",
-      "status": "available"
-    },
-    {
-      "id": 19,
-      "title": "Unit 19",
-      "status": "available"
-    },
-    {
-      "id": 20,
-      "title": "Unit 20",
-      "status": "available"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "title": "My Friends"
+  },
+  {
+    "id": 2,
+    "title": "Our School"
+  },
+  {
+    "id": 3,
+    "title": "My Foreign Friends"
+  },
+  {
+    "id": 4,
+    "title": "Free Time Activities"
+  },
+  {
+    "id": 5,
+    "title": "Our Sports Day"
+  },
+  {
+    "id": 6,
+    "title": "Our School Facilities"
+  },
+  {
+    "id": 7,
+    "title": "Healthy Food"
+  },
+  {
+    "id": 8,
+    "title": "At the Shopping Centre"
+  },
+  {
+    "id": 9,
+    "title": "Our Outdoor Activities"
+  },
+  {
+    "id": 10,
+    "title": "At the Campsite"
+  },
+  {
+    "id": 11,
+    "title": "Our Bus Trip"
+  },
+  {
+    "id": 12,
+    "title": "At the Café"
+  },
+  {
+    "id": 13,
+    "title": "Our Dream House"
+  },
+  {
+    "id": 14,
+    "title": "Earth Day"
+  },
+  {
+    "id": 15,
+    "title": "At the Seaside"
+  },
+  {
+    "id": 16,
+    "title": "My Weekend"
+  },
+  {
+    "id": 17,
+    "title": "Future Jobs"
+  },
+  {
+    "id": 18,
+    "title": "Travelling Around Vietnam"
+  },
+  {
+    "id": 19,
+    "title": "Our Festival"
+  },
+  {
+    "id": 20,
+    "title": "Our Summer Holiday"
+  }
+]

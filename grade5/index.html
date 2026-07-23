@@ -1,64 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Grade 5</title>
-    <link rel="stylesheet" href="../style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grade 5</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/variables.css">
+<link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/cards.css">
+<link rel="stylesheet" href="../assets/css/progress.css">
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Grade 5</h1>
+<a class="back-link" href="../index.html">
+← Back to Home
+</a>
 
-    <div class="units">
+<div class="header">
 
-        <a href="unit.html?unit=1">Unit 1</a>
+<h1>📘 Grade 5</h1>
 
-        <a class="current" href="unit.html?unit=2">
-            ⭐ Unit 2
-        </a>
-
-        <a href="unit.html?unit=3">Unit 3</a>
-
-        <a href="unit.html?unit=4">Unit 4</a>
-
-        <a href="unit.html?unit=5">Unit 5</a>
-
-        <a href="unit.html?unit=6">Unit 6</a>
-
-        <a href="unit.html?unit=7">Unit 7</a>
-
-        <a href="unit.html?unit=8">Unit 8</a>
-
-        <a href="unit.html?unit=9">Unit 9</a>
-
-        <a href="unit.html?unit=10">Unit 10</a>
-
-        <a href="unit.html?unit=11">Unit 11</a>
-
-        <a href="unit.html?unit=12">Unit 12</a>
-
-        <a href="unit.html?unit=13">Unit 13</a>
-
-        <a href="unit.html?unit=14">Unit 14</a>
-
-        <a href="unit.html?unit=15">Unit 15</a>
-
-        <a href="unit.html?unit=16">Unit 16</a>
-
-        <a href="unit.html?unit=17">Unit 17</a>
-
-        <a href="unit.html?unit=18">Unit 18</a>
-
-        <a href="unit.html?unit=19">Unit 19</a>
-
-        <a href="unit.html?unit=20">Unit 20</a>
-
-    </div>
+<p>
+Real English Communication
+</p>
 
 </div>
 
+<div class="progress-card">
+
+<h3>Homework Progress</h3>
+
+<div class="progress">
+
+<div id="progressFill"></div>
+
+</div>
+
+<p id="progressText">
+0 / 20 Units Completed
+</p>
+
+</div>
+
+<h2 class="section-title">
+Choose a Unit
+</h2>
+
+<div id="unitList" class="unit-grid">
+
+</div>
+
+</div>
+
+<script>
+
+fetch("../assets/data/grade5/units.json")
+
+.then(response => response.json())
+
+.then(units=>{
+
+const container=document.getElementById("unitList");
+
+units.forEach(unit=>{
+
+const card=document.createElement("a");
+
+card.className="unit-card";
+
+card.href=`unit.html?unit=${unit.id}`;
+
+card.innerHTML=`
+
+<div class="unit-number">
+
+📖 Unit ${unit.id}
+
+</div>
+
+<h3>${unit.title}</h3>
+
+<p>
+
+Vocabulary • Games • Listening
+
+</p>
+
+<div class="start-btn">
+
+Start Learning →
+
+</div>
+
+`;
+
+container.appendChild(card);
+
+});
+
+});
+
+</script>
+
 </body>
+
 </html>

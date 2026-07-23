@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Grade 5 Unit</title>
+<title>Unit</title>
 
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/variables.css">
+<link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/cards.css">
+<link rel="stylesheet" href="../assets/css/buttons.css">
+<link rel="stylesheet" href="../assets/css/progress.css">
+<link rel="stylesheet" href="../assets/css/unit.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -16,35 +24,107 @@
 
 <div class="container">
 
-<a class="back" href="index.html">
-← Grade 5
+<a class="back-link" href="index.html">
+← Back to Grade 5
 </a>
+
+<div class="hero">
 
 <h1 id="unitTitle"></h1>
 
 <p id="unitSubtitle"></p>
 
-<div class="cards">
+</div>
 
-    <a id="vocabCard">
-        📚 Vocabulary
-    </a>
+<div class="stats">
 
-    <a id="rearrangeCard">
-        🔤 Rearrange Letters
-    </a>
+<div class="stat">
+📚
+<h3 id="vocabCount">0</h3>
+<p>Vocabulary</p>
+</div>
 
-    <a id="sentenceCard">
-        📝 Rearrange Sentence
-    </a>
+<div class="stat">
+📝
+<h3 id="sentenceCount">0</h3>
+<p>Sentences</p>
+</div>
 
-    <a id="matchingCard">
-        🎯 Matching
-    </a>
+<div class="stat">
+⏱
+<h3>20 min</h3>
+<p>Practice</p>
+</div>
 
-    <a id="listeningCard">
-        🎧 Listening
-    </a>
+</div>
+
+<h2 class="section-title">
+
+Choose an Activity
+
+</h2>
+
+<div class="activity-grid">
+
+<a id="vocabCard" class="activity blue">
+
+<div class="icon">📚</div>
+
+<h3>Vocabulary</h3>
+
+<p>Learn new words</p>
+
+<span>Start →</span>
+
+</a>
+
+<a id="rearrangeCard" class="activity purple">
+
+<div class="icon">🔤</div>
+
+<h3>Rearrange Letters</h3>
+
+<p>Practice spelling</p>
+
+<span>Start →</span>
+
+</a>
+
+<a id="sentenceCard" class="activity green">
+
+<div class="icon">📝</div>
+
+<h3>Sentence Builder</h3>
+
+<p>Practice grammar</p>
+
+<span>Start →</span>
+
+</a>
+
+<a id="matchingCard" class="activity orange">
+
+<div class="icon">🎯</div>
+
+<h3>Matching</h3>
+
+<p>Match picture & word</p>
+
+<span>Start →</span>
+
+</a>
+
+<a id="listeningCard" class="activity pink">
+
+<div class="icon">🎧</div>
+
+<h3>Listening</h3>
+
+<p>Listen carefully</p>
+
+<span>Start →</span>
+
+</a>
 
 </div>
 
@@ -52,35 +132,42 @@
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
+const params=new URLSearchParams(window.location.search);
 
-const unit = params.get("unit");
+const grade=5;
 
-document.getElementById("unitTitle").textContent =
-`⭐ Unit ${unit}`;
+const unit=params.get("unit");
 
-// Load unit information
-fetch(`../assets/data/grade5/unit${unit}.json`)
-.then(response => response.json())
+fetch(`../assets/data/grade${grade}/unit${unit}.json`)
+.then(r=>r.json())
 .then(data=>{
 
-    document.getElementById("unitSubtitle").textContent =
-        data.title;
+document.getElementById("unitTitle").textContent=
+`Unit ${unit}`;
 
-    document.getElementById("sentenceCard").href =
-        `../games/sentence/index.html?grade=5&unit=${unit}`;
+document.getElementById("unitSubtitle").textContent=
+data.title;
 
-    document.getElementById("rearrangeCard").href =
-        `../games/rearrange/index.html?grade=5&unit=${unit}`;
+document.getElementById("vocabCount").textContent=
+data.vocabulary.length;
 
-    document.getElementById("matchingCard").href =
-        `../games/matching/index.html?grade=5&unit=${unit}`;
+document.getElementById("sentenceCount").textContent=
+data.sentences.length;
 
-    document.getElementById("listeningCard").href =
-        `../games/listening/index.html?grade=5&unit=${unit}`;
+document.getElementById("vocabCard").href=
+`../games/vocabulary/index.html?grade=${grade}&unit=${unit}`;
 
-    document.getElementById("vocabCard").href =
-        `../games/vocabulary/index.html?grade=5&unit=${unit}`;
+document.getElementById("rearrangeCard").href=
+`../games/rearrange/index.html?grade=${grade}&unit=${unit}`;
+
+document.getElementById("sentenceCard").href=
+`../games/sentence/index.html?grade=${grade}&unit=${unit}`;
+
+document.getElementById("matchingCard").href=
+`../games/matching/index.html?grade=${grade}&unit=${unit}`;
+
+document.getElementById("listeningCard").href=
+`../games/listening/index.html?grade=${grade}&unit=${unit}`;
 
 });
 

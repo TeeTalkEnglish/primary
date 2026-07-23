@@ -1,48 +1,391 @@
-.units{
+/* ==========================================
+   TeeTalk English Homepage
+========================================== */
 
-display:grid;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-grid-template-columns:
-repeat(
-auto-fit,
-minmax(
-180px,
-1fr
-));
+html{
+    scroll-behavior:smooth;
+}
 
-gap:20px;
+body{
 
-max-width:900px;
+    font-family:'Poppins',sans-serif;
 
-margin:auto;
+    background:#f5f7fb;
+
+    color:#2c3e50;
+
+    line-height:1.6;
 
 }
 
-.units a,
-.locked{
+/* ==========================================
+   HERO
+========================================== */
 
-padding:30px;
+.hero{
 
-border-radius:20px;
+    background:linear-gradient(
+        135deg,
+        #24B7BD,
+        #3fd3d8
+    );
 
-background:white;
+    color:white;
 
-text-align:center;
+    text-align:center;
 
-font-size:24px;
-
-text-decoration:none;
-
-}
-
-.current{
-
-background:#ffe066;
+    padding:90px 20px;
 
 }
 
-.locked{
+.hero-content{
 
-opacity:.5;
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+.hero h1{
+
+    font-size:56px;
+
+    margin-bottom:20px;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+    opacity:.95;
+
+    margin-bottom:40px;
+
+}
+
+.start-btn{
+
+    display:inline-block;
+
+    background:white;
+
+    color:#24B7BD;
+
+    text-decoration:none;
+
+    padding:18px 35px;
+
+    border-radius:50px;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.start-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ==========================================
+   SECTION TITLE
+========================================== */
+
+.section-title{
+
+    text-align:center;
+
+    font-size:38px;
+
+    margin:70px 0 40px;
+
+}
+
+/* ==========================================
+   STATS
+========================================== */
+
+.stats{
+
+    max-width:1200px;
+
+    margin:-50px auto 50px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    padding:0 20px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.stat-card h2{
+
+    font-size:45px;
+
+}
+
+.stat-card h3{
+
+    font-size:32px;
+
+    color:#24B7BD;
+
+    margin:10px 0;
+
+}
+
+.stat-card p{
+
+    color:#777;
+
+}
+
+/* ==========================================
+   GRADES
+========================================== */
+
+#grades{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:20px;
+
+}
+
+.grade-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+}
+
+.grade-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:.25s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.grade-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.grade-icon{
+
+    font-size:60px;
+
+    margin-bottom:15px;
+
+}
+
+.grade-card h3{
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+}
+
+.grade-card p{
+
+    color:#777;
+
+    min-height:50px;
+
+}
+
+.grade-card span{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    color:#24B7BD;
+
+    font-weight:bold;
+
+}
+
+/* ==========================================
+   GAMES
+========================================== */
+
+.games{
+
+    max-width:1200px;
+
+    margin:70px auto;
+
+    padding:20px;
+
+}
+
+.game-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.game-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+    font-size:45px;
+
+}
+
+.game-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.game-card h3{
+
+    margin:15px 0;
+
+    font-size:24px;
+
+}
+
+.game-card p{
+
+    color:#777;
+
+    font-size:16px;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+
+    margin-top:70px;
+
+    background:#1f2937;
+
+    color:white;
+
+    text-align:center;
+
+    padding:35px;
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.hero{
+
+    padding:70px 20px;
+
+}
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+}
+
+.section-title{
+
+    font-size:30px;
+
+}
+
+.grade-card{
+
+    padding:25px;
+
+}
+
+.game-card{
+
+    padding:25px;
+
+}
+
+.start-btn{
+
+    font-size:18px;
+
+}
 
 }
