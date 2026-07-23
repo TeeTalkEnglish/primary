@@ -1,33 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Unit</title>
-    <link rel="stylesheet" href="../style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/cards.css">
+<link rel="stylesheet" href="../assets/css/buttons.css">
+<link rel="stylesheet" href="../assets/css/progress.css">
+<link rel="stylesheet" href="../assets/css/grade.css">
+
+<title>Unit</title>
+
+
 </head>
+
 <body>
 
 <div class="container">
 
-    <a href="index.html">← Back to Grade 1</a>
+    <a class="back-link" href="index.html">
+        ← Back to Grade 1
+    </a>
 
-    <h1 id="unitTitle"></h1>
+    <div class="unit-header">
 
-    <p id="unitSubtitle"></p>
+        <div class="unit-cover">
+
+            <img
+                id="unitCover"
+                src="../assets/images/default-unit.png"
+                alt="Unit Cover"
+            >
+
+        </div>
+
+        <div>
+
+            <h1 id="unitTitle">Loading...</h1>
+
+            <p id="unitSubtitle"></p>
+
+            <div class="progress-box">
+
+                <p>Homework Progress</p>
+
+                <div class="progress">
+
+                    <div id="progressFill"></div>
+
+                </div>
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h2 class="section-title">
+        Choose an Activity
+    </h2>
 
     <div class="cards">
 
-    <a id="vocabCard">📚 Vocabulary</a>
+        <a id="vocabCard" class="card activity-card">
 
-    <a id="rearrangeCard">🔤 Rearrange Letters</a>
+            <div class="activity-icon">📚</div>
 
-    <a id="sentenceCard">📝 Rearrange Sentence</a>
+            <h3>Vocabulary</h3>
 
-    <a id="matchingCard">🎯 Matching</a>
+            <p>
+                Learn the new words
+            </p>
 
-    <a id="listeningCard">🎧 Listening</a>
+            <span>Start Learning →</span>
 
-</div>
+        </a>
+
+        <a id="rearrangeCard" class="card activity-card">
+
+            <div class="activity-icon">🔤</div>
+
+            <h3>Rearrange Letters</h3>
+
+            <p>
+                Spell vocabulary words
+            </p>
+
+            <span>Play →</span>
+
+        </a>
+
+        <a id="sentenceCard" class="card activity-card">
+
+            <div class="activity-icon">📝</div>
+
+            <h3>Sentence Builder</h3>
+
+            <p>
+                Build English sentences
+            </p>
+
+            <span>Play →</span>
+
+        </a>
+
+        <a id="matchingCard" class="card activity-card">
+
+            <div class="activity-icon">🎯</div>
+
+            <h3>Matching</h3>
+
+            <p>
+                Match pictures and words
+            </p>
+
+            <span>Play →</span>
+
+        </a>
+
+        <a id="listeningCard" class="card activity-card">
+
+            <div class="activity-icon">🎧</div>
+
+            <h3>Listening</h3>
+
+            <p>
+                Listen and answer
+            </p>
+
+            <span>Play →</span>
+
+        </a>
+
+    </div>
+
 </div>
 
 <script>
@@ -38,25 +151,43 @@ const grade = 1;
 
 const unit = params.get("unit");
 
-fetch(`../assets/data/grade1/unit${unit}.json`)
-    .then(response => response.json())
-    .then(data => {
+fetch(`../assets/data/grade${grade}/unit${unit}.json`)
+.then(response => response.json())
+.then(data=>{
 
-       document.getElementById("vocabCard").href =
-`../games/vocabulary/index.html?grade=1&unit=${unit}`;
+    document.getElementById("unitTitle").textContent =
+    `📖 Unit ${data.id}`;
 
-document.getElementById("rearrangeCard").href =
-`../games/rearrange/index.html?grade=1&unit=${unit}`;
+    document.getElementById("unitSubtitle").textContent =
+    data.title;
 
-document.getElementById("sentenceCard").href =
-`../games/sentence/index.html?grade=1&unit=${unit}`;
+    document.getElementById("unitCover").src =
+    `../assets/images/grade${grade}/unit${unit}/cover.png`;
 
-document.getElementById("matchingCard").href =
-`../games/matching/index.html?grade=1&unit=${unit}`;
+    document.getElementById("vocabCard").href =
+    `../games/vocabulary/index.html?grade=${grade}&unit=${unit}`;
 
-document.getElementById("listeningCard").href =
-`../games/listening/index.html?grade=1&unit=${unit}`;
-    });
+    document.getElementById("rearrangeCard").href =
+    `../games/rearrange/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("sentenceCard").href =
+    `../games/sentence/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("matchingCard").href =
+    `../games/matching/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("listeningCard").href =
+    `../games/listening/index.html?grade=${grade}&unit=${unit}`;
+
+});
+
+const progress=0;
+
+document.getElementById("progressFill").style.width=
+progress+"%";
+
+document.getElementById("progressText").textContent=
+progress+"%";
 
 </script>
 

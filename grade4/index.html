@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+      <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/variables.css">
+<link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/cards.css">
+<link rel="stylesheet" href="../assets/css/progress.css">
+<link rel="stylesheet" href="../assets/css/buttons.css">
+
+<title>Grade 1</title>
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<a class="back-home" href="../index.html">
+← Back to Home
+</a>
+
+<header class="hero">
+
+<h1>📘 Grade 1</h1>
+
+<p class="subtitle">
+Oxford Discover Futures
+</p>
+
+</header>
+
+<div class="progress-card">
+
+<h2>Homework Progress</h2>
+
+<p id="overallProgress">
+0 / 12 Units Completed
+</p>
+
+</div>
+
+<h2 class="section-title">
+Choose a Unit
+</h2>
+
+<div id="unitList" class="cards">
+
+</div>
+
+</div>
+
+<script>
+
+const grade = 4;
+
+fetch(`../assets/data/grade${grade}/units.json`)
+.then(response=>response.json())
+.then(units=>{
+
+const container =
+document.getElementById("unitList");
+
+container.innerHTML="";
+
+units.forEach(unit=>{
+
+const card=document.createElement("a");
+
+card.className="unit-card";
+
+card.href=`unit.html?unit=${unit.id}`;
+
+card.innerHTML=`
+
+<div class="unit-number">
+
+📖 Unit ${unit.id}
+
+</div>
+
+<h3>${unit.title}</h3>
+
+<p>
+
+Vocabulary • Games • Listening
+
+</p>
+
+<span>
+
+Start Learning →
+
+</span>
+
+`;
+
+container.appendChild(card);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

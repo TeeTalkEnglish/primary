@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-<title>Grade 5</title>
-
-<link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../assets/css/variables.css">
 <link rel="stylesheet" href="../assets/css/layout.css">
 <link rel="stylesheet" href="../assets/css/cards.css">
 <link rel="stylesheet" href="../assets/css/progress.css">
 <link rel="stylesheet" href="../assets/css/buttons.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Grade 1</title>
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
 
 </head>
 
@@ -28,32 +24,26 @@
 
 <div class="container">
 
-<a class="back-link" href="../index.html">
+<a class="back-home" href="../index.html">
 ← Back to Home
 </a>
 
-<div class="header">
+<header class="hero">
 
-<h1>📘 Grade 5</h1>
+<h1>📘 Grade 1</h1>
 
-<p>
-Real English Communication
+<p class="subtitle">
+Oxford Discover Futures
 </p>
 
-</div>
+</header>
 
 <div class="progress-card">
 
-<h3>Homework Progress</h3>
+<h2>Homework Progress</h2>
 
-<div class="progress">
-
-<div id="progressFill"></div>
-
-</div>
-
-<p id="progressText">
-0 / 20 Units Completed
+<p id="overallProgress">
+0 / 12 Units Completed
 </p>
 
 </div>
@@ -62,7 +52,7 @@ Real English Communication
 Choose a Unit
 </h2>
 
-<div id="unitList" class="unit-grid">
+<div id="unitList" class="cards">
 
 </div>
 
@@ -70,13 +60,16 @@ Choose a Unit
 
 <script>
 
-fetch("../assets/data/grade5/units.json")
+const grade = 5;
 
-.then(response => response.json())
-
+fetch(`../assets/data/grade${grade}/units.json`)
+.then(response=>response.json())
 .then(units=>{
 
-const container=document.getElementById("unitList");
+const container =
+document.getElementById("unitList");
+
+container.innerHTML="";
 
 units.forEach(unit=>{
 
@@ -102,11 +95,11 @@ Vocabulary • Games • Listening
 
 </p>
 
-<div class="start-btn">
+<span>
 
 Start Learning →
 
-</div>
+</span>
 
 `;
 
@@ -119,5 +112,4 @@ container.appendChild(card);
 </script>
 
 </body>
-
 </html>

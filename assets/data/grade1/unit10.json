@@ -1,0 +1,103 @@
+{
+  "id": 10,
+  "grade": 1,
+  "title": "My Toys",
+
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "ball",
+      "phonetic": "/bɔːl/",
+      "meaning": "quả bóng",
+      "image": "ball.png",
+      "audio": "ball.mp3"
+    },
+    {
+      "id": 2,
+      "word": "car",
+      "phonetic": "/kɑː(r)/",
+      "meaning": "xe ô tô đồ chơi",
+      "image": "car.png",
+      "audio": "car.mp3"
+    },
+    {
+      "id": 3,
+      "word": "doll",
+      "phonetic": "/dɒl/",
+      "meaning": "búp bê",
+      "image": "doll.png",
+      "audio": "doll.mp3"
+    },
+    {
+      "id": 4,
+      "word": "kite",
+      "phonetic": "/kaɪt/",
+      "meaning": "cái diều",
+      "image": "kite.png",
+      "audio": "kite.mp3"
+    }
+  ],
+
+  "sentences": [
+    {
+      "id": 1,
+      "text": "This is my ball."
+    },
+    {
+      "id": 2,
+      "text": "This is my car."
+    },
+    {
+      "id": 3,
+      "text": "This is my doll."
+    },
+    {
+      "id": 4,
+      "text": "This is my kite."
+    },
+    {
+      "id": 5,
+      "text": "I have a ball."
+    },
+    {
+      "id": 6,
+      "text": "I have a doll."
+    },
+    {
+      "id": 7,
+      "text": "I like my kite."
+    },
+    {
+      "id": 8,
+      "text": "I like my car."
+    },
+    {
+      "id": 9,
+      "text": "What is this?"
+    },
+    {
+      "id": 10,
+      "text": "It is a ball."
+    },
+    {
+      "id": 11,
+      "text": "Is it a doll?"
+    },
+    {
+      "id": 12,
+      "text": "Yes, it is."
+    },
+    {
+      "id": 13,
+      "text": "No, it isn't."
+    },
+    {
+      "id": 14,
+      "text": "Can I play?"
+    },
+    {
+      "id": 15,
+      "text": "Let's play together."
+    }
+  ]
+}

@@ -1,48 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Grade 1</title>
-    <link rel="stylesheet" href="../style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/cards.css">
+<link rel="stylesheet" href="../assets/css/buttons.css">
+<link rel="stylesheet" href="../assets/css/progress.css">
+<link rel="stylesheet" href="../assets/css/grade.css">
+
+<title>Grade 1</title>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Grade 1</h1>
+<a class="back-home" href="../index.html">
+← Back to Home
+</a>
 
-<div class="units">
+<header class="hero">
 
-    <a href="unit.html?unit=1">Unit 1</a>
+<h1>📘 Grade 1</h1>
 
-    <a href="unit.html?unit=2">Unit 2</a>
+<p class="subtitle">
+Oxford Discover Futures
+</p>
 
-    <a href="unit.html?unit=3">Unit 3</a>
+</header>
 
-    <a href="unit.html?unit=4">Unit 4</a>
+<div class="progress-card">
 
-    <a class="current" href="unit.html?unit=5">
-        ⭐ Unit 5
-    </a>
+<h2>Homework Progress</h2>
 
-    <a href="unit.html?unit=6">Unit 6</a>
+<p id="overallProgress">
+0 / 12 Units Completed
+</p>
 
-    <a href="unit.html?unit=7">Unit 7</a>
+</div>
 
-    <a href="unit.html?unit=8">Unit 8</a>
+<h2 class="section-title">
+Choose a Unit
+</h2>
 
-    <a href="unit.html?unit=9">Unit 9</a>
-
-    <a href="unit.html?unit=10">Unit 10</a>
-
-    <a href="unit.html?unit=11">Unit 11</a>
-
-    <a href="unit.html?unit=12">Unit 12</a>
+<div id="unitList" class="cards">
 
 </div>
 
 </div>
+
+<script>
+
+const grade = 1;
+
+fetch(`../assets/data/grade${grade}/units.json`)
+.then(response=>response.json())
+.then(units=>{
+
+const container =
+document.getElementById("unitList");
+
+container.innerHTML="";
+
+units.forEach(unit=>{
+
+const card=document.createElement("a");
+
+card.className="unit-card";
+
+card.href=`unit.html?unit=${unit.id}`;
+
+card.innerHTML=`
+
+<div class="unit-number">
+
+📖 Unit ${unit.id}
+
+</div>
+
+<h3>${unit.title}</h3>
+
+<p>
+
+Vocabulary • Games • Listening
+
+</p>
+
+<span>
+
+Start Learning →
+
+</span>
+
+`;
+
+container.appendChild(card);
+
+});
+
+});
+
+</script>
 
 </body>
 </html>

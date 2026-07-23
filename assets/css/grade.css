@@ -1,0 +1,402 @@
+/* ===========================================
+   GRADE & UNIT PAGES
+=========================================== */
+
+body{
+    background:#f5f8fc;
+    font-family:'Nunito',sans-serif;
+    color:#2c3e50;
+}
+
+/* Container */
+
+.container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px 20px;
+
+}
+
+/* Back Button */
+
+.back-home{
+
+    display:inline-block;
+
+    margin-bottom:25px;
+
+    color:#24B7BD;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.2s;
+
+}
+
+.back-home:hover{
+
+    color:#0d8f95;
+
+}
+
+/* ===========================================
+   HERO
+=========================================== */
+
+.hero{
+
+    background:linear-gradient(
+        135deg,
+        #24B7BD,
+        #48D6DB
+    );
+
+    color:white;
+
+    border-radius:30px;
+
+    padding:45px;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+}
+
+.hero h1{
+
+    font-size:52px;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    font-size:22px;
+
+    opacity:.95;
+
+}
+
+/* ===========================================
+   PROGRESS CARD
+=========================================== */
+
+.progress-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    margin-bottom:45px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.progress-card h2{
+
+    color:#24B7BD;
+
+    margin-bottom:10px;
+
+}
+
+#overallProgress{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+/* ===========================================
+   SECTION
+=========================================== */
+
+.section-title{
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+    color:#2c3e50;
+
+}
+
+/* ===========================================
+   GRID
+=========================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(270px,1fr));
+
+    gap:28px;
+
+}
+
+/* ===========================================
+   UNIT CARD
+=========================================== */
+
+.unit-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    text-decoration:none;
+
+    color:#2c3e50;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.unit-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+.unit-number{
+
+    display:inline-block;
+
+    background:#24B7BD;
+
+    color:white;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+    width:fit-content;
+
+}
+
+.unit-card h3{
+
+    font-size:28px;
+
+    margin-bottom:12px;
+
+}
+
+.unit-card p{
+
+    color:#666;
+
+    line-height:1.6;
+
+    flex:1;
+
+}
+
+.unit-card span{
+
+    margin-top:25px;
+
+    display:inline-block;
+
+    background:#24B7BD;
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+.unit-card:hover span{
+
+    background:#0d8f95;
+
+}
+
+/* ===========================================
+   UNIT PAGE
+=========================================== */
+
+.unit-header{
+
+    display:flex;
+
+    gap:40px;
+
+    align-items:center;
+
+    margin-bottom:40px;
+
+}
+
+.unit-cover{
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.unit-cover img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.activity-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:#333;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+}
+
+.activity-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.activity-icon{
+
+    font-size:56px;
+
+    margin-bottom:18px;
+
+}
+
+.activity-card h3{
+
+    margin-bottom:10px;
+
+}
+
+.activity-card p{
+
+    color:#666;
+
+    min-height:45px;
+
+}
+
+.activity-card span{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    background:#24B7BD;
+
+    color:white;
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+}
+
+/* ===========================================
+   MOBILE
+=========================================== */
+
+@media(max-width:900px){
+
+.hero{
+
+    padding:30px;
+
+}
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+.subtitle{
+
+    font-size:18px;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.unit-header{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.unit-cover{
+
+    width:200px;
+
+    height:200px;
+
+}
+
+}

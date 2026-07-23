@@ -1,0 +1,403 @@
+/* ==========================
+   GOOGLE FONT
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Nunito',sans-serif;
+
+    background:#f4f8ff;
+
+    color:#333;
+
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px 25px;
+
+}
+
+/* ==========================
+   BACK LINK
+========================== */
+
+.back-link{
+
+    display:inline-block;
+
+    margin-bottom:25px;
+
+    color:#24B7BD;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+}
+
+.back-link:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================
+   TITLES
+========================== */
+
+h1{
+
+    font-size:46px;
+
+    color:#1f2d3d;
+
+    margin-bottom:10px;
+
+}
+
+h2{
+
+    font-size:30px;
+
+    margin:35px 0 20px;
+
+}
+
+.section-title{
+
+    margin-top:50px;
+
+}
+
+/* ==========================
+   UNIT HEADER
+========================== */
+
+.unit-header{
+
+    display:flex;
+
+    gap:40px;
+
+    align-items:center;
+
+    margin-top:20px;
+
+    margin-bottom:40px;
+
+}
+
+.unit-cover{
+
+    width:240px;
+
+    height:240px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    background:white;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.unit-cover img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/* ==========================
+   PROGRESS
+========================== */
+
+.progress-box{
+
+    background:white;
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    width:350px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+}
+
+.progress-box p{
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:18px;
+
+    background:#e6edf7;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+#progressFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #24B7BD,
+        #44d9df
+    );
+
+}
+
+#progressText{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-weight:bold;
+
+}
+
+/* ==========================
+   CARD GRID
+========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+}
+
+/* ==========================
+   ACTIVITY CARD
+========================== */
+
+.activity-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.activity-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
+
+.activity-icon{
+
+    font-size:60px;
+
+    margin-bottom:18px;
+
+}
+
+.activity-card h3{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+}
+
+.activity-card p{
+
+    color:#666;
+
+    line-height:1.5;
+
+    min-height:45px;
+
+}
+
+.activity-card span{
+
+    margin-top:20px;
+
+    display:inline-block;
+
+    background:#24B7BD;
+
+    color:white;
+
+    padding:10px 24px;
+
+    border-radius:40px;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   GRADE PAGE
+========================== */
+
+.units{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    margin-top:40px;
+
+}
+
+.units a{
+
+    background:white;
+
+    border-radius:22px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    padding:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.units a:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.units h3{
+
+    font-size:28px;
+
+}
+
+.current{
+
+    border:4px solid gold;
+
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+button{
+
+    font-family:'Nunito',sans-serif;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:900px){
+
+.unit-header{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.progress-box{
+
+    width:100%;
+
+}
+
+.unit-cover{
+
+    width:200px;
+
+    height:200px;
+
+}
+
+h1{
+
+    font-size:34px;
+
+}
+
+}

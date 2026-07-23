@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>Grade 3</title>
+<title>Grade 1</title>
 
-    <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css">
 
 </head>
 
@@ -18,54 +17,92 @@
 
 <div class="container">
 
-    <a href="../index.html">
-        ← Back to Home
-    </a>
+<a class="back-home" href="../index.html">
+← Back to Home
+</a>
 
-    <h1>📘 Grade 3</h1>
+<header class="hero">
 
-    <p>
-        Choose a unit to start learning.
-    </p>
+<h1>📘 Grade 1</h1>
 
-    <div id="unitList" class="cards"></div>
+<p class="subtitle">
+Oxford Discover Futures
+</p>
+
+</header>
+
+<div class="progress-card">
+
+<h2>Homework Progress</h2>
+
+<p id="overallProgress">
+0 / 12 Units Completed
+</p>
+
+</div>
+
+<h2 class="section-title">
+Choose a Unit
+</h2>
+
+<div id="unitList" class="cards">
+
+</div>
 
 </div>
 
 <script>
 
-fetch("../assets/data/grade3/units.json")
+const grade = 3;
 
-.then(response => response.json())
+fetch(`../assets/data/grade${grade}/units.json`)
+.then(response=>response.json())
+.then(units=>{
 
-.then(units => {
+const container =
+document.getElementById("unitList");
 
-    const container =
-        document.getElementById("unitList");
+container.innerHTML="";
 
-    units.forEach(unit => {
+units.forEach(unit=>{
 
-        const card =
-            document.createElement("a");
+const card=document.createElement("a");
 
-        card.className = "card";
+card.className="unit-card";
 
-        card.href =
-            `unit.html?unit=${unit.id}`;
+card.href=`unit.html?unit=${unit.id}`;
 
-        card.innerHTML = `
-            <h3>Unit ${unit.id}</h3>
-            <p>${unit.title}</p>
-        `;
+card.innerHTML=`
 
-        container.appendChild(card);
+<div class="unit-number">
 
-    });
+📖 Unit ${unit.id}
+
+</div>
+
+<h3>${unit.title}</h3>
+
+<p>
+
+Vocabulary • Games • Listening
+
+</p>
+
+<span>
+
+Start Learning →
+
+</span>
+
+`;
+
+container.appendChild(card);
+
+});
 
 });
 
 </script>
 
 </body>
-
 </html>
