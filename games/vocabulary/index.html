@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vocabulary</title>
+
+<link rel="stylesheet" href="../../assets/css/variables.css">
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/cards.css">
+<link rel="stylesheet" href="../../assets/css/buttons.css">
+<link rel="stylesheet" href="../../assets/css/grade.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<a id="backBtn" class="back-link">
+← Back to Unit
+</a>
+
+<header class="hero">
+
+<h1>📚 Vocabulary</h1>
+
+<p class="subtitle" id="unitTitle">
+Loading...
+</p>
+
+</header>
+
+<div class="progress-card">
+
+<h2>Master Today's Words</h2>
+
+<p id="wordCount">
+Loading...
+</p>
+
+</div>
+
+<h2 class="section-title">
+Choose a Vocabulary Game
+</h2>
+
+<div class="cards">
+
+<a id="listenCard" class="card activity-card">
+
+<div class="activity-icon">
+🎧
+</div>
+
+<h3>
+Listen & Number
+</h3>
+
+<p>
+Listen carefully and number the pictures.
+</p>
+
+<span>
+Start →
+</span>
+
+</a>
+
+<a id="lookWriteCard" class="card activity-card">
+
+<div class="activity-icon">
+✏️
+</div>
+
+<h3>
+Look & Write
+</h3>
+
+<p>
+Look at the picture and complete the word.
+</p>
+
+<span>
+Start →
+</span>
+
+</a>
+
+<a id="readMatchCard" class="card activity-card">
+
+<div class="activity-icon">
+🎯
+</div>
+
+<h3>
+Read & Match
+</h3>
+
+<p>
+Read the word and match the correct picture.
+</p>
+
+<span>
+Start →
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const grade = params.get("grade");
+
+const unit = params.get("unit");
+
+// Back button
+
+document.getElementById("backBtn").href =
+`../../grade${grade}/unit.html?unit=${unit}`;
+
+// Load Unit Information
+
+fetch(`../../assets/data/grade${grade}/unit${unit}.json`)
+.then(response => response.json())
+.then(data => {
+
+document.getElementById("unitTitle").textContent =
+`Unit ${data.id} • ${data.title}`;
+
+document.getElementById("wordCount").textContent =
+`${data.vocabulary.length} Vocabulary Words`;
+
+});
+
+// Vocabulary Games
+
+document.getElementById("listenCard").href =
+`../listen-number/index.html?grade=${grade}&unit=${unit}`;
+
+document.getElementById("lookWriteCard").href =
+`../look-write/index.html?grade=${grade}&unit=${unit}`;
+
+document.getElementById("readMatchCard").href =
+`../read-match/index.html?grade=${grade}&unit=${unit}`;
+
+</script>
+
+</body>
+
+</html>

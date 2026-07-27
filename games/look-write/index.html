@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Look & Write</title>
+
+<link rel="stylesheet" href="../../assets/css/variables.css">
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/buttons.css">
+<link rel="stylesheet" href="../../assets/css/progress.css">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ========================= -->
+    <!-- Back -->
+    <!-- ========================= -->
+
+    <a id="backBtn" class="back-link">
+        ← Back to Vocabulary
+    </a>
+
+    <!-- ========================= -->
+    <!-- Title -->
+    <!-- ========================= -->
+
+    <header>
+
+        <h1>
+            ✏️ Look & Write
+        </h1>
+
+        <p class="subtitle">
+            Look at the picture and complete the missing letters.
+        </p>
+
+    </header>
+
+    <!-- ========================= -->
+    <!-- Progress -->
+    <!-- ========================= -->
+
+    <div class="progress">
+
+        <div id="progressFill"></div>
+
+    </div>
+
+    <p id="progressText">
+        Homework Progress: 0%
+    </p>
+
+    <!-- ========================= -->
+    <!-- Image -->
+    <!-- ========================= -->
+
+    <div class="image-area">
+
+        <img
+            id="wordImage"
+            src="../../assets/images/default.png"
+            alt="Vocabulary Image"
+        >
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Question -->
+    <!-- ========================= -->
+
+    <h2 id="questionTitle">
+
+        What is this?
+
+    </h2>
+
+    <!-- ========================= -->
+    <!-- Puzzle -->
+    <!-- ========================= -->
+
+    <div id="puzzle">
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Hint -->
+    <!-- ========================= -->
+
+    <div id="hintText">
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Message -->
+    <!-- ========================= -->
+
+    <div id="message">
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Buttons -->
+    <!-- ========================= -->
+
+  <div class="button-row">
+
+    
+
+    <button id="hintBtn">💡 Hint</button>
+
+    <button id="resetBtn">🔄 Reset</button>
+
+    <button id="checkBtn">✅ Check</button>
+
+    <button id="nextBtn" style="display:none;">
+        ➡️ Next
+    </button>
+
+</div>
+
+    <!-- ========================= -->
+    <!-- Next Game -->
+    <!-- ========================= -->
+
+    <button
+        id="nextGameBtn"
+        style="display:none;margin-top:30px;">
+
+        🎉 Next Vocabulary Game
+
+    </button>
+
+</div>
+
+<!-- ========================= -->
+<!-- JavaScript -->
+<!-- ========================= -->
+
+<script src="../../assets/js/utils.js"></script>
+<script src="../../assets/js/game.js"></script>
+
+<script src="render.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
