@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Listen & Number</title>
+
+<link rel="stylesheet" href="../../../assets/css/variables.css">
+<link rel="stylesheet" href="../../../assets/css/layout.css">
+<link rel="stylesheet" href="../../../assets/css/cards.css">
+<link rel="stylesheet" href="../../../assets/css/buttons.css">
+<link rel="stylesheet" href="../../../assets/css/progress.css">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <a id="backBtn" class="back-link">
+        ← Back to Vocabulary
+    </a>
+
+    <h1>
+        🔊 Listen & Number
+    </h1>
+
+    <p class="subtitle">
+        Listen carefully and click the correct picture.
+    </p>
+
+    <div class="progress">
+
+        <div id="progressFill"></div>
+
+    </div>
+
+    <p id="progressText">
+        Homework Progress: 0%
+    </p>
+
+    <div class="audio-section">
+
+        <button id="playBtn" class="play-btn">
+            🔊 Play Audio
+        </button>
+
+    </div>
+
+    <div id="choices" class="picture-grid">
+
+        <!-- JavaScript inserts 4 picture cards here -->
+
+    </div>
+
+    <p id="message" class="message"></p>
+
+    <div class="button-row">
+
+        <button id="replayBtn">
+            🔁 Replay
+        </button>
+
+        <button id="hintBtn">
+            💡 Hint
+        </button>
+
+        <button id="nextBtn" style="display:none;">
+            ➡️ Next
+        </button>
+
+    </div>
+
+</div>
+
+<script src="../../../assets/js/utils.js"></script>
+<script src="render.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>

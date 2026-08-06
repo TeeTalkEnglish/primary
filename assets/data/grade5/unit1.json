@@ -1,0 +1,212 @@
+
+{
+  "id": 1,
+  "grade": 5,
+  "title": "My Friends",
+
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "appearance",
+      "phonetic": "/əˈpɪərəns/",
+      "meaning": "ngoại hình",
+      "image": "appearance.png",
+      "audio": "appearance.mp3"
+    },
+    {
+      "id": 2,
+      "word": "kind",
+      "phonetic": "/kaɪnd/",
+      "meaning": "tốt bụng",
+      "image": "kind.png",
+      "audio": "kind.mp3"
+    },
+    {
+      "id": 3,
+      "word": "friendly",
+      "phonetic": "/ˈfrendli/",
+      "meaning": "thân thiện",
+      "image": "friendly.png",
+      "audio": "friendly.mp3"
+    },
+    {
+      "id": 4,
+      "word": "helpful",
+      "phonetic": "/ˈhelpfl/",
+      "meaning": "hay giúp đỡ",
+      "image": "helpful.png",
+      "audio": "helpful.mp3"
+    },
+    {
+      "id": 5,
+      "word": "funny",
+      "phonetic": "/ˈfʌni/",
+      "meaning": "hài hước",
+      "image": "funny.png",
+      "audio": "funny.mp3"
+    },
+    {
+      "id": 6,
+      "word": "clever",
+      "phonetic": "/ˈklevə(r)/",
+      "meaning": "thông minh",
+      "image": "clever.png",
+      "audio": "clever.mp3"
+    },
+    {
+      "id": 7,
+      "word": "hard-working",
+      "phonetic": "/ˌhɑːd ˈwɜːkɪŋ/",
+      "meaning": "chăm chỉ",
+      "image": "hard-working.png",
+      "audio": "hard-working.mp3"
+    },
+    {
+      "id": 8,
+      "word": "short",
+      "phonetic": "/ʃɔːt/",
+      "meaning": "thấp",
+      "image": "short.png",
+      "audio": "short.mp3"
+    },
+    {
+      "id": 9,
+      "word": "tall",
+      "phonetic": "/tɔːl/",
+      "meaning": "cao",
+      "image": "tall.png",
+      "audio": "tall.mp3"
+    },
+    {
+      "id": 10,
+      "word": "curly hair",
+      "phonetic": "/ˈkɜːli heə(r)/",
+      "meaning": "tóc xoăn",
+      "image": "curly-hair.png",
+      "audio": "curly-hair.mp3"
+    },
+    {
+      "id": 11,
+      "word": "straight hair",
+      "phonetic": "/streɪt heə(r)/",
+      "meaning": "tóc thẳng",
+      "image": "straight-hair.png",
+      "audio": "straight-hair.mp3"
+    },
+    {
+      "id": 12,
+      "word": "glasses",
+      "phonetic": "/ˈɡlɑːsɪz/",
+      "meaning": "kính",
+      "image": "glasses.png",
+      "audio": "glasses.mp3"
+    },
+    {
+      "id": 13,
+      "word": "eyes",
+      "phonetic": "/aɪz/",
+      "meaning": "mắt",
+      "image": "eyes.png",
+      "audio": "eyes.mp3"
+    },
+    {
+      "id": 14,
+      "word": "smile",
+      "phonetic": "/smaɪl/",
+      "meaning": "nụ cười",
+      "image": "smile.png",
+      "audio": "smile.mp3"
+    },
+    {
+      "id": 15,
+      "word": "friend",
+      "phonetic": "/frend/",
+      "meaning": "bạn",
+      "image": "friend.png",
+      "audio": "friend.mp3"
+    }
+  ],
+
+  "sentences": [
+    {
+      "id": 1,
+      "text": "My best friend is kind."
+    },
+    {
+      "id": 2,
+      "text": "She is friendly."
+    },
+    {
+      "id": 3,
+      "text": "He is very funny."
+    },
+    {
+      "id": 4,
+      "text": "My friend is helpful."
+    },
+    {
+      "id": 5,
+      "text": "She has curly hair."
+    },
+    {
+      "id": 6,
+      "text": "He has straight hair."
+    },
+    {
+      "id": 7,
+      "text": "She wears glasses."
+    },
+    {
+      "id": 8,
+      "text": "He is tall."
+    },
+    {
+      "id": 9,
+      "text": "She is short."
+    },
+    {
+      "id": 10,
+      "text": "He has big eyes."
+    },
+    {
+      "id": 11,
+      "text": "She has a beautiful smile."
+    },
+    {
+      "id": 12,
+      "text": "My friend is clever."
+    },
+    {
+      "id": 13,
+      "text": "She is hard-working."
+    },
+    {
+      "id": 14,
+      "text": "Who is your best friend?"
+    },
+    {
+      "id": 15,
+      "text": "What does she look like?"
+    },
+    {
+      "id": 16,
+      "text": "He is kind and friendly."
+    },
+    {
+      "id": 17,
+      "text": "She has long straight hair."
+    },
+    {
+      "id": 18,
+      "text": "He always helps me."
+    },
+    {
+      "id": 19,
+      "text": "We are good friends."
+    },
+    {
+      "id": 20,
+      "text": "I like my best friend."
+    }
+  ]
+}

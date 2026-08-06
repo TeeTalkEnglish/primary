@@ -1,0 +1,293 @@
+/* ===========================
+   Listen & Number
+=========================== */
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:20px;
+}
+
+/* ===========================
+   Audio
+=========================== */
+
+.audio-section{
+    text-align:center;
+    margin:30px 0;
+}
+
+.play-btn{
+
+    background:#24B7BD;
+    color:white;
+
+    border:none;
+
+    padding:16px 30px;
+
+    border-radius:16px;
+
+    font-size:1.2rem;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+.play-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:#1ea4aa;
+
+}
+
+/* ===========================
+   Picture Grid
+=========================== */
+
+.picture-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:24px;
+
+    margin:30px 0;
+
+}
+
+/* ===========================
+   Picture Card
+=========================== */
+
+.choice-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:18px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    border:4px solid transparent;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.choice-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+/* ===========================
+   Number Badge
+=========================== */
+
+.choice-number{
+
+    width:52px;
+    height:52px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    background:#24B7BD;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.5rem;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+   Image
+=========================== */
+
+.choice-card img{
+
+    width:160px;
+    height:160px;
+
+    object-fit:contain;
+
+    margin:auto;
+
+}
+
+/* ===========================
+   States
+=========================== */
+
+.choice-card.correct{
+
+    border-color:#22c55e;
+
+    background:#ecfdf5;
+
+}
+
+.choice-card.correct .choice-number{
+
+    background:#22c55e;
+
+}
+
+.choice-card.wrong{
+
+    border-color:#ef4444;
+
+    background:#fef2f2;
+
+}
+
+.choice-card.wrong .choice-number{
+
+    background:#ef4444;
+
+}
+
+/* ===========================
+   Message
+=========================== */
+
+.message{
+
+    text-align:center;
+
+    font-size:1.3rem;
+
+    font-weight:bold;
+
+    margin:25px 0;
+
+    min-height:32px;
+
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.button-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-top:30px;
+
+}
+
+.button-row button{
+
+    padding:14px 24px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+#replayBtn{
+
+    background:#6366f1;
+    color:white;
+
+}
+
+#hintBtn{
+
+    background:#f59e0b;
+    color:white;
+
+}
+
+#nextBtn{
+
+    background:#22c55e;
+    color:white;
+
+}
+
+.button-row button:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.92;
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media(max-width:768px){
+
+    .picture-grid{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .choice-card img{
+
+        width:120px;
+        height:120px;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .picture-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .choice-card img{
+
+        width:150px;
+        height:150px;
+
+    }
+
+}
