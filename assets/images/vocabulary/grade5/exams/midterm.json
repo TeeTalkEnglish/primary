@@ -1,0 +1,323 @@
+{
+  "grade": 5,
+  "exam": "midterm",
+  "title": "Grade 5 Midterm Exam",
+  "units": [1, 2, 3, 4],
+  "totalPoints": 50,
+
+  "sections": [
+    {
+      "id": "listening",
+      "title": "Part 1 — Listening",
+      "points": 10,
+      "questions": [
+        {
+          "id": 1,
+          "type": "listen-choice",
+          "points": 2,
+          "audio": "q1.mp3",
+          "question": "Listen and choose the correct answer.",
+          "options": [
+            "She is my friend.",
+            "She is my teacher.",
+            "She is my sister."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "type": "listen-choice",
+          "points": 2,
+          "audio": "q2.mp3",
+          "question": "Listen and choose the correct answer.",
+          "options": [
+            "He is tall.",
+            "He is short.",
+            "He is young."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "type": "listen-choice",
+          "points": 2,
+          "audio": "q3.mp3",
+          "question": "Listen and choose the correct answer.",
+          "options": [
+            "She likes reading.",
+            "She likes swimming.",
+            "She likes drawing."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "type": "listen-choice",
+          "points": 2,
+          "audio": "q4.mp3",
+          "question": "Listen and choose the correct answer.",
+          "options": [
+            "He plays football.",
+            "He plays the violin.",
+            "He rides a bike."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "type": "listen-choice",
+          "points": 2,
+          "audio": "q5.mp3",
+          "question": "Listen and choose the correct answer.",
+          "options": [
+            "She often watches cartoons.",
+            "She never watches cartoons.",
+            "She rarely watches cartoons."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+
+    {
+      "id": "vocabulary",
+      "title": "Part 2 — Vocabulary",
+      "points": 10,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "points": 2,
+          "question": "Choose the correct word.",
+          "image": "friend.png",
+          "options": [
+            "friend",
+            "teacher",
+            "student"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "type": "choice",
+          "points": 2,
+          "question": "Choose the correct word.",
+          "image": "cartoon.png",
+          "options": [
+            "cartoon",
+            "violin",
+            "bike"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "type": "choice",
+          "points": 2,
+          "question": "Choose the correct word.",
+          "image": "violin.png",
+          "options": [
+            "guitar",
+            "violin",
+            "piano"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "type": "fill",
+          "points": 2,
+          "question": "Complete the word.",
+          "text": "fr__nd",
+          "answer": "friend"
+        },
+        {
+          "id": 5,
+          "type": "fill",
+          "points": 2,
+          "question": "Complete the phrase.",
+          "text": "r__e a b__e",
+          "answer": "ride a bike"
+        }
+      ]
+    },
+
+    {
+      "id": "grammar",
+      "title": "Part 3 — Grammar",
+      "points": 15,
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "points": 3,
+          "question": "Choose the correct answer.",
+          "text": "She ___ friendly.",
+          "options": [
+            "is",
+            "are",
+            "am"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "type": "choice",
+          "points": 3,
+          "question": "Choose the correct answer.",
+          "text": "He ___ curly hair.",
+          "options": [
+            "have",
+            "has",
+            "having"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "type": "choice",
+          "points": 3,
+          "question": "Choose the correct answer.",
+          "text": "I ___ watch cartoons in my free time.",
+          "options": [
+            "often",
+            "am",
+            "has"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "type": "choice",
+          "points": 3,
+          "question": "Choose the correct question.",
+          "text": "___ do you do in your free time?",
+          "options": [
+            "What",
+            "Who",
+            "Where"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "type": "choice",
+          "points": 3,
+          "question": "Choose the correct answer.",
+          "text": "She ___ the violin.",
+          "options": [
+            "play",
+            "plays",
+            "playing"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+
+    {
+      "id": "reading",
+      "title": "Part 4 — Reading",
+      "points": 10,
+
+      "passage": {
+        "title": "My Best Friend",
+        "text": "My best friend is Anna. She is kind and friendly. She has long straight hair and wears glasses. Anna is very clever and helpful. We like spending our free time together. We often watch cartoons and read stories. Sometimes we ride our bikes in the park."
+      },
+
+      "questions": [
+        {
+          "id": 1,
+          "type": "choice",
+          "points": 2,
+          "question": "Who is the writer's best friend?",
+          "options": [
+            "Anna",
+            "Mary",
+            "Lucy"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "type": "choice",
+          "points": 2,
+          "question": "What does Anna wear?",
+          "options": [
+            "A hat",
+            "Glasses",
+            "A scarf"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "type": "choice",
+          "points": 2,
+          "question": "What is Anna like?",
+          "options": [
+            "Kind and friendly",
+            "Quiet and shy",
+            "Tall and funny"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "type": "choice",
+          "points": 2,
+          "question": "What do they often watch?",
+          "options": [
+            "Movies",
+            "Cartoons",
+            "Sports"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "type": "choice",
+          "points": 2,
+          "question": "What do they sometimes do?",
+          "options": [
+            "Ride their bikes",
+            "Play the violin",
+            "Surf the internet"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+
+    {
+      "id": "writing",
+      "title": "Part 5 — Writing",
+      "points": 5,
+
+      "questions": [
+        {
+          "id": 1,
+          "type": "sentence",
+          "points": 2,
+          "question": "Put the words in the correct order.",
+          "words": [
+            "friend",
+            "My",
+            "kind",
+            "is",
+            "best"
+          ],
+          "answer": "My best friend is kind."
+        },
+        {
+          "id": 2,
+          "type": "sentence",
+          "points": 3,
+          "question": "Write one sentence about what you do in your free time.",
+          "placeholder": "I ________________________________.",
+          "answer": ""
+        }
+      ]
+    }
+  ]
+}

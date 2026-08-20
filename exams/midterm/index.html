@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Grade 5 Midterm Exam</title>
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet"
+          href="../../../assets/css/variables.css">
+
+    <link rel="stylesheet"
+          href="../../../assets/css/layout.css">
+
+    <link rel="stylesheet"
+          href="../../../assets/css/cards.css">
+
+    <link rel="stylesheet"
+          href="../../../assets/css/buttons.css">
+
+    <link rel="stylesheet"
+          href="../../../assets/css/progress.css">
+
+    <!-- Exam CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<div class="container exam-container">
+
+    <!-- =========================
+         Back Link
+    ========================== -->
+
+    <a
+        id="backBtn"
+        class="back-link"
+        href="../../index.html"
+    >
+        ← Back to Grade 5
+    </a>
+
+
+    <!-- =========================
+         Exam Header
+    ========================== -->
+
+    <header class="exam-header">
+
+        <div class="exam-icon">
+            📘
+        </div>
+
+        <h1>
+            Grade 5 Midterm Exam
+        </h1>
+
+        <p class="exam-subtitle">
+            Units 1–4
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         Start Screen
+    ========================== -->
+
+    <section
+        id="startScreen"
+        class="exam-screen"
+    >
+
+        <div class="exam-card">
+
+            <h2>
+                Midterm Exam
+            </h2>
+
+            <p class="intro-text">
+                Test what you have learned in Units 1–4.
+            </p>
+
+
+            <!-- Exam Information -->
+
+            <div class="exam-info">
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        🎧
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Listening
+                        </strong>
+
+                        <small>
+                            10 points
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        📚
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Vocabulary
+                        </strong>
+
+                        <small>
+                            10 points
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        📝
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Grammar
+                        </strong>
+
+                        <small>
+                            15 points
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        📖
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Reading
+                        </strong>
+
+                        <small>
+                            10 points
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        ✏️
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Writing
+                        </strong>
+
+                        <small>
+                            5 points
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Total -->
+
+            <div class="exam-total">
+
+                <strong>
+                    Total Score
+                </strong>
+
+                <span>
+                    50 points
+                </span>
+
+            </div>
+
+
+            <!-- Time -->
+
+            <div class="exam-time">
+
+                ⏱ Recommended time:
+                <strong>45 minutes</strong>
+
+            </div>
+
+
+            <!-- Start -->
+
+            <button
+                id="startBtn"
+                class="primary-btn"
+            >
+                Start Exam →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Exam Screen
+    ========================== -->
+
+    <section
+        id="examScreen"
+        class="exam-screen"
+        style="display:none;"
+    >
+
+        <!-- Progress -->
+
+        <div class="exam-progress-card">
+
+            <div class="exam-progress-top">
+
+                <span id="sectionTitle">
+                    Part 1 — Listening
+                </span>
+
+                <span id="questionProgress">
+                    Question 1
+                </span>
+
+            </div>
+
+
+            <div class="progress">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+
+            <div class="progress-label">
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Question -->
+
+        <div
+            id="questionContainer"
+            class="question-container"
+        >
+
+            <!-- JavaScript inserts question here -->
+
+        </div>
+
+
+        <!-- Navigation -->
+<div class="exam-navigation">
+
+    <button
+        id="previousBtn"
+        class="secondary-btn"
+        style="display:none;"
+    >
+        ← Previous
+    </button>
+
+    <button
+        id="nextBtn"
+        class="primary-btn"
+    >
+        Next →
+    </button>
+
+    <button
+        id="submitBtn"
+        class="success-btn"
+        style="display:none;"
+    >
+        Submit Exam
+    </button>
+
+</div>
+
+    </section>
+
+
+    <!-- =========================
+         Results Screen
+    ========================== -->
+
+    <section
+        id="resultsScreen"
+        class="exam-screen"
+        style="display:none;"
+    >
+
+        <div class="results-card">
+
+            <div
+                id="resultIcon"
+                class="result-icon"
+            >
+                🏆
+            </div>
+
+
+            <h2>
+                Exam Complete!
+            </h2>
+
+
+            <p id="resultMessage">
+                Well done!
+            </p>
+
+
+            <!-- Score -->
+
+            <div class="score-display">
+
+                <span
+                    id="score"
+                    class="score"
+                >
+                    0
+                </span>
+
+                <span class="score-total">
+                    / 50
+                </span>
+
+            </div>
+
+
+            <p
+                id="percentage"
+                class="percentage"
+            >
+                0%
+            </p>
+
+
+            <!-- Section Results -->
+
+            <div
+                id="sectionResults"
+                class="section-results"
+            >
+
+                <!-- JavaScript inserts results -->
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="results-buttons">
+
+                <button
+                    id="retryBtn"
+                    class="secondary-btn"
+                >
+                    🔄 Try Again
+                </button>
+
+
+                <a
+                    id="homeBtn"
+                    class="primary-btn"
+                    href="../../index.html"
+                >
+                    ← Back to Grade 5
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =========================
+     JavaScript
+========================== -->
+
+<script src="../../../assets/js/utils.js"></script>
+
+<script src="render.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

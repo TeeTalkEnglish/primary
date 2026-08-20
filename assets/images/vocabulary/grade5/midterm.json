@@ -1,0 +1,380 @@
+{
+  "grade": 5,
+  "exam": "midterm",
+  "title": "Grade 5 Midterm Exam",
+  "subtitle": "Oxford Discover Futures",
+  "totalPoints": 50,
+
+  "sections": [
+    {
+      "id": "listening",
+      "title": "Listening",
+      "points": 10
+    },
+    {
+      "id": "vocabulary-grammar",
+      "title": "Vocabulary & Grammar",
+      "points": 15
+    },
+    {
+      "id": "reading",
+      "title": "Reading",
+      "points": 15
+    },
+    {
+      "id": "writing",
+      "title": "Writing",
+      "points": 10
+    }
+  ],
+
+  "questions": [
+
+    {
+      "id": 1,
+      "section": "listening",
+      "type": "listen-choice",
+      "points": 2,
+      "question": "Listen and choose the correct answer.",
+      "audio": "listening-01.mp3",
+      "options": [
+        "watch cartoons",
+        "play the violin",
+        "read stories"
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 2,
+      "section": "listening",
+      "type": "listen-choice",
+      "points": 2,
+      "question": "Listen and choose the correct answer.",
+      "audio": "listening-02.mp3",
+      "options": [
+        "go for a walk",
+        "ride a bike",
+        "surf the internet"
+      ],
+      "answer": 1
+    },
+
+    {
+      "id": 3,
+      "section": "listening",
+      "type": "listen-choice",
+      "points": 2,
+      "question": "Listen and choose the correct answer.",
+      "audio": "listening-03.mp3",
+      "options": [
+        "always",
+        "never",
+        "rarely"
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 4,
+      "section": "listening",
+      "type": "listen-choice",
+      "points": 2,
+      "question": "Listen and choose the correct answer.",
+      "audio": "listening-04.mp3",
+      "options": [
+        "water the flowers",
+        "read stories",
+        "watch cartoons"
+      ],
+      "answer": 2
+    },
+
+    {
+      "id": 5,
+      "section": "listening",
+      "type": "listen-choice",
+      "points": 2,
+      "question": "Listen and choose the correct answer.",
+      "audio": "listening-05.mp3",
+      "options": [
+        "sometimes",
+        "usually",
+        "never"
+      ],
+      "answer": 1
+    },
+
+
+    {
+      "id": 6,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "What do you do in your free time?",
+      "options": [
+        "I watch cartoons.",
+        "I am a cartoon.",
+        "I watching cartoons."
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 7,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "She ______ the violin.",
+      "options": [
+        "play",
+        "plays",
+        "playing"
+      ],
+      "answer": 1
+    },
+
+    {
+      "id": 8,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "I ______ read stories before bed.",
+      "options": [
+        "always",
+        "am",
+        "does"
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 9,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "He ______ surf the internet every day.",
+      "options": [
+        "do",
+        "does",
+        "doesn't"
+      ],
+      "answer": 1
+    },
+
+    {
+      "id": 10,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "Choose the correct word.",
+      "image": "cartoon.png",
+      "unit": 4,
+      "options": [
+        "cartoon",
+        "violin",
+        "watch"
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 11,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "Choose the correct word.",
+      "image": "violin.png",
+      "unit": 4,
+      "options": [
+        "play",
+        "violin",
+        "listen"
+      ],
+      "answer": 1
+    },
+
+    {
+      "id": 12,
+      "section": "vocabulary-grammar",
+      "type": "fill",
+      "points": 2,
+      "question": "Complete the sentence: I ______ cartoons.",
+      "answer": "watch"
+    },
+
+    {
+      "id": 13,
+      "section": "vocabulary-grammar",
+      "type": "fill",
+      "points": 2,
+      "question": "Complete the sentence: She ______ a bike.",
+      "answer": "rides"
+    },
+
+    {
+      "id": 14,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "Which sentence is correct?",
+      "options": [
+        "I often go for a walk.",
+        "I often goes for a walk.",
+        "I often going for a walk."
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 15,
+      "section": "vocabulary-grammar",
+      "type": "choice",
+      "points": 1,
+      "question": "Which word means 'không bao giờ'?",
+      "options": [
+        "always",
+        "never",
+        "often"
+      ],
+      "answer": 1
+    },
+
+
+    {
+      "id": 16,
+      "section": "reading",
+      "type": "choice",
+      "points": 2,
+      "question": "Read the passage and choose the correct answer.",
+      "passage": "Anna likes doing many things in her free time. She often watches cartoons and sometimes reads stories. At the weekend, she usually rides a bike with her friends.",
+      "options": [
+        "Anna likes doing things in her free time.",
+        "Anna never watches cartoons.",
+        "Anna doesn't like reading."
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 17,
+      "section": "reading",
+      "type": "choice",
+      "points": 2,
+      "question": "How often does Anna watch cartoons?",
+      "passage": "Anna likes doing many things in her free time. She often watches cartoons and sometimes reads stories. At the weekend, she usually rides a bike with her friends.",
+      "options": [
+        "Often",
+        "Never",
+        "Rarely"
+      ],
+      "answer": 0
+    },
+
+    {
+      "id": 18,
+      "section": "reading",
+      "type": "choice",
+      "points": 2,
+      "question": "What does Anna usually do at the weekend?",
+      "passage": "Anna likes doing many things in her free time. She often watches cartoons and sometimes reads stories. At the weekend, she usually rides a bike with her friends.",
+      "options": [
+        "She plays the violin.",
+        "She rides a bike.",
+        "She surfs the internet."
+      ],
+      "answer": 1
+    },
+
+    {
+      "id": 19,
+      "section": "reading",
+      "type": "choice",
+      "points": 2,
+      "question": "Who does Anna ride a bike with?",
+      "passage": "Anna likes doing many things in her free time. She often watches cartoons and sometimes reads stories. At the weekend, she usually rides a bike with her friends.",
+      "options": [
+        "Her parents",
+        "Her teacher",
+        "Her friends"
+      ],
+      "answer": 2
+    },
+
+    {
+      "id": 20,
+      "section": "reading",
+      "type": "fill",
+      "points": 2,
+      "question": "Complete: Anna ______ reads stories.",
+      "answer": "sometimes"
+    },
+
+    {
+      "id": 21,
+      "section": "reading",
+      "type": "choice",
+      "points": 3,
+      "question": "What is the passage mainly about?",
+      "passage": "Anna likes doing many things in her free time. She often watches cartoons and sometimes reads stories. At the weekend, she usually rides a bike with her friends.",
+      "options": [
+        "Anna's free-time activities",
+        "Anna's school subjects",
+        "Anna's family"
+      ],
+      "answer": 0
+    },
+
+
+    {
+      "id": 22,
+      "section": "writing",
+      "type": "sentence",
+      "points": 2,
+      "question": "Write a sentence about what you do in your free time.",
+      "placeholder": "Example: I watch cartoons in my free time.",
+      "answer": "I watch cartoons in my free time."
+    },
+
+    {
+      "id": 23,
+      "section": "writing",
+      "type": "sentence",
+      "points": 2,
+      "question": "Write a sentence using 'often'.",
+      "placeholder": "Example: I often read stories.",
+      "answer": "I often read stories."
+    },
+
+    {
+      "id": 24,
+      "section": "writing",
+      "points": 2,
+      "type": "sentence",
+      "question": "Write a sentence using 'usually'.",
+      "placeholder": "Example: I usually ride a bike.",
+      "answer": "I usually ride a bike."
+    },
+
+    {
+      "id": 25,
+      "section": "writing",
+      "points": 2,
+      "type": "sentence",
+      "question": "Write a sentence using 'never'.",
+      "placeholder": "Example: I never surf the internet at school.",
+      "answer": "I never surf the internet at school."
+    },
+
+    {
+      "id": 26,
+      "section": "writing",
+      "points": 2,
+      "type": "sentence",
+      "question": "Write three sentences about your free-time activities.",
+      "placeholder": "Write three sentences here.",
+      "answer": "I watch cartoons. I read stories. I ride a bike."
+    }
+
+  ]
+}
