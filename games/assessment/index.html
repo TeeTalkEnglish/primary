@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Assessment</title>
+	<link rel="stylesheet" href="../../assets/css/variables.css">
+	<link rel="stylesheet" href="../../assets/css/layout.css">
+	<link rel="stylesheet" href="../../assets/css/cards.css">
+	<link rel="stylesheet" href="../../assets/css/buttons.css">
+	<link rel="stylesheet" href="../../assets/css/progress.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="container exam-container">
+	<a id="backBtn" class="back-link" href="../../grade1/index.html">Back to Grade 1</a>
+
+	<header class="exam-header">
+		<div class="exam-icon" aria-hidden="true">📘</div>
+		<h1 id="examTitle">Assessment</h1>
+		<p id="examSubtitle" class="exam-subtitle"></p>
+	</header>
+
+	<p id="examLoadStatus" class="exam-load-status" role="status"></p>
+
+	<section id="startScreen" class="exam-screen">
+		<div class="exam-card">
+			<h2 id="startTitle">Assessment</h2>
+			<p id="introText" class="intro-text"></p>
+			<div id="examInfo" class="exam-info"></div>
+			<div class="exam-total"><strong>Total Score</strong><span id="totalPoints">0 points</span></div>
+			<button id="startBtn" class="primary-btn" disabled>Start Assessment</button>
+		</div>
+	</section>
+
+	<section id="examScreen" class="exam-screen" hidden>
+		<div class="exam-progress-card">
+			<div class="exam-progress-top">
+				<span id="sectionTitle"></span>
+				<span id="questionProgress"></span>
+			</div>
+			<div class="progress"><div id="progressFill"></div></div>
+			<div class="progress-label"><span id="progressText">0%</span></div>
+		</div>
+		<div id="questionContainer" class="question-container"></div>
+		<nav class="exam-navigation" aria-label="Assessment navigation">
+			<button id="previousBtn" class="secondary-btn" hidden>Previous</button>
+			<button id="nextBtn" class="primary-btn">Next</button>
+			<button id="submitBtn" class="success-btn" hidden>Submit Exam</button>
+		</nav>
+	</section>
+
+	<section id="resultsScreen" class="exam-screen" hidden>
+		<div class="results-card">
+			<div class="result-icon" aria-hidden="true">🏆</div>
+			<h2>Assessment Complete</h2>
+			<p id="resultMessage">Well done!</p>
+			<div class="score-display"><span id="score" class="score">0</span><span class="score-total"> / 0</span></div>
+			<p id="percentage" class="percentage">0%</p>
+			<div id="sectionResults" class="section-results"></div>
+			<div class="results-buttons">
+				<button id="retryBtn" class="secondary-btn">Try Again</button>
+				<a id="homeBtn" class="primary-btn" href="../../grade1/index.html">Back to Grade</a>
+			</div>
+		</div>
+	</section>
+</main>
+<script src="render.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

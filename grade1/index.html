@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -25,6 +26,11 @@
 ← Back to Home
 </a>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="hero">
 
 <h1>📘 Grade 1</h1>
@@ -34,6 +40,11 @@ Oxford Discover Futures
 </p>
 
 </header>
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
 
 <div class="progress-card">
 
@@ -45,6 +56,11 @@ Oxford Discover Futures
 
 </div>
 
+
+<!-- =========================
+     UNITS
+========================= -->
+
 <h2 class="section-title">
 Choose a Unit
 </h2>
@@ -53,56 +69,149 @@ Choose a Unit
 
 </div>
 
+
+<!-- =========================
+     ASSESSMENTS
+========================= -->
+
+<h2 class="section-title">
+Assessments
+</h2>
+
+<div id="assessmentList" class="cards">
+
+
+<!-- MIDTERM -->
+
+<a
+    class="unit-card assessment-card"
+    href="../games/assessment/index.html?grade=1&type=midterm"
+>
+
+<div class="unit-number">
+📝 Midterm Exam
 </div>
+
+<h3>
+Units 1–4
+</h3>
+
+<p>
+Test what you have learned in Units 1–4
+</p>
+
+<span>
+Start Exam →
+</span>
+
+</a>
+
+
+<!-- FINAL -->
+
+<a
+    class="unit-card assessment-card"
+    href="../games/assessment/index.html?grade=1&type=final"
+>
+
+<div class="unit-number">
+🏆 Final Exam
+</div>
+
+<h3>
+Units 1–12
+</h3>
+
+<p>
+Review what you have learned throughout the course
+</p>
+
+<span>
+Start Exam →
+</span>
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     LOAD UNITS
+========================= -->
 
 <script>
 
 const grade = 1;
 
 fetch(`../assets/data/grade${grade}/units.json`)
-.then(response=>response.json())
-.then(units=>{
 
-const container =
-document.getElementById("unitList");
+.then(response => {
 
-container.innerHTML="";
+    if (!response.ok) {
 
-units.forEach(unit=>{
+        throw new Error(
+            `Unable to load units.json: ${response.status}`
+        );
 
-const card=document.createElement("a");
+    }
 
-card.className="unit-card";
+    return response.json();
 
-card.href=`unit.html?unit=${unit.id}`;
+})
 
-card.innerHTML=`
+.then(units => {
 
-<div class="unit-number">
+    const container =
+        document.getElementById("unitList");
 
-📖 Unit ${unit.id}
+    container.innerHTML = "";
 
-</div>
+    units.forEach(unit => {
 
-<h3>${unit.title}</h3>
+        const card =
+            document.createElement("a");
 
-<p>
+        card.className =
+            "unit-card";
 
-Vocabulary • Games • Listening
+        card.href =
+            `unit.html?unit=${unit.id}`;
 
-</p>
+        card.innerHTML = `
 
-<span>
+            <div class="unit-number">
+                📖 Unit ${unit.id}
+            </div>
 
-Start Learning →
+            <h3>
+                ${unit.title}
+            </h3>
 
-</span>
+            <p>
+                Vocabulary • Games • Listening
+            </p>
 
-`;
+            <span>
+                Start Learning →
+            </span>
 
-container.appendChild(card);
+        `;
 
-});
+        container.appendChild(card);
+
+    });
+
+})
+
+.catch(error => {
+
+    console.error(
+        "Failed to load units:",
+        error
+    );
 
 });
 
