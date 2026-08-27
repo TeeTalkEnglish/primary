@@ -3,23 +3,23 @@
   "subtitle": "Global Success — Units 1–5",
   "grade": 1,
   "exam": "midterm-1",
-  "totalPoints": 30,
+  "totalPoints": 15,
 
   "sections": [
     {
       "id": "look-write",
-      "title": "Exercise 1 — Look and Write",
-      "points": 10
+      "title": "Exercise 1 — Look and Match",
+      "points": 5
     },
     {
       "id": "read-color",
       "title": "Exercise 2 — Read and Color",
-      "points": 10
+      "points": 5
     },
     {
       "id": "look-answer",
       "title": "Exercise 3 — Look and Answer",
-      "points": 10
+      "points": 5
     }
   ],
 
@@ -28,111 +28,16 @@
     {
       "id": 1,
       "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "pencils.png",
-      "imageAlt": "pencils",
-      "question": "Look at the picture and write.",
-      "answer": "pencils"
-    },
-
-    {
-      "id": 2,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "books.png",
-      "imageAlt": "books",
-      "question": "Look at the picture and write.",
-      "answer": "books"
-    },
-
-    {
-      "id": 3,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "cat.png",
-      "imageAlt": "cat",
-      "question": "Look at the picture and write.",
-      "answer": "cat"
-    },
-
-    {
-      "id": 4,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "ducks.png",
-      "imageAlt": "ducks",
-      "question": "Look at the picture and write.",
-      "answer": "ducks"
-    },
-
-    {
-      "id": 5,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "pen.png",
-      "imageAlt": "pen",
-      "question": "Look at the picture and write.",
-      "answer": "pen"
-    },
-
-    {
-      "id": 6,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "apple.png",
-      "imageAlt": "apple",
-      "question": "Look at the picture and write.",
-      "answer": "apple"
-    },
-
-    {
-      "id": 7,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "dog.png",
-      "imageAlt": "dog",
-      "question": "Look at the picture and write.",
-      "answer": "dog"
-    },
-
-    {
-      "id": 8,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "goat.png",
-      "imageAlt": "goat",
-      "question": "Look at the picture and write.",
-      "answer": "goat"
-    },
-
-    {
-      "id": 9,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "school.png",
-      "imageAlt": "school",
-      "question": "Look at the picture and write.",
-      "answer": "school"
-    },
-
-    {
-      "id": 10,
-      "section": "look-write",
-      "type": "fill",
-      "points": 1,
-      "image": "hen.png",
-      "imageAlt": "hen",
-      "question": "Look at the picture and write.",
-      "answer": "hen"
+      "type": "matching",
+      "unit": 1,
+      "points": 5,
+      "question": "Look at the pictures and match them with the words.",
+      "items": [
+        { "image": "ball.png", "imageAlt": "ball", "answer": "ball" },
+        { "image": "bike.png", "imageAlt": "bike", "answer": "bike" },
+        { "image": "book.png", "imageAlt": "book", "answer": "book" },
+        { "image": "sit-down.png", "imageAlt": "sit down", "answer": "sit down" }
+      ]
     },
 
     {
@@ -140,6 +45,7 @@
       "section": "read-color",
       "type": "choice",
       "points": 1,
+      "unit": 3,
       "image": "apple.png",
       "imageAlt": "apple",
       "question": "It is a green apple.",
@@ -156,6 +62,7 @@
       "section": "read-color",
       "type": "choice",
       "points": 1,
+      "unit": 2,
       "image": "car.png",
       "imageAlt": "car",
       "question": "The car is blue.",
@@ -171,6 +78,7 @@
       "id": 13,
       "section": "read-color",
       "type": "choice",
+      "unit": 4,
       "image": "dog.png",
       "imageAlt": "dog",
       "question": "The dog is white and yellow.",
@@ -187,7 +95,6 @@
       "section": "read-color",
       "type": "choice",
       "points": 1,
-      "image": "pen.png",
       "imageAlt": "pen",
       "question": "This is a blue pen.",
       "options": [
@@ -203,7 +110,6 @@
       "section": "read-color",
       "type": "choice",
       "points": 1,
-      "image": "table.png",
       "imageAlt": "table",
       "question": "It is a black table.",
       "options": [
@@ -219,7 +125,6 @@
       "section": "look-answer",
       "type": "fill",
       "points": 1,
-      "image": "pencil.png",
       "imageAlt": "pencil",
       "question": "What is this?",
       "answer": "pencil"
@@ -230,6 +135,7 @@
       "section": "look-answer",
       "type": "fill",
       "points": 1,
+      "unit": 3,
       "image": "apple.png",
       "imageAlt": "apple",
       "question": "What is this?",
@@ -241,6 +147,7 @@
       "section": "look-answer",
       "type": "fill",
       "points": 1,
+      "unit": 2,
       "image": "cat.png",
       "imageAlt": "cat",
       "question": "What's this?",
@@ -252,6 +159,7 @@
       "section": "look-answer",
       "type": "fill",
       "points": 1,
+      "unit": 4,
       "image": "dog.png",
       "imageAlt": "dog",
       "question": "What's this?",
@@ -263,6 +171,7 @@
       "section": "look-answer",
       "type": "fill",
       "points": 1,
+      "unit": 1,
       "image": "book.png",
       "imageAlt": "book",
       "question": "What is this?",

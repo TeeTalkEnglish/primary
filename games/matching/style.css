@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 30px 20px 60px; background: #f7f8fc; color: #20243a; font-family: Arial, sans-serif; }
+.matching-page { max-width: 900px; margin: 0 auto; }
+.matching-page h1 { text-align: center; }
+#status { min-height: 24px; text-align: center; }
+.matching-game { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+.matching-instructions { text-align: center; font-size: 18px; }
+.matching-board { display: grid; gap: 16px; margin-top: 25px; }
+.matching-row { display: grid; grid-template-columns: 140px 1fr; gap: 20px; align-items: center; padding: 15px; background: #f7f8fc; border-radius: 14px; }
+.matching-image { width: 120px; height: 100px; object-fit: contain; margin: auto; }
+.matching-choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.matching-choice { padding: 12px 16px; border: 2px solid transparent; border-radius: 10px; background: #fff; cursor: pointer; font-size: 16px; }
+.matching-choice:hover, .matching-choice.selected { border-color: #4f63d8; background: #eef1ff; }
+@media (max-width: 600px) { body { padding: 20px 15px 40px; } .matching-game { padding: 20px 15px; } .matching-row { grid-template-columns: 1fr; } }

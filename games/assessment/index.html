@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="../../assets/css/cards.css">
 	<link rel="stylesheet" href="../../assets/css/buttons.css">
 	<link rel="stylesheet" href="../../assets/css/progress.css">
+	<link rel="stylesheet" href="../matching/style.css">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -58,6 +59,16 @@
 			<div class="score-display"><span id="score" class="score">0</span><span class="score-total"> / 0</span></div>
 			<p id="percentage" class="percentage">0%</p>
 			<div id="sectionResults" class="section-results"></div>
+			<div class="review-header">
+				<h3>Review Your Answers</h3>
+				<div class="review-controls" role="group" aria-label="Filter review answers">
+					<button id="allReviewBtn" class="secondary-btn review-filter active" type="button">All Questions</button>
+					<button id="incorrectReviewBtn" class="secondary-btn review-filter" type="button">Incorrect Only</button>
+					<button id="correctReviewBtn" class="secondary-btn review-filter" type="button">Correct Only</button>
+				</div>
+				<button id="reviewMistakesBtn" class="primary-btn" type="button">Review Mistakes</button>
+			</div>
+			<div id="reviewContainer" class="review-container"></div>
 			<div class="results-buttons">
 				<button id="retryBtn" class="secondary-btn">Try Again</button>
 				<a id="homeBtn" class="primary-btn" href="../../grade1/index.html">Back to Grade</a>
@@ -65,6 +76,7 @@
 		</div>
 	</section>
 </main>
+<script src="../matching/script.js"></script>
 <script src="render.js"></script>
 <script src="script.js"></script>
 </body>

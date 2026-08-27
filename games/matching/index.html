@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Matching Game</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="matching-page">
+		<a href="../../index.html">Back to Home</a>
+		<h1>Look and Match</h1>
+		<p id="status" role="status"></p>
+		<section id="matchingContainer" aria-label="Matching game"></section>
+	</main>
+	<script src="script.js"></script>
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		const grade = params.get("grade") || "1";
+		const unit = params.get("unit") || "1";
+		const examType = params.get("type") || "midterm";
+		const status = document.getElementById("status");
+		const container = document.getElementById("matchingContainer");
+		const examData = fetch(`../../assets/data/grade${grade}/${examType}.json`).then(response => {
+			if (!response.ok) throw new Error(`HTTP ${response.status}`);
+			return response.json();
+		});
+		const unitData = () => fetch(`../../assets/data/grade${grade}/unit${unit}.json`).then(response => {
+			if (!response.ok) throw new Error("unit data unavailable");
+			return response.json();
+		});
+		examData.then(data => data.questions?.some(question => question.type === "matching") ? data : unitData())
+			.catch(() => unitData())
+			.then(data => {
+				const matchingQuestion = data.questions?.find(question => question.type === "matching");
+				const items = matchingQuestion?.items || (data.vocabulary || []).filter(item => item.image).map(item => ({
+					image: item.image,
+					answer: item.word.toLowerCase()
+				}));
+				if (!items.length) throw new Error("This unit has no image vocabulary.");
+				MatchingGame.create(container, { grade, unit: matchingQuestion?.unit || unit, items });
+				status.textContent = `${items.length} matches ready.`;
+			})
+			.catch(error => { status.textContent = `Unable to load the matching game: ${error.message}`; });
+	</script>
+</body>
+</html>

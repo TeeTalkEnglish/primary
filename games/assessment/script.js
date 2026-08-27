@@ -8,6 +8,8 @@ let questions = [];
 let currentIndex = 0;
 let answers = [];
 let score = 0;
+let reviewData = [];
+let reviewFilter = "all";
 
 const startScreen = document.getElementById("startScreen");
 const examScreen = document.getElementById("examScreen");
@@ -75,6 +77,8 @@ function startExam() {
 	currentIndex = 0;
 	answers = [];
 	score = 0;
+	reviewData = [];
+	reviewFilter = "all";
 	startScreen.hidden = true;
 	resultsScreen.hidden = true;
 	examScreen.hidden = false;
@@ -83,6 +87,8 @@ function startExam() {
 
 function showQuestion() {
 	const question = questions[currentIndex];
+	window.matchingController = null;
+	window.matchingAnswer = null;
 	renderQuestion(question, currentIndex + 1, questions.length);
 	restoreAnswer(question);
 	document.getElementById("sectionTitle").textContent = sectionTitle(question);
@@ -95,6 +101,10 @@ function showQuestion() {
 function restoreAnswer(question) {
 	const answer = answers[currentIndex];
 	if (answer === undefined || answer === null) return;
+	if (question.type === "matching") {
+		window.matchingController?.setAnswer(answer);
+		return;
+	}
 	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type) && typeof answer !== "string") {
 		return;
 	}
@@ -107,6 +117,7 @@ function restoreAnswer(question) {
 }
 
 function getCurrentAnswer(question) {
+	if (question.type === "matching") return window.matchingController?.getAnswer() || [];
 	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type)) {
 		return document.querySelector(".option.selected")?.dataset.answerValue ?? null;
 	}
@@ -123,6 +134,10 @@ function normalize(value) {
 
 function isCorrect(question, answer) {
 	if (answer === null || answer === undefined) return false;
+	if (question.type === "matching") {
+		return Array.isArray(answer) && Array.isArray(question.items) && answer.length === question.items.length &&
+			question.items.every((item, index) => normalize(answer[index]) === normalize(item.answer));
+	}
 	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type)) {
 		return Number(answer) === Number(question.answer);
 	}
@@ -130,8 +145,72 @@ function isCorrect(question, answer) {
 	return normalize(answer) === normalize(question.answer);
 }
 
+function pointsForQuestion(question) {
+	return Number(question.points || 1);
+}
+
+function answerText(question, answer) {
+	if (answer === null || answer === undefined || answer === "") return "Not answered";
+	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type)) {
+		return question.options?.[Number(answer)] ?? String(answer);
+	}
+	if (Array.isArray(answer)) return answer.length ? answer.join(", ") : "Not answered";
+	return String(answer);
+}
+
+function createReviewData() {
+	return questions.map((question, index) => {
+		const studentAnswer = answers[index];
+		const pointsAvailable = pointsForQuestion(question);
+		if (question.type === "matching") {
+			const itemPoints = question.items?.length ? pointsAvailable / question.items.length : 0;
+			const items = (question.items || []).map((item, itemIndex) => {
+				const itemAnswer = Array.isArray(studentAnswer) ? studentAnswer[itemIndex] : null;
+				const correct = normalize(itemAnswer) === normalize(item.answer);
+				return {
+					image: item.imagePath || `../../assets/images/grade${question.grade || grade}/unit${item.unit || question.unit}/${item.image}`,
+					imageAlt: item.imageAlt || item.answer,
+					studentAnswer: answerText(question, itemAnswer),
+					correctAnswer: item.answer,
+					correct,
+					pointsEarned: correct ? itemPoints : 0,
+					pointsAvailable: itemPoints
+				};
+			});
+			return {
+				questionNumber: index + 1,
+				section: sectionTitle(question),
+				type: question.type,
+				question: question.question || question.text || "",
+				studentAnswer: studentAnswer || [],
+				correctAnswer: question.items?.map(item => item.answer) || [],
+				correct: items.length > 0 && items.every(item => item.correct),
+				pointsEarned: items.reduce((total, item) => total + item.pointsEarned, 0),
+				pointsAvailable,
+				items
+			};
+		}
+		const correct = isCorrect(question, studentAnswer);
+		return {
+			questionNumber: index + 1,
+			section: sectionTitle(question),
+			type: question.type,
+			question: question.question || question.text || "",
+			image: question.image ? getVocabularyImagePath(question) : "",
+			imageAlt: question.imageAlt || question.word || "Question image",
+			audio: question.audio ? (question.audioPath || (question.unit ? getVocabularyAudioPath(question) : getExamAudioPath(question))) : "",
+			studentAnswer: answerText(question, studentAnswer),
+			correctAnswer: answerText(question, question.answer),
+			correct,
+			pointsEarned: correct ? pointsAvailable : 0,
+			pointsAvailable
+		};
+	});
+}
+
 function calculateScore() {
-	score = questions.reduce((total, question, index) => total + (isCorrect(question, answers[index]) ? Number(question.points || 1) : 0), 0);
+	reviewData = createReviewData();
+	score = reviewData.reduce((total, review) => total + review.pointsEarned, 0);
 }
 
 function updateProgress() {
@@ -145,27 +224,129 @@ function finishExam() {
 	calculateScore();
 	examScreen.hidden = true;
 	resultsScreen.hidden = false;
-	const totalPoints = questions.reduce((total, question) => total + Number(question.points || 1), 0);
+	const totalPoints = reviewData.reduce((total, review) => total + review.pointsAvailable, 0);
 	const percentage = totalPoints ? Math.round((score / totalPoints) * 100) : 0;
 	document.getElementById("score").textContent = score;
 	document.getElementById("percentage").textContent = `${percentage}%`;
 	document.getElementById("resultMessage").textContent = percentage >= 80 ? "Great work!" : "Keep practicing!";
 	const sectionResults = {};
-	questions.forEach((question, index) => {
-		const key = question.section || "general";
+	reviewData.forEach(review => {
+		const key = review.section || "Assessment";
 		sectionResults[key] ||= { score: 0, total: 0 };
-		sectionResults[key].total += Number(question.points || 1);
-		if (isCorrect(question, answers[index])) sectionResults[key].score += Number(question.points || 1);
+		sectionResults[key].total += review.pointsAvailable;
+		sectionResults[key].score += review.pointsEarned;
 	});
 	document.getElementById("sectionResults").innerHTML = Object.entries(sectionResults).map(([key, result]) =>
-		`<div class="section-result"><span>${sectionTitle({ section: key })}</span><strong>${result.score} / ${result.total}</strong></div>`
+		`<div class="section-result"><span>${key}</span><strong>${result.score} / ${result.total}</strong></div>`
 	).join("");
+	renderReview();
+}
+
+function appendReviewMedia(container, review) {
+	if (review.image) {
+		const image = document.createElement("img");
+		image.className = "review-image";
+		image.src = review.image;
+		image.alt = review.imageAlt;
+		image.onerror = () => image.remove();
+		container.appendChild(image);
+	}
+	if (review.audio) {
+		const audio = document.createElement("audio");
+		audio.className = "review-audio";
+		audio.controls = true;
+		audio.preload = "metadata";
+		audio.src = review.audio;
+		container.appendChild(audio);
+	}
+}
+
+function appendAnswerComparison(container, studentAnswer, correctAnswer) {
+	const comparison = document.createElement("div");
+	comparison.className = "answer-comparison";
+	const yourAnswer = document.createElement("p");
+	const expectedAnswer = document.createElement("p");
+	yourAnswer.innerHTML = "<strong>Your answer:</strong> ";
+	yourAnswer.append(document.createTextNode(studentAnswer));
+	expectedAnswer.innerHTML = "<strong>Correct answer:</strong> ";
+	expectedAnswer.append(document.createTextNode(correctAnswer));
+	comparison.append(yourAnswer, expectedAnswer);
+	container.appendChild(comparison);
+}
+
+function renderMatchingReviewItem(item) {
+	const wrapper = document.createElement("div");
+	wrapper.className = `matching-review-item ${item.correct ? "review-correct" : "review-incorrect"}`;
+	const image = document.createElement("img");
+	image.className = "review-image";
+	image.src = item.image;
+	image.alt = item.imageAlt;
+	image.onerror = () => image.remove();
+	wrapper.appendChild(image);
+	appendAnswerComparison(wrapper, item.studentAnswer, item.correctAnswer);
+	return wrapper;
+}
+
+function renderReview() {
+	const container = document.getElementById("reviewContainer");
+	container.innerHTML = "";
+	reviewData.filter(review => reviewFilter === "all" || (reviewFilter === "correct" ? review.correct : !review.correct)).forEach(review => {
+		const card = document.createElement("article");
+		card.className = `review-card ${review.correct ? "review-correct" : "review-incorrect"}`;
+		const heading = document.createElement("h4");
+		heading.textContent = `Question ${review.questionNumber}`;
+		const section = document.createElement("p");
+		section.className = "review-section";
+		section.textContent = review.section;
+		card.append(heading, section);
+		if (review.question) {
+			const question = document.createElement("p");
+			question.className = "review-question";
+			question.textContent = review.question;
+			card.appendChild(question);
+		}
+		if (review.type === "matching") review.items.forEach(item => card.appendChild(renderMatchingReviewItem(item)));
+		else {
+			appendReviewMedia(card, review);
+			appendAnswerComparison(card, review.studentAnswer, review.correctAnswer);
+		}
+		const result = document.createElement("p");
+		result.className = "review-result";
+		result.textContent = `${review.correct ? "✓ Correct" : review.studentAnswer === "Not answered" ? "✗ Not answered" : "✗ Incorrect"}  ${review.pointsEarned} / ${review.pointsAvailable} points`;
+		card.appendChild(result);
+		container.appendChild(card);
+	});
+}
+
+function setReviewFilter(filter) {
+	reviewFilter = filter;
+	document.querySelectorAll(".review-filter").forEach(button => button.classList.remove("active"));
+	document.getElementById(`${filter === "all" ? "all" : filter}ReviewBtn`).classList.add("active");
+	renderReview();
+}
+
+function resetReviewFilter() {
+	reviewFilter = "all";
+	document.querySelectorAll(".review-filter").forEach(button => button.classList.remove("active"));
+	document.getElementById("allReviewBtn").classList.add("active");
 }
 
 startBtn.addEventListener("click", startExam);
 nextBtn.addEventListener("click", () => { saveCurrentAnswer(); currentIndex++; showQuestion(); });
 previousBtn.addEventListener("click", () => { saveCurrentAnswer(); currentIndex--; showQuestion(); });
 submitBtn.addEventListener("click", () => { saveCurrentAnswer(); finishExam(); });
-retryBtn.addEventListener("click", () => { answers = []; score = 0; startScreen.hidden = false; resultsScreen.hidden = true; });
+retryBtn.addEventListener("click", () => {
+	answers = [];
+	score = 0;
+	reviewData = [];
+	resetReviewFilter();
+	document.getElementById("reviewContainer").innerHTML = "";
+	startScreen.hidden = false;
+	resultsScreen.hidden = true;
+});
+document.getElementById("allReviewBtn").addEventListener("click", () => setReviewFilter("all"));
+document.getElementById("incorrectReviewBtn").addEventListener("click", () => setReviewFilter("incorrect"));
+document.getElementById("correctReviewBtn").addEventListener("click", () => setReviewFilter("correct"));
+document.getElementById("reviewMistakesBtn").addEventListener("click", () => setReviewFilter("incorrect"));
 
 loadExam();

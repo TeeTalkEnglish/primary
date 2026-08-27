@@ -1,7 +1,7 @@
 function getVocabularyImagePath(question) {
 	if (question.imagePath) return question.imagePath;
 	if (!question.unit) return `../../assets/images/${examType}/${question.image}`;
-	return `../../assets/images/vocabulary/grade${question.grade || grade}/unit${question.unit}/${question.image}`;
+	return `../../assets/images/grade${question.grade || grade}/unit${question.unit}/${question.image}`;
 }
 
 function getVocabularyAudioPath(question) {
@@ -54,7 +54,7 @@ function renderOptions(question, container, imageOptions = false) {
 		button.dataset.answerValue = index;
 		if (imageOptions && option && typeof option === "object" && option.image) {
 			const image = document.createElement("img");
-			image.src = option.imagePath || `../../assets/images/vocabulary/grade${question.grade || grade}/unit${question.unit}/${option.image}`;
+			image.src = option.imagePath || `../../assets/images/grade${question.grade || grade}/unit${question.unit}/${option.image}`;
 			image.alt = option.imageAlt || option.label || "Answer choice";
 			image.onerror = () => image.remove();
 			button.appendChild(image);
@@ -87,6 +87,16 @@ function renderPictureChoice(question, container) { addImage(question, container
 function renderChoice(question, container) { addImage(question, container); renderOptions(question, container); }
 function renderFill(question, container) { renderTextInput(question, container); }
 function renderSentence(question, container) { renderTextInput(question, container, true); }
+function renderMatching(question, container) {
+	const matchingContainer = document.createElement("div");
+	matchingContainer.className = "matching-exercise";
+	container.appendChild(matchingContainer);
+	window.matchingController = MatchingGame.create(matchingContainer, {
+		...question,
+		grade: question.grade || grade,
+		onChange: answer => { window.matchingAnswer = answer; }
+	});
+}
 function renderReading(question, container) {
 	renderPassage(question, container);
 	renderOptions(question, container);
@@ -128,7 +138,8 @@ function renderQuestion(question, questionNumber, totalQuestions) {
 		choice: renderChoice,
 		fill: renderFill,
 		sentence: renderSentence,
-		reading: renderReading
+		reading: renderReading,
+		matching: renderMatching
 	};
 	(renderers[question.type] || renderFill)(question, card);
 	container.appendChild(card);
