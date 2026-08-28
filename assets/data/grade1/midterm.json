@@ -125,9 +125,11 @@
       "section": "look-answer",
       "type": "fill",
       "points": 1,
-      "imageAlt": "pencil",
+      "image": "bag.png",
+      "imageUnit": 3,
+      "imageAlt": "bag",
       "question": "What is this?",
-      "answer": "pencil"
+      "answer": "bag"
     },
 
     {

@@ -10,6 +10,7 @@ let answers = [];
 let score = 0;
 let reviewData = [];
 let reviewFilter = "all";
+let reviewMode = false;
 
 const startScreen = document.getElementById("startScreen");
 const examScreen = document.getElementById("examScreen");
@@ -19,6 +20,7 @@ const nextBtn = document.getElementById("nextBtn");
 const previousBtn = document.getElementById("previousBtn");
 const submitBtn = document.getElementById("submitBtn");
 const retryBtn = document.getElementById("retryBtn");
+const backToResultsBtn = document.getElementById("backToResultsBtn");
 const loadStatus = document.getElementById("examLoadStatus");
 
 function flattenQuestions(data) {
@@ -34,6 +36,61 @@ function flattenQuestions(data) {
 function sectionTitle(question) {
 	const section = (examData.sections || []).find(item => item.id === question.section);
 	return section?.title || question.section || "Assessment";
+}
+
+function hasAnswer(answer) {
+	if (Array.isArray(answer)) return answer.some(value => value !== null && value !== undefined && value !== "");
+	return answer !== null && answer !== undefined && String(answer).trim() !== "";
+}
+
+function getQuestionStatus(index) {
+	if (reviewMode || reviewData.length) {
+		const review = reviewData[index];
+		if (!review) return "unanswered";
+		return review.correct ? "correct" : review.studentAnswer === "Not answered" ? "unanswered" : "incorrect";
+	}
+	return hasAnswer(answers[index]) ? "answered" : "unanswered";
+}
+
+function renderQuestionNavigator(containerId, filter = "all") {
+	const container = document.getElementById(containerId);
+	if (!container) return;
+	container.innerHTML = "";
+	const groups = new Map();
+	questions.forEach((question, index) => {
+		const status = getQuestionStatus(index);
+		if (filter === "incorrect" && status === "correct") return;
+		if (filter === "correct" && status !== "correct") return;
+		const key = question.section || "assessment";
+		if (!groups.has(key)) groups.set(key, []);
+		groups.get(key).push({ index, status, question });
+	});
+	groups.forEach((items, key) => {
+		const section = document.createElement("div");
+		section.className = "question-nav-section";
+		const title = document.createElement("h3");
+		title.className = "question-nav-title";
+		title.textContent = sectionTitle(items[0].question) || key;
+		const buttons = document.createElement("div");
+		buttons.className = "question-nav-buttons";
+		items.forEach(({ index, status }) => {
+			const button = document.createElement("button");
+			button.type = "button";
+			button.className = `question-number ${status} ${index === currentIndex ? "current" : ""}`;
+			button.textContent = reviewMode ? `${index + 1} ${status === "correct" ? "✓" : status === "incorrect" ? "✗" : "—"}` : String(index + 1);
+			button.setAttribute("aria-label", `Question ${index + 1}, ${status}`);
+			button.setAttribute("aria-current", index === currentIndex ? "true" : "false");
+			button.addEventListener("click", () => containerId === "reviewNavigator" ? enterReviewMode(index) : goToQuestion(index));
+			buttons.appendChild(button);
+		});
+		section.append(title, buttons);
+		container.appendChild(section);
+	});
+}
+
+function updateQuestionNavigator() {
+	renderQuestionNavigator("questionNavigator", reviewMode ? reviewFilter : "all");
+	renderQuestionNavigator("reviewNavigator", reviewFilter);
 }
 
 function setupExamInfo() {
@@ -79,6 +136,7 @@ function startExam() {
 	score = 0;
 	reviewData = [];
 	reviewFilter = "all";
+	reviewMode = false;
 	startScreen.hidden = true;
 	resultsScreen.hidden = true;
 	examScreen.hidden = false;
@@ -90,12 +148,23 @@ function showQuestion() {
 	window.matchingController = null;
 	window.matchingAnswer = null;
 	renderQuestion(question, currentIndex + 1, questions.length);
+	if (question.image && !document.querySelector("#questionContainer .question-image, #questionContainer .image-fallback")) {
+		addImage(question, document.querySelector("#questionContainer .question-card"));
+	}
 	restoreAnswer(question);
+	if (reviewMode) {
+		document.querySelectorAll("#questionContainer input, #questionContainer textarea, #questionContainer button").forEach(control => {
+			control.disabled = true;
+		});
+		appendReviewDetails();
+	}
 	document.getElementById("sectionTitle").textContent = sectionTitle(question);
 	updateProgress();
-	previousBtn.hidden = currentIndex === 0;
-	nextBtn.hidden = currentIndex === questions.length - 1;
-	submitBtn.hidden = currentIndex !== questions.length - 1;
+	previousBtn.hidden = reviewMode || currentIndex === 0;
+	nextBtn.hidden = reviewMode || currentIndex === questions.length - 1;
+	submitBtn.hidden = reviewMode || currentIndex !== questions.length - 1;
+	backToResultsBtn.hidden = !reviewMode;
+	updateQuestionNavigator();
 }
 
 function restoreAnswer(question) {
@@ -125,7 +194,15 @@ function getCurrentAnswer(question) {
 }
 
 function saveCurrentAnswer() {
+	if (reviewMode) return;
 	answers[currentIndex] = getCurrentAnswer(questions[currentIndex]);
+}
+
+function goToQuestion(index) {
+	if (index < 0 || index >= questions.length) return;
+	if (!reviewMode) saveCurrentAnswer();
+	currentIndex = index;
+	showQuestion();
 }
 
 function normalize(value) {
@@ -221,6 +298,7 @@ function updateProgress() {
 }
 
 function finishExam() {
+	reviewMode = false;
 	calculateScore();
 	examScreen.hidden = true;
 	resultsScreen.hidden = false;
@@ -239,7 +317,31 @@ function finishExam() {
 	document.getElementById("sectionResults").innerHTML = Object.entries(sectionResults).map(([key, result]) =>
 		`<div class="section-result"><span>${key}</span><strong>${result.score} / ${result.total}</strong></div>`
 	).join("");
+	updateQuestionNavigator();
 	renderReview();
+}
+
+function appendReviewDetails() {
+	const review = reviewData[currentIndex];
+	const card = document.querySelector("#questionContainer .question-card");
+	if (!review || !card) return;
+	const details = document.createElement("div");
+	details.className = `review-details ${review.correct ? "review-correct" : "review-incorrect"}`;
+	appendAnswerComparison(details, review.studentAnswer, review.correctAnswer);
+	const result = document.createElement("p");
+	result.className = "review-result";
+	result.textContent = `${review.correct ? "✓ Correct" : review.studentAnswer === "Not answered" ? "— Unanswered" : "✗ Incorrect"}  ${review.pointsEarned} / ${review.pointsAvailable} points`;
+	details.appendChild(result);
+	card.appendChild(details);
+}
+
+function enterReviewMode(index) {
+	reviewMode = true;
+	currentIndex = index;
+	startScreen.hidden = true;
+	resultsScreen.hidden = true;
+	examScreen.hidden = false;
+	showQuestion();
 }
 
 function appendReviewMedia(container, review) {
@@ -322,6 +424,7 @@ function setReviewFilter(filter) {
 	reviewFilter = filter;
 	document.querySelectorAll(".review-filter").forEach(button => button.classList.remove("active"));
 	document.getElementById(`${filter === "all" ? "all" : filter}ReviewBtn`).classList.add("active");
+	updateQuestionNavigator();
 	renderReview();
 }
 
@@ -332,13 +435,26 @@ function resetReviewFilter() {
 }
 
 startBtn.addEventListener("click", startExam);
-nextBtn.addEventListener("click", () => { saveCurrentAnswer(); currentIndex++; showQuestion(); });
-previousBtn.addEventListener("click", () => { saveCurrentAnswer(); currentIndex--; showQuestion(); });
-submitBtn.addEventListener("click", () => { saveCurrentAnswer(); finishExam(); });
+nextBtn.addEventListener("click", () => goToQuestion(currentIndex + 1));
+previousBtn.addEventListener("click", () => goToQuestion(currentIndex - 1));
+submitBtn.addEventListener("click", () => {
+	saveCurrentAnswer();
+	const unanswered = questions.filter((question, index) => !hasAnswer(answers[index])).length;
+	if (unanswered && !window.confirm(`You have ${unanswered} unanswered question${unanswered === 1 ? "" : "s"}. Are you sure you want to submit?`)) return;
+	finishExam();
+});
+backToResultsBtn.addEventListener("click", () => {
+	reviewMode = false;
+	examScreen.hidden = true;
+	resultsScreen.hidden = false;
+	updateQuestionNavigator();
+});
 retryBtn.addEventListener("click", () => {
 	answers = [];
 	score = 0;
 	reviewData = [];
+	reviewMode = false;
+	currentIndex = 0;
 	resetReviewFilter();
 	document.getElementById("reviewContainer").innerHTML = "";
 	startScreen.hidden = false;
@@ -347,6 +463,10 @@ retryBtn.addEventListener("click", () => {
 document.getElementById("allReviewBtn").addEventListener("click", () => setReviewFilter("all"));
 document.getElementById("incorrectReviewBtn").addEventListener("click", () => setReviewFilter("incorrect"));
 document.getElementById("correctReviewBtn").addEventListener("click", () => setReviewFilter("correct"));
-document.getElementById("reviewMistakesBtn").addEventListener("click", () => setReviewFilter("incorrect"));
+document.getElementById("reviewMistakesBtn").addEventListener("click", () => {
+	setReviewFilter("incorrect");
+	const firstMistake = reviewData.findIndex(review => !review.correct);
+	if (firstMistake >= 0) enterReviewMode(firstMistake);
+});
 
 loadExam();

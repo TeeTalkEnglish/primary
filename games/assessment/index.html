@@ -43,8 +43,10 @@
 			<div class="progress"><div id="progressFill"></div></div>
 			<div class="progress-label"><span id="progressText">0%</span></div>
 		</div>
+		<nav id="questionNavigator" class="question-navigator" aria-label="Question navigator"></nav>
 		<div id="questionContainer" class="question-container"></div>
 		<nav class="exam-navigation" aria-label="Assessment navigation">
+			<button id="backToResultsBtn" class="secondary-btn" hidden>Back to Results</button>
 			<button id="previousBtn" class="secondary-btn" hidden>Previous</button>
 			<button id="nextBtn" class="primary-btn">Next</button>
 			<button id="submitBtn" class="success-btn" hidden>Submit Exam</button>
@@ -66,8 +68,9 @@
 					<button id="incorrectReviewBtn" class="secondary-btn review-filter" type="button">Incorrect Only</button>
 					<button id="correctReviewBtn" class="secondary-btn review-filter" type="button">Correct Only</button>
 				</div>
-				<button id="reviewMistakesBtn" class="primary-btn" type="button">Review Mistakes</button>
+				<button id="reviewMistakesBtn" class="primary-btn" type="button">Review Incorrect Answers</button>
 			</div>
+			<nav id="reviewNavigator" class="question-navigator review-navigator" aria-label="Review question navigator"></nav>
 			<div id="reviewContainer" class="review-container"></div>
 			<div class="results-buttons">
 				<button id="retryBtn" class="secondary-btn">Try Again</button>
@@ -77,7 +80,7 @@
 	</section>
 </main>
 <script src="../matching/script.js"></script>
-<script src="render.js"></script>
-<script src="script.js"></script>
+<script src="render.js?v=4"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>

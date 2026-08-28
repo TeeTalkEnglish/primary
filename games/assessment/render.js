@@ -1,7 +1,14 @@
-function getVocabularyImagePath(question) {
+function getQuestionImagePath(question) {
 	if (question.imagePath) return question.imagePath;
-	if (!question.unit) return `../../assets/images/${examType}/${question.image}`;
-	return `../../assets/images/grade${question.grade || grade}/unit${question.unit}/${question.image}`;
+	const imageUnit = question.imageUnit ?? question.unit;
+	if (imageUnit !== undefined && imageUnit !== null) {
+		return `../../assets/images/grade${question.grade || grade}/unit${imageUnit}/${question.image}`;
+	}
+	return `../../assets/images/${examType}/${question.image}`;
+}
+
+function getVocabularyImagePath(question) {
+	return getQuestionImagePath(question);
 }
 
 function getVocabularyAudioPath(question) {
@@ -18,9 +25,15 @@ function addImage(question, container) {
 	if (!question.image) return;
 	const image = document.createElement("img");
 	image.className = "question-image";
-	image.src = getVocabularyImagePath(question);
+	image.src = getQuestionImagePath(question);
 	image.alt = question.imageAlt || question.word || "Question image";
-	image.onerror = () => image.remove();
+	image.onerror = () => {
+		console.error("Failed to load question image:", image.src);
+		const fallback = document.createElement("p");
+		fallback.className = "image-fallback";
+		fallback.textContent = "The question image is unavailable.";
+		image.replaceWith(fallback);
+	};
 	container.appendChild(image);
 }
 
@@ -72,6 +85,7 @@ function renderOptions(question, container, imageOptions = false) {
 }
 
 function renderTextInput(question, container, multiline = false) {
+	addImage(question, container);
 	const input = document.createElement(multiline ? "textarea" : "input");
 	input.id = "textAnswer";
 	input.className = multiline ? "writing-input" : "fill-input";
@@ -82,9 +96,9 @@ function renderTextInput(question, container, multiline = false) {
 
 function renderListenNumber(question, container) { addAudio(question, container); renderOptions(question, container); }
 function renderListenChoice(question, container) { addAudio(question, container); renderOptions(question, container); }
-function renderLookWrite(question, container) { addImage(question, container); renderTextInput(question, container); }
-function renderPictureChoice(question, container) { addImage(question, container); renderOptions(question, container, true); }
-function renderChoice(question, container) { addImage(question, container); renderOptions(question, container); }
+function renderLookWrite(question, container) { renderTextInput(question, container); }
+function renderPictureChoice(question, container) { renderOptions(question, container, true); }
+function renderChoice(question, container) { renderOptions(question, container); }
 function renderFill(question, container) { renderTextInput(question, container); }
 function renderSentence(question, container) { renderTextInput(question, container, true); }
 function renderMatching(question, container) {
