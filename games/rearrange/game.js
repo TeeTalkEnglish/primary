@@ -18,8 +18,9 @@ function shuffle(array) {
 // --------------------
 
 async function loadGame() {
-const url =
-    `../../assets/data/grade${game.grade}/unit${game.unit}.json`;
+const url = game.mode === "unscramble"
+    ? `../../assets/data/grade${game.grade}/unscramble.json`
+    : `../../assets/data/grade${game.grade}/unit${game.unit}.json`;
 
 console.log(url);
 
@@ -29,13 +30,23 @@ const data = await response.json();
 
 console.log(data);
 
+    document.getElementById("gameTitle").textContent =
+        data.title || "Rearrange Letters";
     document.getElementById("unitTitle").textContent =
-        data.title;
+        data.instruction || data.title;
 
         console.log(data);
 console.log(data.vocabulary);
 
-    game.words = shuffle(data.vocabulary);
+    game.words = game.mode === "unscramble"
+        ? data.items.map(item => ({
+            ...item,
+            word: item.answer,
+            mixedLetters: item.letters
+        }))
+        : shuffle(data.vocabulary);
+
+    game.score = 0;
 
     loadWord();
 
@@ -60,13 +71,8 @@ function loadWord() {
 
     game.answer = [];
 
-    game.letters = shuffle(
-
-        game.currentWord.word
-
-            .split("")
-
-            .map((letter, index) => ({
+    const sourceLetters = game.currentWord.mixedLetters || game.currentWord.word.split("");
+    game.letters = shuffle(sourceLetters.map((letter, index) => ({
 
                 id: index,
 
@@ -74,9 +80,7 @@ function loadWord() {
 
                 used: false
 
-            }))
-
-    );
+                })));
 
     render();
 
@@ -116,6 +120,8 @@ function checkAnswer() {
 
         document.getElementById("message").textContent =
             "🎉 Excellent!";
+
+        game.score++;
 
         document.getElementById("nextBtn").style.display =
             "block";
@@ -190,7 +196,8 @@ function hintWord() {
 
 function finishHomework() {
 
-    document.getElementById("emoji").textContent = "🏆";
+    const emoji = document.getElementById("emoji");
+    if (emoji) emoji.textContent = "🏆";
 
     document.getElementById("wordImage").style.display =
         "none";
@@ -200,7 +207,11 @@ function finishHomework() {
     document.getElementById("answer").innerHTML = "";
 
     document.getElementById("message").textContent =
-        "🎉 Homework Complete!";
+        `🎉 Homework Complete! Score: ${game.score}/${game.words.length}`;
+
+    document.getElementById("progressFill").style.width = "100%";
+    document.getElementById("progressText").textContent =
+        `Homework Progress ${game.words.length}/${game.words.length} (100%)`;
 
     document.getElementById("nextBtn").style.display =
         "none";

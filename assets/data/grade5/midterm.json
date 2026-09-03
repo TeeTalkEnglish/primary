@@ -3,7 +3,7 @@
   "exam": "midterm",
   "title": "Grade 5 Midterm Exam",
   "subtitle": "Oxford Discover Futures",
-  "totalPoints": 50,
+  "totalPoints": 51,
 
   "sections": [
     {
@@ -14,7 +14,7 @@
     {
       "id": "vocabulary-grammar",
       "title": "Vocabulary & Grammar",
-      "points": 15
+      "points": 21
     },
     {
       "id": "reading",
@@ -374,6 +374,23 @@
       "question": "Write three sentences about your free-time activities.",
       "placeholder": "Write three sentences here.",
       "answer": "I watch cartoons. I read stories. I ride a bike."
+    },
+
+    {
+      "id": 27,
+      "section": "vocabulary-grammar",
+      "exercise": "Exercise 2 — Unscramble the letters",
+      "type": "unscramble",
+      "instruction": "Put the letters in the correct order to make a word.",
+      "points": 6,
+      "items": [
+        { "number": 1, "letters": ["n", "o", "o", "c", "r", "a", "t"], "answer": "cartoon", "image": "cartoon.png", "imageUnit": 4 },
+        { "number": 2, "letters": ["y", "a", "l", "p"], "answer": "play", "image": "play.png", "imageUnit": 4 },
+        { "number": 3, "letters": ["n", "i", "v", "o", "l", "i"], "answer": "violin", "image": "violin.png", "imageUnit": 4 },
+        { "number": 4, "letters": ["s", "a", "w", "y", "a", "l"], "answer": "always", "image": "always.png", "imageUnit": 4 },
+        { "number": 5, "letters": ["r", "e", "v", "n", "e"], "answer": "never", "image": "never.png", "imageUnit": 4 },
+        { "number": 6, "letters": ["y", "l", "u", "s", "a", "l", "u"], "answer": "usually", "image": "usually.png", "imageUnit": 4 }
+      ]
     }
 
   ]

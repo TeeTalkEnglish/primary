@@ -37,6 +37,13 @@ function renderQuestion(question, questionNumber, totalQuestions) {
         card.appendChild(questionText);
     }
 
+    if (question.type === "unscramble" && question.instruction) {
+        const instruction = document.createElement("p");
+        instruction.className = "question-instruction";
+        instruction.textContent = question.instruction;
+        card.appendChild(instruction);
+    }
+
     switch (question.type) {
         case "choice":
         case "listen-choice":
@@ -47,6 +54,9 @@ function renderQuestion(question, questionNumber, totalQuestions) {
             break;
         case "sentence":
             renderSentenceQuestion(question, card);
+            break;
+        case "unscramble":
+            renderUnscrambleQuestion(question, card);
             break;
         default:
             renderUnsupportedQuestion(question, card);
@@ -60,10 +70,12 @@ function renderQuestion(question, questionNumber, totalQuestions) {
 
 function getQuestionImagePath(question) {
     if (question.imagePath) return question.imagePath;
-    if (question.grade && question.unit) {
-        return `../../../assets/images/vocabulary/grade${question.grade}/unit${question.unit}/${question.image}`;
+    const imageUnit = question.imageUnit ?? question.unit;
+    const imageGrade = question.grade || grade;
+    if (imageGrade && imageUnit) {
+        return `../../assets/images/vocabulary/grade${imageGrade}/unit${imageUnit}/${question.image}`;
     }
-    return `../../../assets/images/midterm/${question.image}`;
+    return `../../assets/images/midterm/${question.image}`;
 }
 
 function renderAudio(question, container) {
@@ -86,7 +98,7 @@ function renderAudio(question, container) {
 
     // If JSON contains only the filename:
     audio.src =
-        `../../../assets/audio/grade${grade}/midterm/${question.audio}`;
+        `../../assets/audio/grade${grade}/midterm/${question.audio}`;
 
     audio.onerror = () => {
 
@@ -106,9 +118,9 @@ function renderAudio(question, container) {
 function getQuestionAudioPath(question) {
     if (question.audioPath) return question.audioPath;
     if (question.grade && question.unit) {
-        return `../../../assets/audio/grade${question.grade}/unit${question.unit}/${question.audio}`;
+        return `../../assets/audio/grade${question.grade}/unit${question.unit}/${question.audio}`;
     }
-    return `../../../assets/audio/midterm/${question.audio}`;
+    return `../../assets/audio/midterm/${question.audio}`;
 }
 
 function renderChoiceQuestion(question, container) {
@@ -176,4 +188,97 @@ function renderUnsupportedQuestion(question, container) {
     message.className = "question-error";
     message.textContent = `Question type "${question.type}" is not supported yet.`;
     container.appendChild(message);
+}
+
+function renderUnscrambleQuestion(question, container) {
+    const exercise = document.createElement("div");
+    exercise.className = "unscramble-exercise";
+    const answers = (question.items || []).map(() => []);
+
+    const renderItem = itemIndex => {
+        const item = question.items[itemIndex];
+        const itemContainer = exercise.querySelectorAll(".unscramble-item")[itemIndex];
+        const available = itemContainer.querySelector(".unscramble-letters");
+        const answer = itemContainer.querySelector(".unscramble-answer");
+        available.innerHTML = "";
+        answer.innerHTML = "";
+
+        item.letters.forEach((letter, letterIndex) => {
+            if (answers[itemIndex].includes(letterIndex)) return;
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "unscramble-letter";
+            button.textContent = letter;
+            button.addEventListener("click", () => {
+                answers[itemIndex].push(letterIndex);
+                renderItem(itemIndex);
+            });
+            available.appendChild(button);
+        });
+
+        answers[itemIndex].forEach(letterIndex => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "unscramble-letter selected";
+            button.textContent = item.letters[letterIndex];
+            button.addEventListener("click", () => {
+                answers[itemIndex] = answers[itemIndex].filter(index => index !== letterIndex);
+                renderItem(itemIndex);
+            });
+            answer.appendChild(button);
+        });
+    };
+
+    (question.items || []).forEach((item, itemIndex) => {
+        const itemContainer = document.createElement("section");
+        itemContainer.className = "unscramble-item";
+        const number = document.createElement("h3");
+        number.textContent = `${item.number ?? itemIndex + 1}.`;
+        if (item.image) {
+            const image = document.createElement("img");
+            image.className = "unscramble-image";
+            image.src = getQuestionImagePath({
+                ...item,
+                grade: question.grade || grade,
+                unit: item.imageUnit ?? item.unit
+            });
+            image.alt = item.imageAlt || item.answer || "Vocabulary item";
+            image.onerror = () => {
+                const fallbackPath = `../../assets/images/grade${question.grade || grade}/unit${item.imageUnit ?? item.unit}/${item.image}`;
+                if (image.src.endsWith(fallbackPath)) {
+                    console.warn("Unscramble image unavailable:", image.src);
+                    image.remove();
+                    return;
+                }
+                image.src = fallbackPath;
+            };
+            itemContainer.appendChild(image);
+        }
+        const available = document.createElement("div");
+        available.className = "unscramble-letters";
+        const label = document.createElement("p");
+        label.className = "unscramble-answer-label";
+        label.textContent = "Your answer:";
+        const answer = document.createElement("div");
+        answer.className = "unscramble-answer";
+        itemContainer.append(number, available, label, answer);
+        exercise.appendChild(itemContainer);
+    });
+
+    container.appendChild(exercise);
+    (question.items || []).forEach((item, itemIndex) => renderItem(itemIndex));
+    window.unscrambleController = {
+        getAnswer: () => answers.map(item => [...item]),
+        setAnswer: savedAnswers => {
+            (savedAnswers || []).forEach((item, itemIndex) => {
+                if (!Array.isArray(item) || !answers[itemIndex]) return;
+                answers[itemIndex] = item.filter((letterIndex, position) =>
+                    Number.isInteger(letterIndex) && letterIndex >= 0 &&
+                    letterIndex < question.items[itemIndex].letters.length &&
+                    item.indexOf(letterIndex) === position
+                );
+                renderItem(itemIndex);
+            });
+        }
+    };
 }

@@ -111,6 +111,76 @@ function renderMatching(question, container) {
 		onChange: answer => { window.matchingAnswer = answer; }
 	});
 }
+function renderUnscrambleQuestion(question, container) {
+	const unscrambleContainer = document.createElement("div");
+	unscrambleContainer.className = "unscramble-exercise";
+	const itemAnswers = (question.items || []).map(() => []);
+
+	const renderItem = itemIndex => {
+		const item = question.items[itemIndex];
+		const itemContainer = unscrambleContainer.querySelectorAll(".unscramble-item")[itemIndex];
+		const available = itemContainer.querySelector(".unscramble-letters");
+		const answer = itemContainer.querySelector(".unscramble-answer");
+		available.innerHTML = "";
+		answer.innerHTML = "";
+		(item.letters || []).forEach((letter, letterIndex) => {
+			if (itemAnswers[itemIndex].includes(letterIndex)) return;
+			const button = document.createElement("button");
+			button.type = "button";
+			button.className = "unscramble-letter";
+			button.textContent = letter;
+			button.setAttribute("aria-label", `Use letter ${letter}`);
+			button.addEventListener("click", () => {
+				itemAnswers[itemIndex].push(letterIndex);
+				renderItem(itemIndex);
+			});
+			available.appendChild(button);
+		});
+		itemAnswers[itemIndex].forEach(letterIndex => {
+			const button = document.createElement("button");
+			button.type = "button";
+			button.className = "unscramble-letter selected";
+			button.textContent = item.letters[letterIndex];
+			button.setAttribute("aria-label", `Remove letter ${item.letters[letterIndex]}`);
+			button.addEventListener("click", () => {
+				itemAnswers[itemIndex] = itemAnswers[itemIndex].filter(index => index !== letterIndex);
+				renderItem(itemIndex);
+			});
+			answer.appendChild(button);
+		});
+	};
+
+	(question.items || []).forEach((item, itemIndex) => {
+		const itemContainer = document.createElement("section");
+		itemContainer.className = "unscramble-item";
+		const itemNumber = document.createElement("h3");
+		itemNumber.textContent = `${item.number ?? itemIndex + 1}.`;
+		const available = document.createElement("div");
+		available.className = "unscramble-letters";
+		const answerLabel = document.createElement("p");
+		answerLabel.className = "unscramble-answer-label";
+		answerLabel.textContent = "Your answer:";
+		const answer = document.createElement("div");
+		answer.className = "unscramble-answer";
+		itemContainer.append(itemNumber, available, answerLabel, answer);
+		unscrambleContainer.appendChild(itemContainer);
+	});
+
+	container.appendChild(unscrambleContainer);
+	(question.items || []).forEach((item, itemIndex) => renderItem(itemIndex));
+	window.unscrambleController = {
+		getAnswer: () => itemAnswers.map(itemAnswer => [...itemAnswer]),
+		setAnswer: savedAnswers => {
+			(savedAnswers || []).forEach((itemAnswer, itemIndex) => {
+				if (!Array.isArray(itemAnswer) || !itemAnswers[itemIndex]) return;
+				itemAnswers[itemIndex] = itemAnswer.filter((letterIndex, position) =>
+					Number.isInteger(letterIndex) && letterIndex >= 0 && letterIndex < question.items[itemIndex].letters.length && itemAnswer.indexOf(letterIndex) === position
+				);
+				renderItem(itemIndex);
+			});
+		}
+	};
+}
 function renderReading(question, container) {
 	renderPassage(question, container);
 	renderOptions(question, container);
@@ -144,6 +214,12 @@ function renderQuestion(question, questionNumber, totalQuestions) {
 		prompt.textContent = question.question || question.text;
 		card.appendChild(prompt);
 	}
+	if (question.type === "unscramble") {
+		const instruction = document.createElement("p");
+		instruction.className = "question-instruction";
+		instruction.textContent = question.instruction || "Put the letters in the correct order to make a word.";
+		card.appendChild(instruction);
+	}
 	const renderers = {
 		"listen-number": renderListenNumber,
 		"listen-choice": renderListenChoice,
@@ -153,7 +229,8 @@ function renderQuestion(question, questionNumber, totalQuestions) {
 		fill: renderFill,
 		sentence: renderSentence,
 		reading: renderReading,
-		matching: renderMatching
+		matching: renderMatching,
+		unscramble: renderUnscrambleQuestion
 	};
 	(renderers[question.type] || renderFill)(question, card);
 	container.appendChild(card);

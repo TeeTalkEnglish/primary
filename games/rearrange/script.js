@@ -17,7 +17,11 @@ const game = {
 
     letters: [],
 
-    answer: []
+    answer: [],
+
+    mode: "unit",
+
+    score: 0
 
 };
 
@@ -29,13 +33,15 @@ const params = new URLSearchParams(window.location.search);
 
 game.grade = params.get("grade");
 game.unit = params.get("unit");
+game.mode = params.get("mode") || "unit";
 
 // --------------------
 // Back Button
 // --------------------
 
-document.getElementById("backBtn").href =
-`../../grade${game.grade}/unit.html?unit=${game.unit}`;
+document.getElementById("backBtn").href = game.mode === "unscramble"
+    ? `../../grade${game.grade}/index.html`
+    : `../../grade${game.grade}/unit.html?unit=${game.unit}`;
 
 // --------------------
 // Sounds
@@ -53,7 +59,7 @@ new Audio("../../assets/sounds/wrong.mp3");
 function play(sound){
 
     sound.currentTime = 0;
-    sound.play();
+    sound.play().catch(() => {});
 
 }
 

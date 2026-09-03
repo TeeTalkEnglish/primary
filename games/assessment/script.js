@@ -147,6 +147,7 @@ function showQuestion() {
 	const question = questions[currentIndex];
 	window.matchingController = null;
 	window.matchingAnswer = null;
+	window.unscrambleController = null;
 	renderQuestion(question, currentIndex + 1, questions.length);
 	if (question.image && !document.querySelector("#questionContainer .question-image, #questionContainer .image-fallback")) {
 		addImage(question, document.querySelector("#questionContainer .question-card"));
@@ -174,6 +175,10 @@ function restoreAnswer(question) {
 		window.matchingController?.setAnswer(answer);
 		return;
 	}
+	if (question.type === "unscramble") {
+		window.unscrambleController?.setAnswer(answer);
+		return;
+	}
 	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type) && typeof answer !== "string") {
 		return;
 	}
@@ -187,6 +192,7 @@ function restoreAnswer(question) {
 
 function getCurrentAnswer(question) {
 	if (question.type === "matching") return window.matchingController?.getAnswer() || [];
+	if (question.type === "unscramble") return window.unscrambleController?.getAnswer() || [];
 	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type)) {
 		return document.querySelector(".option.selected")?.dataset.answerValue ?? null;
 	}
@@ -267,6 +273,34 @@ function createReviewData() {
 				items
 			};
 		}
+		if (question.type === "unscramble") {
+			const itemPoints = question.items?.length ? pointsAvailable / question.items.length : 0;
+			const items = (question.items || []).map((item, itemIndex) => {
+				const selected = Array.isArray(studentAnswer?.[itemIndex]) ? studentAnswer[itemIndex] : [];
+				const itemAnswer = selected.map(letterIndex => item.letters?.[letterIndex] ?? "").join("");
+				const correct = normalize(itemAnswer) === normalize(item.answer);
+				return {
+					number: item.number ?? itemIndex + 1,
+					studentAnswer: itemAnswer || "Not answered",
+					correctAnswer: item.answer,
+					correct,
+					pointsEarned: correct ? itemPoints : 0,
+					pointsAvailable: itemPoints
+				};
+			});
+			return {
+				questionNumber: index + 1,
+				section: sectionTitle(question),
+				type: question.type,
+				question: question.exercise || question.question || question.text || "",
+				studentAnswer: items.map(item => item.studentAnswer).join(", "),
+				correctAnswer: items.map(item => item.correctAnswer).join(", "),
+				correct: items.length > 0 && items.every(item => item.correct),
+				pointsEarned: items.reduce((total, item) => total + item.pointsEarned, 0),
+				pointsAvailable,
+				items
+			};
+		}
 		const correct = isCorrect(question, studentAnswer);
 		return {
 			questionNumber: index + 1,
@@ -327,12 +361,29 @@ function appendReviewDetails() {
 	if (!review || !card) return;
 	const details = document.createElement("div");
 	details.className = `review-details ${review.correct ? "review-correct" : "review-incorrect"}`;
-	appendAnswerComparison(details, review.studentAnswer, review.correctAnswer);
+	if (review.type === "unscramble") review.items.forEach(item => details.appendChild(renderUnscrambleReviewItem(item)));
+	else appendAnswerComparison(details, review.studentAnswer, review.correctAnswer);
 	const result = document.createElement("p");
 	result.className = "review-result";
 	result.textContent = `${review.correct ? "✓ Correct" : review.studentAnswer === "Not answered" ? "— Unanswered" : "✗ Incorrect"}  ${review.pointsEarned} / ${review.pointsAvailable} points`;
 	details.appendChild(result);
 	card.appendChild(details);
+}
+
+function renderUnscrambleReviewItem(item) {
+	const wrapper = document.createElement("div");
+	wrapper.className = `unscramble-review-item ${item.correct ? "review-correct" : "review-incorrect"}`;
+	const heading = document.createElement("h5");
+	heading.textContent = `${item.number}. ${item.correctAnswer} ${item.correct ? "✓" : "✗"}`;
+	const answer = document.createElement("p");
+	answer.textContent = `Your answer: ${item.studentAnswer}`;
+	wrapper.append(heading, answer);
+	if (!item.correct) {
+		const expected = document.createElement("p");
+		expected.textContent = `Correct answer: ${item.correctAnswer}`;
+		wrapper.appendChild(expected);
+	}
+	return wrapper;
 }
 
 function enterReviewMode(index) {
@@ -408,6 +459,7 @@ function renderReview() {
 			card.appendChild(question);
 		}
 		if (review.type === "matching") review.items.forEach(item => card.appendChild(renderMatchingReviewItem(item)));
+		else if (review.type === "unscramble") review.items.forEach(item => card.appendChild(renderUnscrambleReviewItem(item)));
 		else {
 			appendReviewMedia(card, review);
 			appendAnswerComparison(card, review.studentAnswer, review.correctAnswer);

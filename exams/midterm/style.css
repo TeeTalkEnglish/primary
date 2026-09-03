@@ -200,6 +200,16 @@
     margin-bottom: 25px;
 }
 
+.question-instruction { margin: -12px 0 25px; font-size: 17px; }
+
+.unscramble-image { display: block; width: 150px; height: 110px; margin: 0 auto 14px; object-fit: contain; border-radius: 12px; }
+
+.question-navigator { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+.question-number { min-width: 38px; height: 36px; border: 2px solid #d5d9e2; border-radius: 8px; background: #f4f5f7; font-weight: bold; cursor: pointer; }
+.question-number.current { border-color: #4f63d8; background: #4f63d8; color: #fff; }
+.question-number.correct { background: #dff4e6; border-color: #16803c; color: #126331; }
+.question-number.incorrect { background: #fde3e1; border-color: #b42318; color: #8d1c14; }
+
 
 /* ================================
    QUESTION IMAGE
@@ -406,6 +416,14 @@
     border-radius: 10px;
 }
 
+.review-container { display: grid; gap: 12px; margin: 20px 0 30px; text-align: left; }
+.review-card { padding: 15px; border-left: 5px solid #b42318; background: #f7f8fc; border-radius: 10px; }
+.review-card.review-correct { border-left-color: #16803c; }
+.review-card h4 { margin: 0 0 8px; }
+.review-card p { margin: 7px 0; }
+.review-details { margin-top: 20px; padding: 15px; border-left: 5px solid #b42318; background: #fff8f7; border-radius: 8px; }
+.review-details.review-correct { border-left-color: #16803c; background: #f1fbf4; }
+
 
 /* ================================
    RESULTS BUTTONS
@@ -464,3 +482,13 @@
         font-size: 52px;
     }
 }
+
+.unscramble-exercise { display: grid; gap: 22px; }
+.unscramble-item { padding: 18px; background: #f7f8fc; border-radius: 12px; }
+.unscramble-item h3 { margin: 0 0 12px; }
+.unscramble-letters, .unscramble-answer { display: flex; flex-wrap: wrap; gap: 10px; min-height: 52px; align-items: center; }
+.unscramble-answer-label { margin: 14px 0 8px; font-weight: bold; }
+.unscramble-letter { min-width: 44px; height: 44px; padding: 6px 12px; border: 2px solid #d5d9e2; border-radius: 8px; background: #fff; font-size: 21px; font-weight: bold; cursor: pointer; }
+.unscramble-letter:hover, .unscramble-letter:focus-visible { border-color: #4f63d8; outline: 3px solid rgba(79,99,216,.2); }
+.unscramble-answer { padding: 8px; border: 2px dashed #c5ccd7; border-radius: 8px; background: #fff; }
+.unscramble-answer .unscramble-letter { background: #eef1ff; border-color: #4f63d8; }

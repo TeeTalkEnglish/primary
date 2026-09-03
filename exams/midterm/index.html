@@ -12,19 +12,19 @@
 
     <!-- Shared CSS -->
     <link rel="stylesheet"
-          href="../../../assets/css/variables.css">
+          href="../../assets/css/variables.css">
 
     <link rel="stylesheet"
-          href="../../../assets/css/layout.css">
+          href="../../assets/css/layout.css">
 
     <link rel="stylesheet"
-          href="../../../assets/css/cards.css">
+          href="../../assets/css/cards.css">
 
     <link rel="stylesheet"
-          href="../../../assets/css/buttons.css">
+          href="../../assets/css/buttons.css">
 
     <link rel="stylesheet"
-          href="../../../assets/css/progress.css">
+          href="../../assets/css/progress.css">
 
     <!-- Exam CSS -->
     <link rel="stylesheet"
@@ -284,6 +284,8 @@
 
         </div>
 
+        <nav id="questionNavigator" class="question-navigator" aria-label="Question navigator"></nav>
+
 
         <!-- Question -->
 
@@ -299,6 +301,14 @@
 
         <!-- Navigation -->
 <div class="exam-navigation">
+
+    <button
+        id="backToResultsBtn"
+        class="secondary-btn"
+        style="display:none;"
+    >
+        ← Back to Results
+    </button>
 
     <button
         id="previousBtn"
@@ -395,6 +405,10 @@
 
             </div>
 
+            <h3>Review Your Answers</h3>
+            <nav id="reviewNavigator" class="question-navigator" aria-label="Review question navigator"></nav>
+            <div id="reviewContainer" class="review-container"></div>
+
 
             <!-- Buttons -->
 
@@ -429,7 +443,7 @@
      JavaScript
 ========================== -->
 
-<script src="../../../assets/js/utils.js"></script>
+<script src="../../assets/js/utils.js"></script>
 
 <script src="render.js"></script>
 

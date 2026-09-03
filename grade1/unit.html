@@ -97,6 +97,20 @@
 
         </a>
 
+        <a id="unscrambleCard" class="card activity-card">
+
+            <div class="activity-icon">🔤</div>
+
+            <h3>Unscramble Letters</h3>
+
+            <p>
+                Put letters in the correct order
+            </p>
+
+            <span>Play →</span>
+
+        </a>
+
         <a id="sentenceCard" class="card activity-card">
 
             <div class="activity-icon">📝</div>
@@ -169,6 +183,9 @@ fetch(`../assets/data/grade${grade}/unit${unit}.json`)
 
     document.getElementById("rearrangeCard").href =
     `../games/rearrange/index.html?grade=${grade}&unit=${unit}`;
+
+    document.getElementById("unscrambleCard").href =
+    `../games/rearrange/index.html?grade=${grade}&mode=unscramble`;
 
     document.getElementById("sentenceCard").href =
     `../games/sentence/index.html?grade=${grade}&unit=${unit}`;

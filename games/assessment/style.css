@@ -52,6 +52,16 @@
 .fill-input:focus, .writing-input:focus { outline: none; border-color: #4f63d8; }
 .reading-passage { padding: 20px; margin-bottom: 25px; background: #f7f8fc; border-radius: 14px; line-height: 1.7; }
 .reading-passage h3 { margin-top: 0; }
+.question-instruction { margin: -12px 0 25px; font-size: 17px; }
+.unscramble-exercise { display: grid; gap: 24px; }
+.unscramble-item { padding: 18px; background: #f7f8fc; border-radius: 12px; }
+.unscramble-item h3 { margin: 0 0 12px; }
+.unscramble-letters, .unscramble-answer { display: flex; flex-wrap: wrap; gap: 10px; min-height: 52px; align-items: center; }
+.unscramble-answer-label { margin: 16px 0 8px; font-weight: bold; }
+.unscramble-letter { min-width: 42px; height: 42px; padding: 6px 12px; border: 2px solid #d5d9e2; border-radius: 8px; background: #fff; font-size: 20px; font-weight: bold; cursor: pointer; }
+.unscramble-letter:hover, .unscramble-letter:focus-visible { border-color: #4f63d8; outline: 3px solid rgba(79,99,216,.2); outline-offset: 1px; }
+.unscramble-answer { padding: 8px; border: 2px dashed #c5ccd7; border-radius: 8px; background: #fff; }
+.unscramble-answer .unscramble-letter { background: #eef1ff; border-color: #4f63d8; }
 .exam-navigation { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 25px; }
 .results-card { padding: 40px; }
 .result-icon { font-size: 60px; margin-bottom: 10px; }
@@ -80,6 +90,9 @@
 .review-result { margin: 14px 0 0; font-weight: bold; }
 .matching-review-item { padding: 12px; margin-top: 12px; border-left: 4px solid #b42318; background: #fff; border-radius: 8px; }
 .matching-review-item .review-image { margin: 0 auto 10px; }
+.unscramble-review-item { padding: 8px 12px; margin-top: 10px; border-left: 4px solid #b42318; background: #fff; border-radius: 8px; }
+.unscramble-review-item.review-correct { border-left-color: #16803c; }
+.unscramble-review-item h5, .unscramble-review-item p { margin: 5px 0; }
 .results-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 
 @media (max-width: 600px) {

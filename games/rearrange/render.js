@@ -25,11 +25,13 @@ function render() {
 // --------------------
 
 function renderImage() {
-
-  
-
-  document.getElementById("wordImage").src =
-`../../assets/images/vocabulary/grade${game.grade}/unit${game.unit}/${game.currentWord.image}`;
+        const image = document.getElementById("wordImage");
+        if (game.mode === "unscramble" || !game.currentWord.image) {
+                image.style.display = "none";
+                return;
+        }
+        image.style.display = "block";
+        image.src = `../../assets/images/vocabulary/grade${game.grade}/unit${game.unit}/${game.currentWord.image}`;
 
 }
 
@@ -123,15 +125,14 @@ function updateProgress() {
 
     if (game.words.length === 0) return;
 
-    const percent =
-        Math.round(
-            (game.currentIndex / game.words.length) * 100
-        );
+    const percent = Math.round((game.currentIndex / game.words.length) * 100);
 
     document.getElementById("progressFill").style.width =
         percent + "%";
 
     document.getElementById("progressText").textContent =
         `Homework Progress ${game.currentIndex}/${game.words.length} (${percent}%)`;
+    document.getElementById("exerciseCounter").textContent =
+        `${game.currentIndex + 1} of ${game.words.length}`;
 
 }
