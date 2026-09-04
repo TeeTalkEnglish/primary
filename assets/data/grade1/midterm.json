@@ -3,7 +3,7 @@
   "subtitle": "Global Success — Units 1–5",
   "grade": 1,
   "exam": "midterm-1",
-  "totalPoints": 21,
+  "totalPoints": 15,
 
   "sections": [
     {
@@ -20,11 +20,6 @@
       "id": "look-answer",
       "title": "Exercise 3 — Look and Answer",
       "points": 5
-    },
-    {
-      "id": "unscramble",
-      "title": "Exercise 2 — Unscramble the letters",
-      "points": 6
     }
   ],
 
@@ -183,23 +178,6 @@
       "imageAlt": "book",
       "question": "What is this?",
       "answer": "book"
-    },
-
-    {
-      "id": 21,
-      "section": "unscramble",
-      "exercise": "Exercise 2 — Unscramble the letters",
-      "type": "unscramble",
-      "instruction": "Put the letters in the correct order to make a word.",
-      "points": 6,
-      "items": [
-        { "number": 1, "letters": ["e", "a", "c", "k"], "answer": "cake", "image": "cake.png", "imageUnit": 2 },
-        { "number": 2, "letters": ["o", "n", "e", "k", "m", "y"], "answer": "monkey" },
-        { "number": 3, "letters": ["g", "s", "e", "g"], "answer": "eggs" },
-        { "number": 4, "letters": ["g", "d", "o"], "answer": "dog", "image": "dog.png", "imageUnit": 4 },
-        { "number": 5, "letters": ["s", "o", "p", "t"], "answer": "pots" },
-        { "number": 6, "letters": ["n", "A", "n"], "answer": "Ann" }
-      ]
     }
   ]
 }

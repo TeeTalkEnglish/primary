@@ -151,20 +151,38 @@ function renderUnscrambleQuestion(question, container) {
 	};
 
 	(question.items || []).forEach((item, itemIndex) => {
-		const itemContainer = document.createElement("section");
-		itemContainer.className = "unscramble-item";
-		const itemNumber = document.createElement("h3");
-		itemNumber.textContent = `${item.number ?? itemIndex + 1}.`;
-		const available = document.createElement("div");
-		available.className = "unscramble-letters";
-		const answerLabel = document.createElement("p");
-		answerLabel.className = "unscramble-answer-label";
-		answerLabel.textContent = "Your answer:";
-		const answer = document.createElement("div");
-		answer.className = "unscramble-answer";
-		itemContainer.append(itemNumber, available, answerLabel, answer);
-		unscrambleContainer.appendChild(itemContainer);
-	});
+	const itemContainer = document.createElement("section");
+	itemContainer.className = "unscramble-item";
+
+	const itemNumber = document.createElement("h3");
+	itemNumber.textContent = `${item.number ?? itemIndex + 1}.`;
+
+	if (item.image) {
+		const image = document.createElement("img");
+		image.className = "unscramble-image";
+		image.src = item.imagePath ||
+			`../../assets/images/grade${item.grade || question.grade || grade}/unit${item.imageUnit ?? item.unit ?? question.imageUnit ?? question.unit}/${item.image}`;
+		image.alt = item.imageAlt || item.answer || "Vocabulary picture";
+		image.onerror = () => {
+			console.error("Failed to load unscramble image:", image.src);
+			image.remove();
+		};
+		itemContainer.appendChild(image);
+	}
+
+	const available = document.createElement("div");
+	available.className = "unscramble-letters";
+
+	const answerLabel = document.createElement("p");
+	answerLabel.className = "unscramble-answer-label";
+	answerLabel.textContent = "Your answer:";
+
+	const answer = document.createElement("div");
+	answer.className = "unscramble-answer";
+
+	itemContainer.append(itemNumber, available, answerLabel, answer);
+	unscrambleContainer.appendChild(itemContainer);
+});
 
 	container.appendChild(unscrambleContainer);
 	(question.items || []).forEach((item, itemIndex) => renderItem(itemIndex));

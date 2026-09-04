@@ -1,7 +1,18 @@
 const params = new URLSearchParams(window.location.search);
+
 const grade = params.get("grade") || "1";
-const examType = params.get("type") || "midterm";
-const examPath = `../../assets/data/grade${grade}/${examType}.json`;
+const examType = params.get("type") || "first-term";
+const testNumber = params.get("test") || "1";
+
+let examPath;
+
+if (examType === "first-term") {
+	examPath = `../../assets/data/grade${grade}/first-term/test-${String(testNumber).padStart(2, "0")}.json`;
+} else {
+	examPath = `../../assets/data/grade${grade}/${examType}.json`;
+}
+
+console.log("Loading exam:", examPath);
 
 let examData = {};
 let questions = [];
@@ -23,14 +34,32 @@ const retryBtn = document.getElementById("retryBtn");
 const backToResultsBtn = document.getElementById("backToResultsBtn");
 const loadStatus = document.getElementById("examLoadStatus");
 
+function shuffleQuestions(questionList) {
+	return [...questionList].sort(() => Math.random() - 0.5);
+}
+
 function flattenQuestions(data) {
-	if (Array.isArray(data.questions)) return data.questions;
-	if (!Array.isArray(data.sections)) return [];
-	return data.sections.flatMap(section => (section.questions || []).map(question => ({
-		...question,
-		section: question.section || section.id,
-		passage: question.passage || section.passage
-	})));
+	if (!Array.isArray(data.sections)) {
+		return Array.isArray(data.questions) ? shuffleQuestions(data.questions) : [];
+	}
+
+	const selectedQuestions = [];
+
+	data.sections.forEach(section => {
+		const bank = (section.questions || []).map(question => ({
+			...question,
+			section: question.section || section.id,
+			passage: question.passage || section.passage
+		}));
+
+		const questionCount = Number(section.questionCount || bank.length);
+
+		const selected = shuffleQuestions(bank).slice(0, questionCount);
+
+		selectedQuestions.push(...selected);
+	});
+
+	return selectedQuestions;
 }
 
 function sectionTitle(question) {

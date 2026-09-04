@@ -1,0 +1,46 @@
+{
+  "title": "Grade 1 First-Term Exam",
+  "subtitle": "Units 1–8",
+  "intro": "Complete all four sections: Reading, Listening, Writing, and Speaking.",
+  "grade": 1,
+  "examType": "first-term",
+  "units": [1, 2, 3, 4, 5, 6, 7, 8],
+
+  "sections": [
+    {
+      "id": "reading",
+      "title": "Reading",
+      "questionCount": 5,
+      "questions": [
+        {
+          "type": "choice",
+          "unit": 1,
+          "question": "What is this?",
+          "options": ["A cat", "A dog", "A fish"],
+          "answer": 0
+        }
+      ]
+    },
+
+    {
+      "id": "listening",
+      "title": "Listening",
+      "questionCount": 5,
+      "questions": []
+    },
+
+    {
+      "id": "writing",
+      "title": "Writing",
+      "questionCount": 5,
+      "questions": []
+    },
+
+    {
+      "id": "speaking",
+      "title": "Speaking",
+      "questionCount": 5,
+      "questions": []
+    }
+  ]
+}
