@@ -1,0 +1,9 @@
+{
+  "grade": 3,
+  "periods": [
+    { "id": "first-term", "title": "First Term", "tests": [] },
+    { "id": "midterm", "title": "Midterm", "tests": [] },
+    { "id": "second-term", "title": "Second Term", "tests": [] },
+    { "id": "final", "title": "Final", "tests": [] }
+  ]
+}

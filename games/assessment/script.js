@@ -1,16 +1,10 @@
 const params = new URLSearchParams(window.location.search);
 
 const grade = params.get("grade") || "1";
-const examType = params.get("type") || "first-term";
-const testNumber = params.get("test") || "1";
+const examType = params.get("period") || params.get("type") || "first-term";
+const testId = params.get("test") || "1";
 
-let examPath;
-
-if (examType === "first-term") {
-	examPath = `../../assets/data/grade${grade}/first-term/test-${String(testNumber).padStart(2, "0")}.json`;
-} else {
-	examPath = `../../assets/data/grade${grade}/${examType}.json`;
-}
+let examPath = params.get("data") || "";
 
 console.log("Loading exam:", examPath);
 
@@ -145,6 +139,17 @@ function setupExamInfo() {
 async function loadExam() {
 	loadStatus.textContent = `Loading ${examType} assessment...`;
 	try {
+		if (!examPath) {
+			const catalogResponse = await fetch(`../../assets/data/grade${grade}/assessments.json`);
+			if (catalogResponse.ok) {
+				const catalog = await catalogResponse.json();
+				const period = catalog.periods.find(item => item.id === examType);
+				const test = period?.tests.find(item => item.id === testId || item.id === `test-${String(testId).padStart(2, "0")}`);
+				if (test?.data) examPath = `../../assets/data/grade${grade}/${test.data}`;
+			}
+		}
+		if (!examPath && examType === "first-term") examPath = `../../assets/data/grade${grade}/first-term/test-${String(testId).padStart(2, "0")}.json`;
+		if (!examPath) examPath = `../../assets/data/grade${grade}/${examType}.json`;
 		const response = await fetch(examPath);
 		if (!response.ok) throw new Error(`HTTP ${response.status}`);
 		examData = await response.json();

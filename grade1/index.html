@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body data-grade="1">
 
 <div class="container">
 
@@ -78,106 +78,7 @@ Choose a Unit
 Assessments
 </h2>
 
-<div id="assessmentList" class="cards">
-
-
-<!-- FIRST MIDTERM -->
-
-<a
-    class="unit-card assessment-card"
-    href="../games/assessment/index.html?grade=1&type=first-midterm"
->
-    <div class="unit-number">
-        📝 First Midterm Exam
-    </div>
-
-    <h3>
-        Units 1–4
-    </h3>
-
-    <p>
-        Test what you have learned in Units 1–4
-    </p>
-
-    <span>
-        Start Exam →
-    </span>
-</a>
-
-
-<!-- FIRST-TERM -->
-
-<a
-    class="unit-card assessment-card"
-    href="../games/assessment/index.html?grade=1&type=first-term&test=1"
->
-    <div class="unit-number">
-        📘 First-Term Exam
-    </div>
-
-    <h3>
-        Units 1–12
-    </h3>
-
-    <p>
-        Practice the First-Term Exam
-    </p>
-
-    <span>
-        Start Exam →
-    </span>
-</a>
-
-
-<!-- SECOND MIDTERM -->
-
-<a
-    class="unit-card assessment-card"
-    href="../games/assessment/index.html?grade=1&type=second-midterm"
->
-    <div class="unit-number">
-        📝 Second Midterm Exam
-    </div>
-
-    <h3>
-        Units 13–16
-    </h3>
-
-    <p>
-        Test what you have learned in the second half of the course
-    </p>
-
-    <span>
-        Start Exam →
-    </span>
-</a>
-
-
-<!-- SECOND-TERM -->
-
-<a
-    class="unit-card assessment-card"
-    href="../games/assessment/index.html?grade=1&type=second-term"
->
-    <div class="unit-number">
-        🏆 Second-Term Exam
-    </div>
-
-    <h3>
-        Units 13–20
-    </h3>
-
-    <p>
-        Review what you have learned throughout the second term
-    </p>
-
-    <span>
-        Start Exam →
-    </span>
-</a>
-
-
-</div>
+<div id="assessmentList"></div>
 
 </div>
 
@@ -260,6 +161,7 @@ fetch(`../assets/data/grade${grade}/units.json`)
 });
 
 </script>
+<script src="../assets/js/assessment-catalog.js"></script>
 
 </body>
 </html>

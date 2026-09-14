@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../assets/css/cards.css">
 <link rel="stylesheet" href="../assets/css/progress.css">
 <link rel="stylesheet" href="../assets/css/buttons.css">
+<link rel="stylesheet" href="../assets/css/grade.css">
 
 <title>Grade 5</title>
 
@@ -20,7 +21,7 @@
 
 </head>
 
-<body>
+<body data-grade="5">
 
 <div class="container">
 
@@ -55,6 +56,9 @@ Choose a Unit
 <div id="unitList" class="cards">
 
 </div>
+
+<h2 class="section-title">Assessments</h2>
+<div id="assessmentList"></div>
 
 </div>
 
@@ -112,6 +116,7 @@ container.appendChild(card);
 });
 
 </script>
+<script src="../assets/js/assessment-catalog.js"></script>
 
 </body>
 </html>

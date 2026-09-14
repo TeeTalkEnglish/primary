@@ -400,3 +400,17 @@ body{
 }
 
 }
+
+.assessment-group{
+    margin-bottom:32px;
+}
+
+.assessment-period{
+    margin:0 0 16px;
+    color:#24B7BD;
+}
+
+.assessment-empty{
+    margin:0;
+    color:#667085;
+}
