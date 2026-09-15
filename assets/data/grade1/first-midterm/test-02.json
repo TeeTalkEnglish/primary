@@ -1,0 +1,27 @@
+{
+  "grade": 1,
+  "assessmentType": "first-midterm",
+  "testNumber": 2,
+  "title": "Grade 1 First Midterm — Test 2",
+  "subtitle": "Units 1–4",
+  "intro": "Show what you learned in Units 1–4.",
+  "units": [1, 2, 3, 4],
+  "sections": [
+    { "id": "vocabulary", "title": "Vocabulary", "points": 8 },
+    { "id": "sentences", "title": "Words in sentences", "points": 4 }
+  ],
+  "questions": [
+    { "id": 1, "unit": 1, "section": "vocabulary", "type": "choice", "points": 1, "question": "What is this?", "image": "bike.png", "imageAlt": "bike", "options": ["book", "bike", "ball"], "answer": 1 },
+    { "id": 2, "unit": 1, "section": "vocabulary", "type": "choice", "points": 1, "question": "Choose the correct command for the picture.", "image": "stand-up.png", "imageAlt": "stand up", "options": ["Sit down", "Open your book", "Stand up"], "answer": 2 },
+    { "id": 3, "unit": 1, "section": "sentences", "type": "fill", "points": 1, "question": "What's this?", "image": "book.png", "imageAlt": "book", "answer": "book" },
+    { "id": 4, "unit": 2, "section": "vocabulary", "type": "choice", "points": 1, "question": "What is this?", "image": "cake.png", "imageAlt": "cake", "options": ["cup", "cake", "car"], "answer": 1 },
+    { "id": 5, "unit": 2, "section": "vocabulary", "type": "choice", "points": 1, "question": "What is this?", "image": "cup.png", "imageAlt": "cup", "options": ["cat", "car", "cup"], "answer": 2 },
+    { "id": 6, "unit": 2, "section": "sentences", "type": "fill", "points": 1, "question": "What is this?", "image": "cat.png", "imageAlt": "cat", "answer": "cat" },
+    { "id": 7, "unit": 3, "section": "vocabulary", "type": "choice", "points": 1, "question": "What is this?", "image": "hat.png", "imageAlt": "hat", "options": ["can", "hat", "bag"], "answer": 1 },
+    { "id": 8, "unit": 3, "section": "vocabulary", "type": "choice", "points": 1, "question": "What is this?", "image": "can.png", "imageAlt": "can", "options": ["apple", "hat", "can"], "answer": 2 },
+    { "id": 9, "unit": 3, "section": "sentences", "type": "fill", "points": 1, "question": "What's this?", "image": "apple.png", "imageAlt": "apple", "answer": "apple" },
+    { "id": 10, "unit": 4, "section": "vocabulary", "type": "choice", "points": 1, "question": "What is this?", "image": "duck.png", "imageAlt": "duck", "options": ["dog", "desk", "duck"], "answer": 2 },
+    { "id": 11, "unit": 4, "section": "vocabulary", "type": "choice", "points": 1, "question": "What is this?", "image": "desk.png", "imageAlt": "desk", "options": ["door", "desk", "dog"], "answer": 1 },
+    { "id": 12, "unit": 4, "section": "sentences", "type": "fill", "points": 1, "question": "What is this?", "image": "dog.png", "imageAlt": "dog", "answer": "dog" }
+  ]
+}

@@ -14,6 +14,30 @@
       ]
     },
     {
+      "id": "first-midterm",
+      "title": "First Midterm",
+      "tests": [
+        {
+          "id": "test-01",
+          "title": "First Midterm — Test 1",
+          "description": "Units 1–4: vocabulary and sentence patterns",
+          "data": "first-midterm/test-01.json"
+        },
+        {
+          "id": "test-02",
+          "title": "First Midterm — Test 2",
+          "description": "Units 1–4: vocabulary and sentence patterns",
+          "data": "first-midterm/test-02.json"
+        },
+        {
+          "id": "test-03",
+          "title": "First Midterm — Test 3",
+          "description": "Units 1–4: vocabulary and sentence patterns",
+          "data": "first-midterm/test-03.json"
+        }
+      ]
+    },
+    {
       "id": "midterm",
       "title": "Midterm",
       "tests": [

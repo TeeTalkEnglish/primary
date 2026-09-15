@@ -5,14 +5,9 @@
     {
       "id": "midterm",
       "title": "Midterm",
-      "tests": [
-        {
-          "id": "main",
-          "title": "Midterm Exam",
-          "description": "Test what you have learned in Oxford Discover Futures",
-          "data": "midterm.json"
-        }
-      ]
+      "description": "Random exam generated from Units 1-4",
+      "data": "midterm.json",
+      "tests": []
     },
     { "id": "second-term", "title": "Second Term", "tests": [] },
     { "id": "final", "title": "Final", "tests": [] }

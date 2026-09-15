@@ -1,0 +1,27 @@
+{
+  "grade": 1,
+  "assessmentType": "first-midterm",
+  "testNumber": 1,
+  "title": "Grade 1 First Midterm — Test 1",
+  "subtitle": "Units 1–4",
+  "intro": "Show what you learned in Units 1–4.",
+  "units": [1, 2, 3, 4],
+  "sections": [
+    { "id": "vocabulary", "title": "Vocabulary", "points": 8 },
+    { "id": "sentences", "title": "Words in sentences", "points": 4 }
+  ],
+  "questions": [
+    { "id": 1, "unit": 1, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which word matches the picture?", "image": "book.png", "imageAlt": "book", "options": ["ball", "book", "bike"], "answer": 1 },
+    { "id": 2, "unit": 1, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which command matches the picture?", "image": "sit-down.png", "imageAlt": "sit down", "options": ["Stand up", "Line up", "Sit down"], "answer": 2 },
+    { "id": 3, "unit": 1, "section": "sentences", "type": "fill", "points": 1, "question": "What is this?", "image": "ball.png", "imageAlt": "ball", "answer": "ball" },
+    { "id": 4, "unit": 2, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which word matches the picture?", "image": "cat.png", "imageAlt": "cat", "options": ["car", "cup", "cat"], "answer": 2 },
+    { "id": 5, "unit": 2, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which word matches the picture?", "image": "car.png", "imageAlt": "car", "options": ["cake", "car", "cat"], "answer": 1 },
+    { "id": 6, "unit": 2, "section": "sentences", "type": "fill", "points": 1, "question": "What's this?", "image": "cup.png", "imageAlt": "cup", "answer": "cup" },
+    { "id": 7, "unit": 3, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which word matches the picture?", "image": "apple.png", "imageAlt": "apple", "options": ["bag", "can", "apple"], "answer": 2 },
+    { "id": 8, "unit": 3, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which word matches the picture?", "image": "bag.png", "imageAlt": "bag", "options": ["hat", "bag", "apple"], "answer": 1 },
+    { "id": 9, "unit": 3, "section": "sentences", "type": "fill", "points": 1, "question": "What is this?", "image": "can.png", "imageAlt": "can", "answer": "can" },
+    { "id": 10, "unit": 4, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which word matches the picture?", "image": "dog.png", "imageAlt": "dog", "options": ["duck", "door", "dog"], "answer": 2 },
+    { "id": 11, "unit": 4, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Which word matches the picture?", "image": "door.png", "imageAlt": "door", "options": ["desk", "door", "duck"], "answer": 1 },
+    { "id": 12, "unit": 4, "section": "sentences", "type": "fill", "points": 1, "question": "What's this?", "image": "duck.png", "imageAlt": "duck", "answer": "duck" }
+  ]
+}

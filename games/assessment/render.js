@@ -2,6 +2,9 @@ function getQuestionImagePath(question) {
 	if (question.imagePath) return question.imagePath;
 	const imageUnit = question.imageUnit ?? question.unit;
 	if (imageUnit !== undefined && imageUnit !== null) {
+		if (question.imageSource === "vocabulary") {
+			return `../../assets/images/vocabulary/grade${question.grade || grade}/unit${imageUnit}/${question.image}`;
+		}
 		return `../../assets/images/grade${question.grade || grade}/unit${imageUnit}/${question.image}`;
 	}
 	return `../../assets/images/${examType}/${question.image}`;

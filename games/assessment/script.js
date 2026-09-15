@@ -5,10 +5,13 @@ const examType = params.get("period") || params.get("type") || "first-term";
 const testId = params.get("test") || "1";
 
 let examPath = params.get("data") || "";
+const attemptKey = `primary-assessment-attempt:v2:grade${grade}:${examType}:${testId}:${examPath || "catalog"}`;
 
 console.log("Loading exam:", examPath);
 
 let examData = {};
+let assessmentConfig = null;
+let bankStats = {};
 let questions = [];
 let currentIndex = 0;
 let answers = [];
@@ -28,13 +31,67 @@ const retryBtn = document.getElementById("retryBtn");
 const backToResultsBtn = document.getElementById("backToResultsBtn");
 const loadStatus = document.getElementById("examLoadStatus");
 
-function shuffleQuestions(questionList) {
-	return [...questionList].sort(() => Math.random() - 0.5);
+function clone(value) {
+	return JSON.parse(JSON.stringify(value));
+}
+
+function shuffleArray(items) {
+	const shuffled = [...items];
+	for (let index = shuffled.length - 1; index > 0; index -= 1) {
+		const swapIndex = Math.floor(Math.random() * (index + 1));
+		[shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+	}
+	return shuffled;
+}
+
+function questionIdentity(question) {
+	return String(question.id ?? `${question.unit || "assessment"}:${question.section || ""}:${question.question || question.text || ""}`);
+}
+
+function shouldShuffleOptions(question) {
+	return question.shuffleOptions !== false &&
+		["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type) &&
+		Array.isArray(question.options) &&
+		Number.isInteger(Number(question.answer));
+}
+
+function shuffleAnswerChoices(question) {
+	if (!shouldShuffleOptions(question)) return clone(question);
+	const originalAnswer = Number(question.answer);
+	const options = question.options.map((option, index) => ({
+		option,
+		correct: index === originalAnswer
+	}));
+	const shuffledOptions = shuffleArray(options);
+	return {
+		...clone(question),
+		options: shuffledOptions.map(item => item.option),
+		answer: shuffledOptions.findIndex(item => item.correct)
+	};
+}
+
+function selectUniqueQuestions(bank, count, label) {
+	if (bank.length < count) {
+		throw new Error(`${label} needs ${count} questions, but only ${bank.length} are available.`);
+	}
+	const seen = new Set();
+	const unique = [];
+	shuffleArray(bank).forEach(question => {
+		const id = questionIdentity(question);
+		if (seen.has(id)) return;
+		seen.add(id);
+		unique.push(question);
+	});
+	if (unique.length < count) {
+		throw new Error(`${label} needs ${count} unique questions, but only ${unique.length} unique questions are available.`);
+	}
+	return unique.slice(0, count).map(shuffleAnswerChoices);
 }
 
 function flattenQuestions(data) {
+	if (Array.isArray(data.questions)) return data.questions;
 	if (!Array.isArray(data.sections)) {
-		return Array.isArray(data.questions) ? shuffleQuestions(data.questions) : [];
+		return [];
 	}
 
 	const selectedQuestions = [];
@@ -48,12 +105,248 @@ function flattenQuestions(data) {
 
 		const questionCount = Number(section.questionCount || bank.length);
 
-		const selected = shuffleQuestions(bank).slice(0, questionCount);
+		const selected = selectUniqueQuestions(bank, questionCount, section.title || section.id || "Assessment section");
 
 		selectedQuestions.push(...selected);
 	});
 
 	return selectedQuestions;
+}
+
+function slugify(value) {
+	return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function maskWord(word) {
+	const characters = String(word).split("");
+	let revealed = 0;
+	return characters.map((character, index) => {
+		if (!/[a-z]/i.test(character)) return character;
+		if (index === 0 || index === characters.length - 1 || revealed >= 2) return character;
+		revealed += 1;
+		return "_";
+	}).join("");
+}
+
+function findSentenceUsing(unit, word) {
+	const normalized = String(word).toLowerCase();
+	return (unit.sentences || []).find(sentence => String(sentence.text || "").toLowerCase().includes(normalized));
+}
+
+function choiceOptions(correct, pool, size = 4) {
+	const normalizedCorrect = String(correct).toLowerCase();
+	const distractors = shuffleArray(pool.filter(item => String(item).toLowerCase() !== normalizedCorrect));
+	return [correct, ...distractors.slice(0, size - 1)];
+}
+
+function vocabularyImagePath(unit, item) {
+	return `../../assets/images/vocabulary/grade${grade}/unit${unit.id}/${item.image || `${slugify(item.word)}.png`}`;
+}
+
+function buildUnitQuestionBank(unit, config = {}) {
+	const vocabulary = unit.vocabulary || [];
+	const words = vocabulary.map(item => item.word).filter(Boolean);
+	const meanings = vocabulary.map(item => item.meaning).filter(Boolean);
+	const imageUnits = config.imageUnits || [];
+	const imageExclusions = new Set(config.imageExclusions || []);
+	const allowImages = imageUnits.includes(unit.id);
+	const bank = [];
+
+	vocabulary.forEach((item, index) => {
+		const baseId = `g${grade}-u${unit.id}-v${item.id || index + 1}`;
+		const word = item.word;
+		if (!word) return;
+		const sentence = findSentenceUsing(unit, word);
+
+		if (item.meaning && words.length >= 3) {
+			bank.push({
+				id: `${baseId}-meaning-word`,
+				grade: Number(grade),
+				unit: unit.id,
+				section: `unit-${unit.id}`,
+				type: "choice",
+				points: 1,
+				question: `Which word matches this meaning: ${item.meaning}?`,
+				options: choiceOptions(word, words),
+				answer: 0
+			});
+		}
+
+		if (item.meaning && meanings.length >= 3) {
+			bank.push({
+				id: `${baseId}-word-meaning`,
+				grade: Number(grade),
+				unit: unit.id,
+				section: `unit-${unit.id}`,
+				type: "choice",
+				points: 1,
+				question: `What does "${word}" mean?`,
+				options: choiceOptions(item.meaning, meanings),
+				answer: 0
+			});
+		}
+
+		bank.push({
+			id: `${baseId}-spelling`,
+			grade: Number(grade),
+			unit: unit.id,
+			section: `unit-${unit.id}`,
+			type: "fill",
+			points: 1,
+			question: `Complete the vocabulary word: ${maskWord(word)}`,
+			answer: word
+		});
+
+		if (sentence && words.length >= 3) {
+			bank.push({
+				id: `${baseId}-sentence-choice`,
+				grade: Number(grade),
+				unit: unit.id,
+				section: `unit-${unit.id}`,
+				type: "choice",
+				points: 1,
+				question: `Choose the word that completes the sentence: ${sentence.text.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "______")}`,
+				options: choiceOptions(word, words),
+				answer: 0
+			});
+			bank.push({
+				id: `${baseId}-sentence-fill`,
+				grade: Number(grade),
+				unit: unit.id,
+				section: `unit-${unit.id}`,
+				type: "fill",
+				points: 1,
+				question: `Complete the sentence: ${sentence.text.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "______")}`,
+				answer: word
+			});
+		}
+
+		if (allowImages && item.image && !imageExclusions.has(`${unit.id}/${item.image}`) && words.length >= 3) {
+			bank.push({
+				id: `${baseId}-picture`,
+				grade: Number(grade),
+				unit: unit.id,
+				section: `unit-${unit.id}`,
+				type: "choice",
+				points: 1,
+				question: "Choose the correct word.",
+				image: item.image,
+				imagePath: vocabularyImagePath(unit, item),
+				imageSource: "vocabulary",
+				imageAlt: word,
+				options: choiceOptions(word, words),
+				answer: 0
+			});
+		}
+	});
+
+	(unit.sentences || []).forEach((sentence, index) => {
+		if (!sentence.text) return;
+		const wordsInSentence = words.filter(word => sentence.text.toLowerCase().includes(String(word).toLowerCase()));
+		if (!wordsInSentence.length || words.length < 3) return;
+		const answer = wordsInSentence[0];
+		bank.push({
+			id: `g${grade}-u${unit.id}-s${sentence.id || index + 1}-keyword`,
+			grade: Number(grade),
+			unit: unit.id,
+			section: `unit-${unit.id}`,
+			type: "choice",
+			points: 1,
+			question: `Which Unit ${unit.id} word appears in this sentence? "${sentence.text}"`,
+			options: choiceOptions(answer, words),
+			answer: 0
+		});
+	});
+
+	return bank;
+}
+
+async function loadUnit(unitId) {
+	const response = await fetch(`../../assets/data/grade${grade}/unit${unitId}.json`);
+	if (!response.ok) throw new Error(`Unable to load Unit ${unitId} question bank (HTTP ${response.status}).`);
+	return response.json();
+}
+
+async function generateQuestionsFromConfig(data) {
+	const selection = data.selection || {};
+	const unitSelections = selection.units || (data.units || []).map(unit => ({
+		unit,
+		count: selection.questionsPerUnit || data.questionsPerUnit || 10
+	}));
+	if (!unitSelections.length) return flattenQuestions(data);
+
+	const loadedUnits = await Promise.all(unitSelections.map(item => loadUnit(item.unit)));
+	const questionsByUnit = new Map();
+	bankStats = {};
+
+	loadedUnits.forEach(unit => {
+		const bank = buildUnitQuestionBank(unit, data.questionBank || {});
+		questionsByUnit.set(unit.id, bank);
+		bankStats[unit.id] = bank.length;
+	});
+
+	const selected = [];
+	unitSelections.forEach(item => {
+		const unitBank = questionsByUnit.get(item.unit) || [];
+		selected.push(...selectUniqueQuestions(unitBank, Number(item.count), `Unit ${item.unit}`));
+	});
+
+	const shuffled = shuffleArray(selected);
+	const expectedTotal = unitSelections.reduce((total, item) => total + Number(item.count), 0);
+	if (shuffled.length !== expectedTotal) {
+		throw new Error(`Generated ${shuffled.length} questions, expected ${expectedTotal}.`);
+	}
+	return shuffled;
+}
+
+function isGeneratedAssessment(data) {
+	return Boolean(data.selection?.units || data.questionBank?.source);
+}
+
+function loadSavedAttempt() {
+	try {
+		const saved = JSON.parse(localStorage.getItem(attemptKey) || "null");
+		if (!saved || saved.status !== "active" || !Array.isArray(saved.questions)) return null;
+		if (saved.examPath !== examPath) return null;
+		return saved;
+	} catch (error) {
+		console.warn("Unable to read saved attempt:", error);
+		return null;
+	}
+}
+
+function saveAttemptState(started = !startScreen.hidden) {
+	if (!questions.length) return;
+	try {
+		localStorage.setItem(attemptKey, JSON.stringify({
+			status: "active",
+			examPath,
+			started,
+			currentIndex,
+			questions,
+			answers,
+			savedAt: new Date().toISOString()
+		}));
+	} catch (error) {
+		console.warn("Unable to save assessment attempt:", error);
+	}
+}
+
+function clearSavedAttempt() {
+	localStorage.removeItem(attemptKey);
+}
+
+async function createNewQuestionSet() {
+	questions = isGeneratedAssessment(examData)
+		? await generateQuestionsFromConfig(examData)
+		: flattenQuestions(examData).map(shuffleAnswerChoices);
+	if (!questions.length) throw new Error("The exam file contains no questions.");
+	answers = [];
+	currentIndex = 0;
+	reviewData = [];
+	reviewFilter = "all";
+	reviewMode = false;
+	saveAttemptState(false);
 }
 
 function sectionTitle(question) {
@@ -126,7 +419,10 @@ function setupExamInfo() {
 	const totalPoints = questions.reduce((total, question) => total + Number(question.points || 1), 0);
 	document.getElementById("totalPoints").textContent = `${totalPoints} points`;
 	document.querySelector(".score-total").textContent = `/ ${totalPoints}`;
-	document.getElementById("examInfo").innerHTML = (examData.sections || []).map(section => `
+	const unitConfig = examData.selection?.units || [];
+	document.getElementById("examInfo").innerHTML = unitConfig.length ? unitConfig.map(item => `
+		<div class="info-item"><strong>Unit ${item.unit}</strong><small>${item.count} of ${bankStats[item.unit] || 0} bank questions</small></div>
+	`).join("") : (examData.sections || []).map(section => `
 		<div class="info-item"><strong>${section.title || section.id}</strong><small>${section.points || 0} points</small></div>
 	`).join("");
 	const gradeLink = `../../grade${grade}/index.html`;
@@ -144,8 +440,9 @@ async function loadExam() {
 			if (catalogResponse.ok) {
 				const catalog = await catalogResponse.json();
 				const period = catalog.periods.find(item => item.id === examType);
-				const test = period?.tests.find(item => item.id === testId || item.id === `test-${String(testId).padStart(2, "0")}`);
+				const test = period?.tests?.find(item => item.id === testId || item.id === `test-${String(testId).padStart(2, "0")}`);
 				if (test?.data) examPath = `../../assets/data/grade${grade}/${test.data}`;
+				else if (period?.data) examPath = `../../assets/data/grade${grade}/${period.data}`;
 			}
 		}
 		if (!examPath && examType === "first-term") examPath = `../../assets/data/grade${grade}/first-term/test-${String(testId).padStart(2, "0")}.json`;
@@ -153,11 +450,28 @@ async function loadExam() {
 		const response = await fetch(examPath);
 		if (!response.ok) throw new Error(`HTTP ${response.status}`);
 		examData = await response.json();
-		questions = flattenQuestions(examData);
-		if (!questions.length) throw new Error("The exam file contains no questions.");
+		assessmentConfig = examData;
+		const savedAttempt = loadSavedAttempt();
+		if (savedAttempt) {
+			questions = savedAttempt.questions;
+			answers = savedAttempt.answers || [];
+			currentIndex = savedAttempt.currentIndex || 0;
+			if (isGeneratedAssessment(examData)) {
+				await generateQuestionsFromConfig(examData);
+				questions = savedAttempt.questions;
+			}
+		} else {
+			await createNewQuestionSet();
+		}
 		setupExamInfo();
 		startBtn.disabled = false;
-		loadStatus.textContent = `${questions.length} questions ready.`;
+		loadStatus.textContent = savedAttempt ? `${questions.length} questions restored from this attempt.` : `${questions.length} randomized questions ready.`;
+		if (savedAttempt?.started) {
+			startScreen.hidden = true;
+			resultsScreen.hidden = true;
+			examScreen.hidden = false;
+			showQuestion();
+		}
 	} catch (error) {
 		loadStatus.textContent = `Unable to load ${examPath}: ${error.message}`;
 		loadStatus.className = "exam-load-status exam-load-error";
@@ -166,7 +480,7 @@ async function loadExam() {
 
 function startExam() {
 	currentIndex = 0;
-	answers = [];
+	answers = answers || [];
 	score = 0;
 	reviewData = [];
 	reviewFilter = "all";
@@ -174,6 +488,7 @@ function startExam() {
 	startScreen.hidden = true;
 	resultsScreen.hidden = true;
 	examScreen.hidden = false;
+	saveAttemptState(true);
 	showQuestion();
 }
 
@@ -236,12 +551,14 @@ function getCurrentAnswer(question) {
 function saveCurrentAnswer() {
 	if (reviewMode) return;
 	answers[currentIndex] = getCurrentAnswer(questions[currentIndex]);
+	saveAttemptState(true);
 }
 
 function goToQuestion(index) {
 	if (index < 0 || index >= questions.length) return;
 	if (!reviewMode) saveCurrentAnswer();
 	currentIndex = index;
+	saveAttemptState(true);
 	showQuestion();
 }
 
@@ -368,6 +685,7 @@ function updateProgress() {
 function finishExam() {
 	reviewMode = false;
 	calculateScore();
+	clearSavedAttempt();
 	examScreen.hidden = true;
 	resultsScreen.hidden = false;
 	const totalPoints = reviewData.reduce((total, review) => total + review.pointsAvailable, 0);
@@ -535,7 +853,7 @@ backToResultsBtn.addEventListener("click", () => {
 	resultsScreen.hidden = false;
 	updateQuestionNavigator();
 });
-retryBtn.addEventListener("click", () => {
+retryBtn.addEventListener("click", async () => {
 	answers = [];
 	score = 0;
 	reviewData = [];
@@ -543,6 +861,20 @@ retryBtn.addEventListener("click", () => {
 	currentIndex = 0;
 	resetReviewFilter();
 	document.getElementById("reviewContainer").innerHTML = "";
+	clearSavedAttempt();
+	startBtn.disabled = true;
+	loadStatus.textContent = "Generating a new exam attempt...";
+	try {
+		await createNewQuestionSet();
+		setupExamInfo();
+		loadStatus.textContent = `${questions.length} new randomized questions ready.`;
+	} catch (error) {
+		loadStatus.textContent = `Unable to generate a new attempt: ${error.message}`;
+		loadStatus.className = "exam-load-status exam-load-error";
+		return;
+	} finally {
+		startBtn.disabled = false;
+	}
 	startScreen.hidden = false;
 	resultsScreen.hidden = true;
 });

@@ -21,19 +21,28 @@
 
                 const tests = document.createElement("div");
                 tests.className = "cards assessment-tests";
-                period.tests.forEach(test => {
+                const periodAssessments = period.data ? [{
+                    id: period.id,
+                    title: period.title,
+                    description: period.description,
+                    data: period.data,
+                    direct: true
+                }] : (period.tests || []);
+
+                periodAssessments.forEach(test => {
                     const card = document.createElement("a");
+                    const directData = test.direct ? `&data=${encodeURIComponent(`../../assets/data/grade${grade}/${test.data}`)}` : "";
                     card.className = "unit-card assessment-card";
-                    card.href = `../games/assessment/index.html?grade=${grade}&period=${encodeURIComponent(period.id)}&test=${encodeURIComponent(test.id)}`;
+                    card.href = `../games/assessment/index.html?grade=${grade}&period=${encodeURIComponent(period.id)}&test=${encodeURIComponent(test.id)}${directData}`;
                     card.innerHTML = `
-                        <div class="unit-number">📝 ${test.title}</div>
+                        <div class="unit-number">Assessment - ${test.title}</div>
                         <p>${test.description || "Assessment"}</p>
-                        <span>Start Assessment →</span>
+                        <span>Start Assessment</span>
                     `;
                     tests.appendChild(card);
                 });
 
-                if (!period.tests.length) {
+                if (!periodAssessments.length) {
                     const empty = document.createElement("p");
                     empty.className = "assessment-empty";
                     empty.textContent = "No assessment published yet.";

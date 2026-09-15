@@ -1,0 +1,27 @@
+{
+  "grade": 1,
+  "assessmentType": "first-midterm",
+  "testNumber": 3,
+  "title": "Grade 1 First Midterm — Test 3",
+  "subtitle": "Units 1–4",
+  "intro": "Show what you learned in Units 1–4.",
+  "units": [1, 2, 3, 4],
+  "sections": [
+    { "id": "vocabulary", "title": "Vocabulary", "points": 8 },
+    { "id": "sentences", "title": "Words in sentences", "points": 4 }
+  ],
+  "questions": [
+    { "id": 1, "unit": 1, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the word for the picture.", "image": "ball.png", "imageAlt": "ball", "options": ["bike", "ball", "book"], "answer": 1 },
+    { "id": 2, "unit": 1, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the command for the picture.", "image": "open-your-book.png", "imageAlt": "open your book", "options": ["Close your book", "Open your book", "Line up"], "answer": 1 },
+    { "id": 3, "unit": 1, "section": "sentences", "type": "fill", "points": 1, "question": "What is this?", "image": "bike.png", "imageAlt": "bike", "answer": "bike" },
+    { "id": 4, "unit": 2, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the word for the picture.", "image": "car.png", "imageAlt": "car", "options": ["cat", "cake", "car"], "answer": 2 },
+    { "id": 5, "unit": 2, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the word for the picture.", "image": "cake.png", "imageAlt": "cake", "options": ["car", "cup", "cake"], "answer": 2 },
+    { "id": 6, "unit": 2, "section": "sentences", "type": "fill", "points": 1, "question": "What's this?", "image": "car.png", "imageAlt": "car", "answer": "car" },
+    { "id": 7, "unit": 3, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the word for the picture.", "image": "bag.png", "imageAlt": "bag", "options": ["bag", "apple", "can"], "answer": 0 },
+    { "id": 8, "unit": 3, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the word for the picture.", "image": "hat.png", "imageAlt": "hat", "options": ["apple", "can", "hat"], "answer": 2 },
+    { "id": 9, "unit": 3, "section": "sentences", "type": "fill", "points": 1, "question": "What is this?", "image": "bag.png", "imageAlt": "bag", "answer": "bag" },
+    { "id": 10, "unit": 4, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the word for the picture.", "image": "door.png", "imageAlt": "door", "options": ["duck", "door", "desk"], "answer": 1 },
+    { "id": 11, "unit": 4, "section": "vocabulary", "type": "picture-choice", "points": 1, "question": "Choose the word for the picture.", "image": "desk.png", "imageAlt": "desk", "options": ["dog", "duck", "desk"], "answer": 2 },
+    { "id": 12, "unit": 4, "section": "sentences", "type": "fill", "points": 1, "question": "What's this?", "image": "door.png", "imageAlt": "door", "answer": "door" }
+  ]
+}
