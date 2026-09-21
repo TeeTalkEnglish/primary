@@ -21,13 +21,16 @@
 
                 const tests = document.createElement("div");
                 tests.className = "cards assessment-tests";
-                const periodAssessments = period.data ? [{
-                    id: period.id,
-                    title: period.title,
-                    description: period.description,
-                    data: period.data,
-                    direct: true
-                }] : (period.tests || []);
+                const periodAssessments = [
+                    ...(period.data ? [{
+                        id: period.id,
+                        title: period.title,
+                        description: period.description,
+                        data: period.data,
+                        direct: true
+                    }] : []),
+                    ...((period.tests || []).map(test => ({ ...test, direct: false })))
+                ];
 
                 periodAssessments.forEach(test => {
                     const card = document.createElement("a");

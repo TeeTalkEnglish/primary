@@ -7,7 +7,14 @@
       "title": "Midterm",
       "description": "Random exam generated from Units 1-4",
       "data": "midterm.json",
-      "tests": []
+      "tests": [
+        {
+          "id": "semester-1-test-01",
+          "title": "Semester 1 Midterm Test 1",
+          "description": "Grade 5 Global Success — Semester 1 Midterm",
+          "data": "midterm/test-01.json"
+        }
+      ]
     },
     { "id": "second-term", "title": "Second Term", "tests": [] },
     { "id": "final", "title": "Final", "tests": [] }

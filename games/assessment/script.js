@@ -528,6 +528,10 @@ function restoreAnswer(question) {
 		window.unscrambleController?.setAnswer(answer);
 		return;
 	}
+	if (window.questionControllers && window.questionControllers[question.type]) {
+		window.questionControllers[question.type].setAnswer(answer);
+		return;
+	}
 	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type) && typeof answer !== "string") {
 		return;
 	}
@@ -542,6 +546,9 @@ function restoreAnswer(question) {
 function getCurrentAnswer(question) {
 	if (question.type === "matching") return window.matchingController?.getAnswer() || [];
 	if (question.type === "unscramble") return window.unscrambleController?.getAnswer() || [];
+	if (window.questionControllers && window.questionControllers[question.type]) {
+		return window.questionControllers[question.type].getAnswer();
+	}
 	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type)) {
 		return document.querySelector(".option.selected")?.dataset.answerValue ?? null;
 	}
@@ -572,7 +579,29 @@ function isCorrect(question, answer) {
 		return Array.isArray(answer) && Array.isArray(question.items) && answer.length === question.items.length &&
 			question.items.every((item, index) => normalize(answer[index]) === normalize(item.answer));
 	}
-	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type)) {
+	if (question.type === "listen-number") {
+		const expected = Array.isArray(question.answer) ? question.answer : (question.items || []).map(item => item.correctNumber ?? item.answer ?? item.number ?? null);
+		const student = Array.isArray(answer) ? answer : [];
+		return expected.length === student.length && expected.every((value, index) => Number(student[index]) === Number(value));
+	}
+	if (question.type === "stress-choice") {
+		return Number(answer) === Number(question.answer);
+	}
+	if (question.type === "fill-word-bank") {
+		const expected = Array.isArray(question.answers) ? question.answers : [];
+		const student = Array.isArray(answer) ? answer : [];
+		return expected.length === student.length && expected.every((value, index) => normalize(student[index] || "") === normalize(value));
+	}
+	if (question.type === "look-complete") {
+		const accepted = Array.isArray(question.answers) ? question.answers : [question.answer];
+		return accepted.some(item => normalize(answer) === normalize(item));
+	}
+	if (question.type === "reorder") {
+		const expected = Array.isArray(question.answer) ? question.answer : [];
+		const student = Array.isArray(answer) ? answer : [];
+		return expected.length === student.length && expected.every((value, index) => normalize(student[index]) === normalize(value));
+	}
+	if (["choice", "listen-choice", "picture-choice", "reading"].includes(question.type)) {
 		return Number(answer) === Number(question.answer);
 	}
 	if (Array.isArray(question.answer)) return question.answer.some(item => normalize(item) === normalize(answer));
@@ -585,8 +614,17 @@ function pointsForQuestion(question) {
 
 function answerText(question, answer) {
 	if (answer === null || answer === undefined || answer === "") return "Not answered";
-	if (["choice", "listen-choice", "listen-number", "picture-choice", "reading"].includes(question.type)) {
+	if (["choice", "listen-choice", "stress-choice", "picture-choice", "reading"].includes(question.type)) {
 		return question.options?.[Number(answer)] ?? String(answer);
+	}
+	if (question.type === "listen-number") {
+		return Array.isArray(answer) ? answer.map(value => value ?? "").filter(Boolean).join(", ") || "Not answered" : String(answer);
+	}
+	if (question.type === "fill-word-bank") {
+		return Array.isArray(answer) ? answer.filter(Boolean).join(", ") || "Not answered" : String(answer);
+	}
+	if (question.type === "reorder") {
+		return Array.isArray(answer) ? answer.join(" ") || "Not answered" : String(answer);
 	}
 	if (Array.isArray(answer)) return answer.length ? answer.join(", ") : "Not answered";
 	return String(answer);

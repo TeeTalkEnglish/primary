@@ -24,8 +24,24 @@ function getExamAudioPath(question) {
 	return `../../assets/audio/${examType}/grade${question.grade || grade}/${question.audio}`;
 }
 
+function isPlaceholderReference(value) {
+	if (typeof value !== "string") return false;
+	return value.startsWith("PLACEHOLDER_") || /placeholder|missing/i.test(value);
+}
+
+function renderMediaPlaceholder(label, type = "image") {
+	const placeholder = document.createElement("div");
+	placeholder.className = "media-placeholder";
+	placeholder.textContent = type === "audio" ? `🎧 ${label}` : `🖼 ${label}`;
+	return placeholder;
+}
+
 function addImage(question, container) {
 	if (!question.image) return;
+	if (isPlaceholderReference(question.image)) {
+		container.appendChild(renderMediaPlaceholder(question.imageAlt || "Image placeholder", "image"));
+		return;
+	}
 	const image = document.createElement("img");
 	image.className = "question-image";
 	image.src = getQuestionImagePath(question);
@@ -42,6 +58,43 @@ function addImage(question, container) {
 
 function addAudio(question, container) {
 	if (!question.audio) return;
+	if (Array.isArray(question.audio)) {
+		question.audio.forEach((audioValue, index) => {
+			const wrapper = document.createElement("div");
+			wrapper.className = "listening-player";
+			const label = document.createElement("p");
+			label.className = "audio-label";
+			label.textContent = `Listen carefully ${index + 1}`;
+			if (isPlaceholderReference(audioValue)) {
+				wrapper.appendChild(label);
+				wrapper.appendChild(renderMediaPlaceholder(`Audio ${index + 1} placeholder`, "audio"));
+				container.appendChild(wrapper);
+				return;
+			}
+			const audio = document.createElement("audio");
+			audio.controls = true;
+			audio.preload = "metadata";
+			audio.src = question.unit ? getVocabularyAudioPath({ ...question, audio: audioValue }) : getExamAudioPath({ ...question, audio: audioValue });
+			audio.onerror = () => {
+				if (!question.unit && !question.audioPath) {
+					audio.src = `../../assets/audio/grade${question.grade || grade}/${examType}/${audioValue}`;
+				}
+			};
+			wrapper.append(label, audio);
+			container.appendChild(wrapper);
+		});
+		return;
+	}
+	if (isPlaceholderReference(question.audio)) {
+		const wrapper = document.createElement("div");
+		wrapper.className = "listening-player";
+		const label = document.createElement("p");
+		label.className = "audio-label";
+		label.textContent = "Listen carefully";
+		wrapper.append(label, renderMediaPlaceholder("Audio placeholder", "audio"));
+		container.appendChild(wrapper);
+		return;
+	}
 	const wrapper = document.createElement("div");
 	wrapper.className = "listening-player";
 	const label = document.createElement("p");
@@ -97,13 +150,243 @@ function renderTextInput(question, container, multiline = false) {
 	container.appendChild(input);
 }
 
-function renderListenNumber(question, container) { addAudio(question, container); renderOptions(question, container); }
+function renderStressChoice(question, container) {
+	const options = document.createElement("div");
+	options.className = "options";
+	(question.options || []).forEach((option, index) => {
+		const button = document.createElement("button");
+		button.type = "button";
+		button.className = "option stress-option";
+		button.dataset.answerValue = index;
+		button.textContent = typeof option === "string" ? option : option.label || "";
+		button.addEventListener("click", () => {
+			options.querySelectorAll(".option").forEach(item => item.classList.remove("selected"));
+			button.classList.add("selected");
+		});
+		options.appendChild(button);
+	});
+	container.appendChild(options);
+	window.questionControllers = window.questionControllers || {};
+	window.questionControllers[question.type] = {
+		getAnswer: () => document.querySelector(".stress-option.selected")?.dataset.answerValue ?? null,
+		setAnswer: answer => {
+			const selected = document.querySelector(`.stress-option[data-answer-value="${answer}"]`);
+			options.querySelectorAll(".option").forEach(item => item.classList.remove("selected"));
+			selected?.classList.add("selected");
+		}
+	};
+}
+
+function renderListenNumber(question, container) {
+	addAudio(question, container);
+	const list = document.createElement("div");
+	list.className = "listen-number-list";
+	const maxNumber = Math.max(1, Number(question.items?.length || question.maxNumber || 5));
+	const answers = Array((question.items || []).length).fill(null);
+	(question.items || []).forEach((item, index) => {
+		const card = document.createElement("div");
+		card.className = "listen-number-item";
+		const imageWrap = document.createElement("div");
+		imageWrap.className = "listen-number-image-wrap";
+		if (item.image && !isPlaceholderReference(item.image)) {
+			const image = document.createElement("img");
+			image.className = "listen-number-image";
+			image.src = item.imagePath || `../../assets/images/${item.image}`;
+			image.alt = item.imageAlt || item.id || `Listening item ${index + 1}`;
+			image.onerror = () => {
+				image.replaceWith(renderMediaPlaceholder(item.imageAlt || `Image ${index + 1}`, "image"));
+			};
+			imageWrap.appendChild(image);
+		} else {
+			imageWrap.appendChild(renderMediaPlaceholder(item.imageAlt || `Image ${index + 1}`, "image"));
+		}
+		const controls = document.createElement("div");
+		controls.className = "listen-number-controls";
+		for (let number = 1; number <= maxNumber; number += 1) {
+			const button = document.createElement("button");
+			button.type = "button";
+			button.className = "listen-number-button";
+			button.dataset.value = String(number);
+			button.textContent = number;
+			button.addEventListener("click", () => {
+				answers[index] = number;
+				controls.querySelectorAll(".listen-number-button").forEach(itemButton => itemButton.classList.toggle("selected", Number(itemButton.dataset.value) === number));
+			});
+			controls.appendChild(button);
+		}
+		card.append(imageWrap, controls);
+		list.appendChild(card);
+	});
+	container.appendChild(list);
+	window.questionControllers = window.questionControllers || {};
+	window.questionControllers[question.type] = {
+		getAnswer: () => answers.slice(),
+		setAnswer: savedAnswer => {
+			const incoming = Array.isArray(savedAnswer) ? savedAnswer : [];
+			const itemCards = list.querySelectorAll(".listen-number-item");
+			itemCards.forEach((card, index) => {
+				const value = incoming[index];
+				const buttons = card.querySelectorAll(".listen-number-button");
+				buttons.forEach(button => button.classList.toggle("selected", Number(button.dataset.value) === Number(value)));
+				if (value !== undefined && value !== null && value !== "") {
+					answers[index] = Number(value);
+				} else {
+					answers[index] = null;
+				}
+			});
+		}
+	};
+}
+
 function renderListenChoice(question, container) { addAudio(question, container); renderOptions(question, container); }
 function renderLookWrite(question, container) { renderTextInput(question, container); }
 function renderPictureChoice(question, container) { renderOptions(question, container, true); }
 function renderChoice(question, container) { renderOptions(question, container); }
 function renderFill(question, container) { renderTextInput(question, container); }
 function renderSentence(question, container) { renderTextInput(question, container, true); }
+function renderFillWordBank(question, container) {
+	const passage = document.createElement("div");
+	passage.className = "word-bank-passage";
+	const text = document.createElement("p");
+	text.className = "word-bank-text";
+	const textValue = typeof question.text === "string" ? question.text : question.passage || "";
+	const blanks = textValue.split(/___+/).length - 1;
+	const items = [];
+	let currentText = textValue;
+	let blankIndex = 0;
+	if (blanks > 0) {
+		const parts = textValue.split(/___+/);
+		currentText = parts.map((part, index) => {
+			if (index === parts.length - 1) return part;
+			const input = document.createElement("button");
+			input.type = "button";
+			input.className = "word-bank-input";
+			input.textContent = "_____";
+			input.dataset.index = String(blankIndex);
+			items.push({ input, index: blankIndex });
+			blankIndex += 1;
+			return `${part} ${input.outerHTML}`;
+		}).join("");
+		text.innerHTML = currentText;
+	} else {
+		text.textContent = textValue;
+	}
+	passage.appendChild(text);
+	container.appendChild(passage);
+	const bank = document.createElement("div");
+	bank.className = "word-bank";
+	(question.wordBank || []).forEach((word, index) => {
+		const button = document.createElement("button");
+		button.type = "button";
+		button.className = "word-bank-item";
+		button.textContent = word;
+		button.dataset.word = word;
+		button.addEventListener("click", () => {
+			const currentIndex = Number(document.querySelector(".word-bank-input.selected")?.dataset?.index ?? -1);
+			const target = document.querySelector(`.word-bank-input[data-index="${currentIndex >= 0 ? currentIndex : 0}"]`);
+			if (!target) return;
+			target.textContent = word;
+			target.classList.add("filled");
+			target.dataset.value = word;
+			const activeInputs = document.querySelectorAll(".word-bank-input");
+			activeInputs.forEach(input => input.classList.remove("selected"));
+			button.classList.add("used");
+		});
+		bank.appendChild(button);
+	});
+	container.appendChild(bank);
+	const blankInputs = [...container.querySelectorAll(".word-bank-input")];
+	blankInputs.forEach(input => {
+		input.addEventListener("click", () => {
+			blankInputs.forEach(item => item.classList.toggle("selected", item === input));
+		});
+	});
+	window.questionControllers = window.questionControllers || {};
+	window.questionControllers[question.type] = {
+		getAnswer: () => blankInputs.map(input => input.dataset.value || ""),
+		setAnswer: savedAnswer => {
+			const values = Array.isArray(savedAnswer) ? savedAnswer : [];
+			blankInputs.forEach((input, index) => {
+				const value = values[index] || "";
+				input.textContent = value || "_____";
+				input.dataset.value = value;
+				input.classList.toggle("filled", Boolean(value));
+			});
+		}
+	};
+}
+
+function renderLookComplete(question, container) {
+	if (question.image) addImage(question, container);
+	const prompt = document.createElement("p");
+	prompt.className = "question-instruction";
+	prompt.textContent = question.prompt || question.question || "Complete the sentence.";
+	container.appendChild(prompt);
+	const input = document.createElement("input");
+	input.type = "text";
+	input.id = "textAnswer";
+	input.className = "fill-input";
+	input.placeholder = question.placeholder || "Write your answer";
+	if (question.maxWords) input.setAttribute("maxlength", String(question.maxWords * 20 + 10));
+	container.appendChild(input);
+	window.questionControllers = window.questionControllers || {};
+	window.questionControllers[question.type] = {
+		getAnswer: () => input.value || "",
+		setAnswer: value => {
+			input.value = value || "";
+		}
+	};
+}
+
+function renderReorder(question, container) {
+	const choices = document.createElement("div");
+	choices.className = "reorder-choices";
+	const answerOrder = [];
+	(question.words || []).forEach((word, index) => {
+		const button = document.createElement("button");
+		button.type = "button";
+		button.className = "reorder-word";
+		button.dataset.word = word;
+		button.textContent = word;
+		button.addEventListener("click", () => {
+			if (answerOrder.includes(word)) {
+				answerOrder.splice(answerOrder.indexOf(word), 1);
+				button.classList.remove("selected");
+			} else {
+				answerOrder.push(word);
+				button.classList.add("selected");
+			}
+		});
+		choices.appendChild(button);
+	});
+	const result = document.createElement("div");
+	result.className = "reorder-result";
+	result.textContent = "Your sentence: ";
+	const sentence = document.createElement("span");
+	sentence.className = "reorder-sentence";
+	result.appendChild(sentence);
+	container.append(choices, result);
+	window.questionControllers = window.questionControllers || {};
+	window.questionControllers[question.type] = {
+		getAnswer: () => answerOrder.slice(),
+		setAnswer: savedAnswer => {
+			const values = Array.isArray(savedAnswer) ? savedAnswer : [];
+			answerOrder.length = 0;
+			choices.querySelectorAll(".reorder-word").forEach(button => {
+				const selected = values.includes(button.dataset.word);
+				button.classList.toggle("selected", selected);
+				if (selected) answerOrder.push(button.dataset.word);
+			});
+			sentence.textContent = answerOrder.join(" ");
+		}
+	};
+	const refreshResult = () => { sentence.textContent = answerOrder.join(" "); };
+	const originalClick = choices.querySelectorAll(".reorder-word")[0]?.onclick;
+	choices.querySelectorAll(".reorder-word").forEach(button => {
+		button.addEventListener("click", refreshResult);
+	});
+}
+
 function renderMatching(question, container) {
 	const matchingContainer = document.createElement("div");
 	matchingContainer.className = "matching-exercise";
@@ -244,6 +527,10 @@ function renderQuestion(question, questionNumber, totalQuestions) {
 	const renderers = {
 		"listen-number": renderListenNumber,
 		"listen-choice": renderListenChoice,
+		"stress-choice": renderStressChoice,
+		"fill-word-bank": renderFillWordBank,
+		"look-complete": renderLookComplete,
+		"reorder": renderReorder,
 		"look-write": renderLookWrite,
 		"picture-choice": renderPictureChoice,
 		choice: renderChoice,
@@ -253,6 +540,7 @@ function renderQuestion(question, questionNumber, totalQuestions) {
 		matching: renderMatching,
 		unscramble: renderUnscrambleQuestion
 	};
+	window.questionControllers = {};
 	(renderers[question.type] || renderFill)(question, card);
 	container.appendChild(card);
 }

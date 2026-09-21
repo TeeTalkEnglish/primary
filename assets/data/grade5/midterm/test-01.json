@@ -1,0 +1,256 @@
+{
+  "grade": 5,
+  "book": "Global Success",
+  "term": 2,
+  "examType": "midterm",
+  "testNumber": 1,
+  "title": "Grade 5 Global Success - Semester 2 Midterm Test 1",
+  "subtitle": "Semester 2 Midterm",
+  "intro": "Listen carefully, read the questions, and complete each task in the correct order.",
+  "durationMinutes": 45,
+  "sections": [
+    {
+      "id": "I",
+      "title": "Part I. Stress Pattern",
+      "type": "stress-choice",
+      "questions": [
+        {
+          "id": "I-1",
+          "type": "stress-choice",
+          "points": 1,
+          "question": "Choose the word with a different stress pattern.",
+          "options": ["teacher", "doctor", "before", "garden"],
+          "answer": 2
+        },
+        {
+          "id": "I-2",
+          "type": "stress-choice",
+          "points": 1,
+          "question": "Choose the word with a different stress pattern.",
+          "options": ["family", "yellow", "sister", "season"],
+          "answer": 1
+        },
+        {
+          "id": "I-3",
+          "type": "stress-choice",
+          "points": 1,
+          "question": "Choose the word with a different stress pattern.",
+          "options": ["Monday", "Sunday", "pencil", "Friday"],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "II",
+      "title": "Part II. Listen and number.",
+      "type": "listen-number",
+      "questions": [
+        {
+          "id": "II-1",
+          "type": "listen-number",
+          "points": 5,
+          "audio": "PLACEHOLDER_AUDIO_PART_II",
+          "items": [
+            { "id": "a", "image": "PLACEHOLDER_IMAGE_PART_II_01", "imageAlt": "school bag", "correctNumber": 1 },
+            { "id": "b", "image": "PLACEHOLDER_IMAGE_PART_II_02", "imageAlt": "book", "correctNumber": 2 },
+            { "id": "c", "image": "PLACEHOLDER_IMAGE_PART_II_03", "imageAlt": "pencil case", "correctNumber": 3 },
+            { "id": "d", "image": "PLACEHOLDER_IMAGE_PART_II_04", "imageAlt": "ruler", "correctNumber": 4 },
+            { "id": "e", "image": "PLACEHOLDER_IMAGE_PART_II_05", "imageAlt": "backpack", "correctNumber": 5 }
+          ],
+          "answer": [1, 2, 3, 4, 5]
+        }
+      ]
+    },
+    {
+      "id": "III",
+      "title": "Part III. Listen and number.",
+      "type": "listen-number",
+      "questions": [
+        {
+          "id": "III-1",
+          "type": "listen-number",
+          "points": 6,
+          "audio": [
+            "PLACEHOLDER_AUDIO_PART_III_01",
+            "PLACEHOLDER_AUDIO_PART_III_02",
+            "PLACEHOLDER_AUDIO_PART_III_03",
+            "PLACEHOLDER_AUDIO_PART_III_04",
+            "PLACEHOLDER_AUDIO_PART_III_05",
+            "PLACEHOLDER_AUDIO_PART_III_06"
+          ],
+          "items": [
+            { "id": "a", "image": "PLACEHOLDER_IMAGE_PART_III_01", "imageAlt": "park", "correctNumber": 2 },
+            { "id": "b", "image": "PLACEHOLDER_IMAGE_PART_III_02", "imageAlt": "bike", "correctNumber": 4 },
+            { "id": "c", "image": "PLACEHOLDER_IMAGE_PART_III_03", "imageAlt": "basketball", "correctNumber": 1 },
+            { "id": "d", "image": "PLACEHOLDER_IMAGE_PART_III_04", "imageAlt": "music class", "correctNumber": 5 },
+            { "id": "e", "image": "PLACEHOLDER_IMAGE_PART_III_05", "imageAlt": "friend", "correctNumber": 3 },
+            { "id": "f", "image": "PLACEHOLDER_IMAGE_PART_III_06", "imageAlt": "school", "correctNumber": 6 }
+          ],
+          "answer": [2, 4, 1, 5, 3, 6]
+        }
+      ]
+    },
+    {
+      "id": "IV",
+      "title": "Part IV. Read and choose.",
+      "type": "choice",
+      "questions": [
+        {
+          "id": "IV-1",
+          "type": "choice",
+          "points": 1,
+          "question": "My brother likes to play football after school.",
+          "options": ["football", "shopping", "drawing", "running"],
+          "answer": 0
+        },
+        {
+          "id": "IV-2",
+          "type": "choice",
+          "points": 1,
+          "question": "Which activity is good for a hot day?",
+          "options": ["reading a book", "swimming", "doing homework", "washing the dishes"],
+          "answer": 1
+        },
+        {
+          "id": "IV-3",
+          "type": "choice",
+          "points": 1,
+          "question": "My best friend is very good at music, so she likes to go to the ____.",
+          "options": ["library", "music room", "market", "hospital"],
+          "answer": 1
+        },
+        {
+          "id": "IV-4",
+          "type": "choice",
+          "points": 1,
+          "question": "We often help our parents in the garden on weekends.",
+          "options": ["go to bed", "study English", "water the plants", "watch TV"],
+          "answer": 2
+        },
+        {
+          "id": "IV-5",
+          "type": "choice",
+          "points": 1,
+          "question": "Choose the correct sentence.",
+          "options": ["She goes to school by bike every morning.", "She goes to school by train in winter.", "She go to school by bike every morning.", "She going to school by bike every morning."],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "V",
+      "title": "Part V. Read and fill.",
+      "type": "fill-word-bank",
+      "questions": [
+        {
+          "id": "V-1",
+          "type": "fill-word-bank",
+          "points": 5,
+          "text": "My friend Lan is very ___ and she loves ___ in the park. She usually goes ___ with her brother after school. They have a ___ lunch and then they ___ to the library.",
+          "wordBank": ["happy", "jogging", "together", "big", "walk", "read"],
+          "answers": ["happy", "jogging", "together", "big", "walk"],
+          "question": "Use the words in the box to complete the text."
+        }
+      ]
+    },
+    {
+      "id": "VI",
+      "title": "Part VI. Look and complete.",
+      "type": "look-complete",
+      "questions": [
+        {
+          "id": "VI-1",
+          "type": "look-complete",
+          "points": 1,
+          "image": "PLACEHOLDER_IMAGE_PART_VI_01",
+          "imageAlt": "children playing in the park",
+          "prompt": "Write NO MORE THAN THREE WORDS.",
+          "answer": "playing football",
+          "maxWords": 3
+        },
+        {
+          "id": "VI-2",
+          "type": "look-complete",
+          "points": 1,
+          "image": "PLACEHOLDER_IMAGE_PART_VI_02",
+          "imageAlt": "boy reading a book",
+          "prompt": "Write NO MORE THAN THREE WORDS.",
+          "answer": "reading a book",
+          "maxWords": 3
+        },
+        {
+          "id": "VI-3",
+          "type": "look-complete",
+          "points": 1,
+          "image": "PLACEHOLDER_IMAGE_PART_VI_03",
+          "imageAlt": "girl in a kitchen",
+          "prompt": "Write NO MORE THAN THREE WORDS.",
+          "answer": "cooking food",
+          "maxWords": 3
+        },
+        {
+          "id": "VI-4",
+          "type": "look-complete",
+          "points": 1,
+          "image": "PLACEHOLDER_IMAGE_PART_VI_04",
+          "imageAlt": "students in a classroom",
+          "prompt": "Write NO MORE THAN THREE WORDS.",
+          "answer": "studying English",
+          "maxWords": 3
+        },
+        {
+          "id": "VI-5",
+          "type": "look-complete",
+          "points": 1,
+          "image": "PLACEHOLDER_IMAGE_PART_VI_05",
+          "imageAlt": "family at home",
+          "prompt": "Write NO MORE THAN THREE WORDS.",
+          "answer": "having dinner",
+          "maxWords": 3
+        }
+      ]
+    },
+    {
+      "id": "VII",
+      "title": "Part VII. Reorder the words.",
+      "type": "reorder",
+      "questions": [
+        {
+          "id": "VII-1",
+          "type": "reorder",
+          "points": 1,
+          "words": ["My", "friend", "likes", "football"],
+          "answer": ["My", "friend", "likes", "football"]
+        },
+        {
+          "id": "VII-2",
+          "type": "reorder",
+          "points": 1,
+          "words": ["goes", "to", "school", "She", "by", "bike"],
+          "answer": ["She", "goes", "to", "school", "by", "bike"]
+        },
+        {
+          "id": "VII-3",
+          "type": "reorder",
+          "points": 1,
+          "words": ["are", "There", "three", "books", "on", "the", "table"],
+          "answer": ["There", "are", "three", "books", "on", "the", "table"]
+        },
+        {
+          "id": "VII-4",
+          "type": "reorder",
+          "points": 1,
+          "words": ["often", "We", "play", "basketball", "in", "the", "park"],
+          "answer": ["We", "often", "play", "basketball", "in", "the", "park"]
+        },
+        {
+          "id": "VII-5",
+          "type": "reorder",
+          "points": 1,
+          "words": ["is", "very", "friendly", "My", "teacher"],
+          "answer": ["My", "teacher", "is", "very", "friendly"]
+        }
+      ]
+    }
+  ]
+}
