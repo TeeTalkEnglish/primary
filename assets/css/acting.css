@@ -1,0 +1,839 @@
+/* =========================================================
+   TEETALK ENGLISH — ACTING
+   Cinematic lesson design
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.acting-page {
+    background:
+        radial-gradient(circle at top left, rgba(36,183,189,.10), transparent 35%),
+        #f4f8ff;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.acting-hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 360px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 35px;
+
+    margin-bottom: 55px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172c3d,
+            #203f52 55%,
+            #24B7BD
+        );
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow: 0 20px 45px rgba(31,45,61,.18);
+}
+
+
+/* Decorative circles */
+
+.acting-hero::before,
+.acting-hero::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+}
+
+.acting-hero::before {
+    width: 280px;
+    height: 280px;
+
+    top: -130px;
+    left: -80px;
+}
+
+.acting-hero::after {
+    width: 350px;
+    height: 350px;
+
+    right: -150px;
+    bottom: -180px;
+}
+
+
+/* Hero content */
+
+.acting-hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 800px;
+}
+
+.acting-hero .eyebrow {
+
+    display: inline-block;
+
+    padding: 7px 16px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(255,255,255,.35);
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.10);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.acting-hero h1 {
+
+    color: white;
+
+    font-size: clamp(38px, 6vw, 64px);
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+
+    text-shadow: 0 4px 15px rgba(0,0,0,.15);
+}
+
+.acting-hero p {
+
+    max-width: 680px;
+
+    margin: auto;
+
+    color: rgba(255,255,255,.90);
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SECTION HEADERS
+========================================================= */
+
+.acting-section {
+    margin-bottom: 65px;
+}
+
+.acting-section-header {
+
+    margin-bottom: 28px;
+
+}
+
+.acting-section-label {
+
+    color: #24B7BD;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 6px;
+}
+
+.acting-section-header h2 {
+
+    margin: 0 0 8px;
+
+    font-size: 32px;
+
+    color: #1f2d3d;
+}
+
+.acting-section-header p {
+
+    color: #666;
+
+    line-height: 1.6;
+
+    max-width: 700px;
+}
+
+
+/* =========================================================
+   MOVIE-MAKING STEPS
+========================================================= */
+
+.acting-steps {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.acting-step {
+
+    position: relative;
+
+    background: white;
+
+    padding: 28px 22px;
+
+    border-radius: 22px;
+
+    border: 1px solid #e7edf5;
+
+    box-shadow: 0 8px 25px rgba(31,45,61,.06);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.acting-step:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 16px 35px rgba(31,45,61,.11);
+}
+
+.acting-step-number {
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 14px;
+
+    background: #24B7BD;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+.acting-step h3 {
+
+    font-size: 21px;
+
+    margin-bottom: 8px;
+
+    color: #1f2d3d;
+}
+
+.acting-step p {
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.video-box {
+
+    position: relative;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 10px;
+
+    background: #172c3d;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 45px rgba(31,45,61,.18);
+}
+
+.video-box::before {
+
+    content: "WATCH THE SCENE";
+
+    display: block;
+
+    padding: 12px 15px;
+
+    color: rgba(255,255,255,.75);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-align: center;
+}
+
+.video-box iframe {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    display: block;
+
+    border: none;
+
+    border-radius: 17px;
+}
+
+
+/* =========================================================
+   QUESTIONS
+========================================================= */
+
+.question-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.question-box {
+
+    position: relative;
+
+    padding: 22px 22px 22px 58px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    border: 1px solid #e7edf5;
+
+    box-shadow: 0 7px 20px rgba(31,45,61,.05);
+
+    line-height: 1.6;
+
+    color: #444;
+}
+
+.question-box::before {
+
+    content: "?";
+
+    position: absolute;
+
+    left: 18px;
+    top: 18px;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e8fbfc;
+
+    color: #24B7BD;
+
+    font-weight: 800;
+}
+
+.question-box strong {
+
+    color: #1f2d3d;
+}
+
+
+/* =========================================================
+   SCREENPLAY
+========================================================= */
+
+.screenplay-wrapper {
+
+    padding: 25px;
+
+    border-radius: 30px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.025) 0px,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px,
+            transparent 5px
+        ),
+        #253746;
+
+    box-shadow: 0 20px 45px rgba(31,45,61,.15);
+}
+
+.screenplay {
+
+    max-width: 820px;
+
+    margin: auto;
+
+    padding: 65px 75px;
+
+    background: #fffef9;
+
+    color: #222;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.15);
+
+    border-radius: 2px;
+
+    position: relative;
+}
+
+
+/* Paper edge */
+
+.screenplay::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -7px;
+
+    height: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffef9 25%,
+            transparent 25%
+        ) 0 0 / 12px 7px;
+}
+
+
+.screenplay-title {
+
+    text-align: center;
+
+    margin-bottom: 65px;
+}
+
+.screenplay-title span {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+.screenplay-title h3 {
+
+    margin: 0;
+
+    font-size: 25px;
+
+    letter-spacing: 3px;
+
+    font-weight: 800;
+}
+
+.screenplay-scene {
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.scene-heading {
+
+    margin: 30px 0 18px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+.action {
+
+    margin-bottom: 25px;
+}
+
+.dialogue {
+
+    width: 62%;
+
+    margin: 30px auto;
+}
+
+.character {
+
+    margin: 0;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+.parenthetical {
+
+    margin: 4px 0;
+
+    text-align: center;
+
+    font-style: italic;
+}
+
+.speech {
+
+    margin: 5px 0;
+}
+
+
+/* =========================================================
+   CHARACTER / ACTING CARDS
+========================================================= */
+
+.character-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.character-card {
+
+    position: relative;
+
+    padding: 32px;
+
+    background: white;
+
+    border-radius: 24px;
+
+    border: 1px solid #e7edf5;
+
+    box-shadow: 0 10px 28px rgba(31,45,61,.07);
+
+    overflow: hidden;
+}
+
+.character-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background: #24B7BD;
+}
+
+.character-icon {
+
+    font-size: 48px;
+
+    margin-bottom: 15px;
+}
+
+.character-card h3 {
+
+    margin-bottom: 10px;
+
+    font-size: 25px;
+
+    color: #1f2d3d;
+}
+
+.character-card p {
+
+    color: #666;
+
+    line-height: 1.6;
+}
+
+.character-card ul {
+
+    margin-top: 18px;
+
+    padding-left: 20px;
+
+    color: #555;
+
+    line-height: 1.9;
+}
+
+.character-card li::marker {
+
+    color: #24B7BD;
+}
+
+
+/* =========================================================
+   PRACTICE
+========================================================= */
+
+.practice-box {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 10px;
+
+    border-radius: 24px;
+
+    background: #eaf9fa;
+}
+
+.practice-item {
+
+    padding: 20px 25px;
+
+    background: white;
+
+    border-bottom: 1px solid #e5eef0;
+
+    line-height: 1.6;
+}
+
+.practice-item:first-child {
+
+    border-radius: 17px 17px 0 0;
+}
+
+.practice-item:last-child {
+
+    border: none;
+
+    border-radius: 0 0 17px 17px;
+}
+
+.practice-item strong {
+
+    color: #24B7BD;
+}
+
+
+/* =========================================================
+   FINAL MOVIE CHALLENGE
+========================================================= */
+
+.movie-challenge {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 55px 30px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172c3d,
+            #24B7BD
+        );
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow: 0 20px 40px rgba(31,45,61,.16);
+}
+
+.movie-challenge h2 {
+
+    margin: 0 0 12px;
+
+    color: white;
+
+    font-size: 34px;
+}
+
+.movie-challenge p {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    color: rgba(255,255,255,.9);
+
+    line-height: 1.7;
+
+    font-size: 17px;
+}
+
+.movie-challenge .big-text {
+
+    margin-top: 25px;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    letter-spacing: .5px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .acting-steps {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .question-list {
+
+        grid-template-columns: 1fr;
+    }
+
+    .character-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .screenplay {
+
+        padding: 50px 45px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .acting-hero {
+
+        min-height: 320px;
+
+        padding: 50px 22px;
+
+        border-radius: 24px;
+    }
+
+    .acting-hero h1 {
+
+        font-size: 40px;
+    }
+
+    .acting-hero p {
+
+        font-size: 16px;
+    }
+
+    .acting-steps {
+
+        grid-template-columns: 1fr;
+    }
+
+    .acting-section-header h2 {
+
+        font-size: 27px;
+    }
+
+    .screenplay-wrapper {
+
+        padding: 10px;
+
+        border-radius: 22px;
+    }
+
+    .screenplay {
+
+        padding: 40px 22px;
+    }
+
+    .screenplay-scene {
+
+        font-size: 12px;
+    }
+
+    .dialogue {
+
+        width: 90%;
+    }
+
+    .character-card {
+
+        padding: 25px;
+    }
+
+    .movie-challenge {
+
+        padding: 45px 20px;
+    }
+
+    .movie-challenge h2 {
+
+        font-size: 28px;
+    }
+
+}

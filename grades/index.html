@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade | TeeTalk English</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .grade-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .grade-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .grade-header p {
+            margin: 0;
+        }
+
+        .assessment-group {
+            margin-top: 30px;
+        }
+
+        .assessment-period {
+            margin-bottom: 15px;
+        }
+
+        .assessment-tests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .assessment-card {
+            text-decoration: none;
+        }
+
+        .assessment-card span {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .assessment-empty {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="../index.html" class="logo">
+            TeeTalk English
+        </a>
+    </header>
+
+    <main class="container">
+
+        <section class="grade-header">
+            <h1 id="gradeTitle">Grade</h1>
+            <p id="gradeSubtitle">English Learning</p>
+        </section>
+
+        <section>
+            <h2>Lessons</h2>
+
+            <div class="cards" id="lessonList">
+                <!-- Lessons will be loaded here -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Assessments</h2>
+
+            <div id="assessmentList">
+                <!-- Assessments will be loaded here -->
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const grade = params.get("grade");
+
+        const gradeTitle = document.getElementById("gradeTitle");
+        const gradeSubtitle = document.getElementById("gradeSubtitle");
+        const lessonList = document.getElementById("lessonList");
+
+        if (!grade || !/^[1-5]$/.test(grade)) {
+            gradeTitle.textContent = "Grade Not Found";
+            gradeSubtitle.textContent = "Please select a grade from the main page.";
+        } else {
+
+            document.title = `Grade ${grade} | TeeTalk English`;
+
+            gradeTitle.textContent = `Grade ${grade}`;
+            gradeSubtitle.textContent = "English Learning";
+
+            /*
+             * Lessons
+             *
+             * You can add your grade-specific lesson links here later.
+             * The assessment system below works independently.
+             */
+
+            lessonList.innerHTML = `
+                <a href="#" class="unit-card">
+                    <div class="unit-number">Lessons</div>
+                    <p>Grade ${grade} English lessons</p>
+                    <span>View Lessons</span>
+                </a>
+            `;
+        }
+    </script>
+
+    <script src="../assets/js/assessment-catalog.js"></script>
+
+</body>
+</html>

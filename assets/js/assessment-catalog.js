@@ -1,40 +1,29 @@
 (function () {
-    const grade = document.body.dataset.grade;
+    const params = new URLSearchParams(window.location.search);
+    const grade = params.get("grade");
+
     const container = document.getElementById("assessmentList");
+
     if (!grade || !container) return;
 
     fetch(`../assets/data/grade${grade}/assessments.json`)
         .then(response => {
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
             return response.json();
         })
         .then(catalog => {
-            container.innerHTML = "";
-            catalog.periods.forEach(period => {
-                const group = document.createElement("section");
-                group.className = "assessment-group";
+            // your existing assessment rendering code
+        })
+        .catch(error => {
+            console.error("Failed to load assessment catalog:", error);
+            container.textContent =
+                "Assessments are temporarily unavailable.";
+        });
+})();
 
-                const title = document.createElement("h3");
-                title.className = "assessment-period";
-                title.textContent = period.title;
-                group.appendChild(title);
-
-                const tests = document.createElement("div");
-                tests.className = "cards assessment-tests";
-                const periodAssessments = [
-                    ...(period.data ? [{
-                        id: period.id,
-                        title: period.title,
-                        description: period.description,
-                        data: period.data,
-                        direct: true
-                    }] : []),
-                    ...((period.tests || []).map(test => ({ ...test, direct: false })))
-                ];
-
-                periodAssessments.forEach(test => {
-                    const card = document.createElement("a");
-                    const directData = test.direct ? `&data=${encodeURIComponent(`../../assets/data/grade${grade}/${test.data}`)}` : "";
+card.href = `../games/assessment/index.html?grade=${grade}&period=${encodeURIComponent(period.id)}&test=${encodeURIComponent(test.id)}${dataParam}`;
                     card.className = "unit-card assessment-card";
                     card.href = `../games/assessment/index.html?grade=${grade}&period=${encodeURIComponent(period.id)}&test=${encodeURIComponent(test.id)}${directData}`;
                     card.innerHTML = `

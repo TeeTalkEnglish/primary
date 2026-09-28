@@ -1,5 +1,4 @@
 {
-  "grade": 1,
   "periods": [
     {
       "id": "first-term",
@@ -8,48 +7,58 @@
         {
           "id": "test-01",
           "title": "Test 1",
-          "description": "Practice the First-Term Exam",
+          "description": "Grade 1 First Term Test 1",
           "data": "first-term/test-01.json"
-        }
-      ]
-    },
-    {
-      "id": "first-midterm",
-      "title": "First Midterm",
-      "tests": [
-        {
-          "id": "test-01",
-          "title": "First Midterm — Test 1",
-          "description": "Units 1–4: vocabulary and sentence patterns",
-          "data": "first-midterm/test-01.json"
         },
         {
           "id": "test-02",
-          "title": "First Midterm — Test 2",
-          "description": "Units 1–4: vocabulary and sentence patterns",
-          "data": "first-midterm/test-02.json"
+          "title": "Test 2",
+          "description": "Grade 1 First Term Test 2",
+          "data": "first-term/test-02.json"
         },
         {
           "id": "test-03",
-          "title": "First Midterm — Test 3",
-          "description": "Units 1–4: vocabulary and sentence patterns",
-          "data": "first-midterm/test-03.json"
-        }
-      ]
-    },
-    {
-      "id": "midterm",
-      "title": "Midterm",
-      "tests": [
+          "title": "Test 3",
+          "description": "Grade 1 First Term Test 3",
+          "data": "first-term/test-03.json"
+        },
         {
-          "id": "main",
-          "title": "Midterm Exam",
-          "description": "Test what you have learned in Units 1–5",
-          "data": "midterm.json"
+          "id": "test-04",
+          "title": "Test 4",
+          "description": "Grade 1 First Term Test 4",
+          "data": "first-term/test-04.json"
+        },
+        {
+          "id": "test-05",
+          "title": "Test 5",
+          "description": "Grade 1 First Term Test 5",
+          "data": "first-term/test-05.json"
+        },
+        {
+          "id": "test-06",
+          "title": "Test 6",
+          "description": "Grade 1 First Term Test 6",
+          "data": "first-term/test-06.json"
+        },
+        {
+          "id": "test-07",
+          "title": "Test 7",
+          "description": "Grade 1 First Term Test 7",
+          "data": "first-term/test-07.json"
+        },
+        {
+          "id": "test-08",
+          "title": "Test 8",
+          "description": "Grade 1 First Term Test 8",
+          "data": "first-term/test-08.json"
+        },
+        {
+          "id": "test-09",
+          "title": "Test 9",
+          "description": "Grade 1 First Term Test 9",
+          "data": "first-term/test-09.json"
         }
       ]
-    },
-    { "id": "second-term", "title": "Second Term", "tests": [] },
-    { "id": "final", "title": "Final", "tests": [] }
+    }
   ]
 }

@@ -1,0 +1,64 @@
+{
+  "grade": 1,
+  "term": 1,
+  "testNumber": 9,
+  "title": "Grade 1 First Term Test 9",
+  "sections": [
+    {
+      "id": "complete-words",
+      "type": "completeWords",
+      "title": "II. Complete the words.",
+      "points": 8,
+      "questions": [
+        {
+          "number": 1,
+          "pattern": "ca_e",
+          "answer": "k",
+          "word": "cake"
+        },
+        {
+          "number": 2,
+          "pattern": "_andy",
+          "answer": "c",
+          "word": "candy"
+        },
+        {
+          "number": 3,
+          "pattern": "go_t",
+          "answer": "a",
+          "word": "goat"
+        },
+        {
+          "number": 4,
+          "pattern": "p_g",
+          "answer": "i",
+          "word": "pig"
+        },
+        {
+          "number": 5,
+          "pattern": "scho_l",
+          "answer": "o",
+          "word": "school"
+        },
+        {
+          "number": 6,
+          "pattern": "d_ck",
+          "answer": "u",
+          "word": "duck"
+        },
+        {
+          "number": 7,
+          "pattern": "ho_se",
+          "answer": "r",
+          "word": "horse"
+        },
+        {
+          "number": 8,
+          "pattern": "k_te",
+          "answer": "i",
+          "word": "kite"
+        }
+      ]
+    }
+  ]
+}
