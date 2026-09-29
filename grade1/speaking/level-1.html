@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/cards.css">
+<link rel="stylesheet" href="../../assets/css/buttons.css">
+<link rel="stylesheet" href="../../assets/css/progress.css">
+<link rel="stylesheet" href="../../assets/css/grade.css">
+<link rel="stylesheet" href="../../assets/css/speaking.css">
+
+<title>Level 1: Introduce Yourself | TeeTalkEnglish</title>
+
+
+</head>
+
+
+<body data-grade="1">
+
+<div class="container">
+
+
+<!-- =========================
+     BACK
+========================= -->
+
+<a class="back-home" href="index.html">
+← Back to Speaking
+</a>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="hero speaking-hero">
+
+<div class="level-badge">
+Level 1
+</div>
+
+<h1>👋 Introduce Yourself</h1>
+
+<p class="subtitle">
+Say your name and answer simple questions.
+</p>
+
+</header>
+
+
+<!-- =========================
+     GOAL
+========================= -->
+
+<section class="progress-card">
+
+<h2>Today's Goal</h2>
+
+<p>
+By the end of this practice, you can introduce yourself
+using simple English sentences.
+</p>
+
+</section>
+
+
+<!-- =========================
+     PRACTICE
+========================= -->
+
+<h2 class="section-title">
+Let's Practice
+</h2>
+
+
+<!-- QUESTION 1 -->
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 1
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+
+            <h3>
+                What is your name?
+            </h3>
+
+        </div>
+
+        <div class="vietnamese-help">
+
+            <button
+                class="help-button"
+                onclick="toggleVietnamese(1)">
+                💡 Need help?
+            </button>
+
+            <p id="vietnamese1"
+               class="vietnamese-text">
+                Em tên là gì?
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="showAnswer(1)">
+        Show English
+    </button>
+
+
+    <div id="answer1"
+         class="answer">
+
+        <div class="answer-label">
+            Example answer
+        </div>
+
+        <div class="english-answer">
+            My name is Anna.
+        </div>
+
+        <div class="speak-tip">
+            🗣️ Say your own name instead of “Anna”.
+        </div>
+
+    </div>
+
+</article>
+
+<!-- QUESTION 2 -->
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 2
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+
+            <h3>
+                How are you today?
+            </h3>
+
+        </div>
+
+        <div class="vietnamese-help">
+
+            <button
+                type="button"
+                class="help-button"
+                onclick="toggleVietnamese(2)">
+                💡 Need help?
+            </button>
+
+            <p
+                id="vietnamese2"
+                class="vietnamese-text">
+                Hôm nay em khỏe không?
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="btn"
+        onclick="showAnswer(2)">
+        Show English
+    </button>
+
+
+    <div
+        id="answer2"
+        class="answer">
+
+        <div class="answer-label">
+            Example answer
+        </div>
+
+        <div class="english-answer">
+            I'm good.
+        </div>
+
+        <div class="speak-tip">
+            🗣️ You can also say: “I'm happy.” or “I'm great.”
+        </div>
+
+    </div>
+
+</article>
+
+<!-- QUESTION 3     -->
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 3
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+
+            <h3>
+                How old are you?
+            </h3>
+
+        </div>
+
+        <div class="vietnamese-help">
+
+            <button
+                type="button"
+                class="help-button"
+                onclick="toggleVietnamese(3)">
+                💡 Need help?
+            </button>
+
+            <p
+                id="vietnamese3"
+                class="vietnamese-text">
+                Em bao nhiêu tuổi?
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="btn"
+        onclick="showAnswer(3)">
+        Show English
+    </button>
+
+
+    <div
+        id="answer3"
+        class="answer">
+
+        <div class="answer-label">
+            Example answer
+        </div>
+
+        <div class="english-answer">
+            I'm seven years old.
+        </div>
+
+        <div class="speak-tip">
+            🗣️ Change the number to your age.
+        </div>
+
+    </div>
+
+</article>
+
+<!-- =========================
+     MINI CHALLENGE
+========================= -->
+
+<h2 class="section-title">
+🎯 Speaking Challenge
+</h2>
+
+
+<div class="complete-box">
+
+<h3>
+Can you introduce yourself?
+</h3>
+
+<p>
+Try to answer all three questions without looking
+at the example answers.
+</p>
+
+<p>
+<strong>My name is...</strong><br>
+<strong>I'm ...</strong><br>
+<strong>I'm ... years old.</strong>
+</p>
+
+<button
+    class="btn"
+    onclick="completeLevel()">
+    ✓ I Can Do It
+</button>
+
+<p id="completeMessage"></p>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+function showAnswer(number) {
+
+    const answer =
+        document.getElementById(
+            "answer" + number
+        );
+
+    answer.classList.toggle("show");
+
+}
+
+
+function completeLevel() {
+
+    document.getElementById(
+        "completeMessage"
+    ).innerHTML =
+        "🎉 Great job! You completed Level 1.";
+
+}
+
+</script>
+
+<script src="../../assets/js/speaking.js"></script>
+
+</body>
+</html>
