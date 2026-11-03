@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../../assets/css/layout.css">
+<link rel="stylesheet" href="../../assets/css/cards.css">
+<link rel="stylesheet" href="../../assets/css/buttons.css">
+<link rel="stylesheet" href="../../assets/css/progress.css">
+<link rel="stylesheet" href="../../assets/css/grade.css">
+<link rel="stylesheet" href="../../assets/css/speaking.css">
+
+<title>Level 2: How Are You? | TeeTalkEnglish</title>
+
+<style>
+.sentence-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+}
+
+.english-question .sentence-row {
+    margin: 0;
+}
+
+.audio-button {
+    display: inline-flex;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #24B7BD;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.audio-button:hover {
+    background: #168d91;
+}
+
+.audio-button:focus-visible {
+    outline: 3px solid #2c3e50;
+    outline-offset: 3px;
+}
+
+.audio-button:disabled {
+    cursor: not-allowed;
+    opacity: .55;
+}
+
+.tip-answers {
+    margin: 8px 0 0;
+    padding-left: 22px;
+}
+
+.tip-answers li {
+    margin: 4px 0;
+}
+
+#audioStatus {
+    color: #8a3b12;
+    font-weight: 700;
+}
+
+.challenge-starters {
+    display: inline-block;
+    text-align: left;
+}
+</style>
+
+</head>
+
+
+<body data-grade="1" data-level="2">
+
+<div class="container">
+
+
+<a class="back-home" href="index.html">
+← Back to Speaking
+</a>
+
+
+<header class="hero speaking-hero">
+
+<div class="level-badge">
+Level 2
+</div>
+
+<h1>How Are You?</h1>
+
+<p class="subtitle">
+Talk about how you feel using simple English.
+</p>
+
+</header>
+
+
+<section class="progress-card">
+
+<h2>Today's Goal</h2>
+
+<p>
+By the end of this practice, you can talk about how you feel and answer simple questions about your feelings using English sentences.
+</p>
+
+</section>
+
+
+<h2 class="section-title">
+Let's Practice
+</h2>
+
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 1
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+            <div class="sentence-row">
+                <h3>How are you?</h3>
+                <button type="button" class="audio-button" data-text="How are you?" aria-label="Listen: How are you?" title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+            </div>
+        </div>
+
+        <div class="vietnamese-help">
+            <button type="button" class="help-button" onclick="toggleVietnamese(1)">💡 Need help?</button>
+            <p id="vietnamese1" class="vietnamese-text">Bạn khỏe không? / Bạn cảm thấy thế nào?</p>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn" onclick="showAnswer(1)">Show English</button>
+
+    <div id="answer1" class="answer">
+        <div class="answer-label">Example answer</div>
+        <div class="sentence-row english-answer">
+            <span>I'm happy.</span>
+            <button type="button" class="audio-button" data-text="I'm happy." aria-label="Listen: I'm happy." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="speak-tip">
+            🗣️ You can also say:
+            <ul class="tip-answers">
+                <li><div class="sentence-row"><span>I'm good.</span><button type="button" class="audio-button" data-text="I'm good." aria-label="Listen: I'm good." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I'm great.</span><button type="button" class="audio-button" data-text="I'm great." aria-label="Listen: I'm great." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I'm fine.</span><button type="button" class="audio-button" data-text="I'm fine." aria-label="Listen: I'm fine." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+</article>
+
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 2
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+            <div class="sentence-row">
+                <h3>Are you happy today?</h3>
+                <button type="button" class="audio-button" data-text="Are you happy today?" aria-label="Listen: Are you happy today?" title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+            </div>
+        </div>
+
+        <div class="vietnamese-help">
+            <button type="button" class="help-button" onclick="toggleVietnamese(2)">💡 Need help?</button>
+            <p id="vietnamese2" class="vietnamese-text">Hôm nay bạn có vui không?</p>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn" onclick="showAnswer(2)">Show English</button>
+
+    <div id="answer2" class="answer">
+        <div class="answer-label">Example answer</div>
+        <div class="sentence-row english-answer">
+            <span>Yes, I am.</span>
+            <button type="button" class="audio-button" data-text="Yes, I am." aria-label="Listen: Yes, I am." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="speak-tip">
+            🗣️ You can also say:
+            <ul class="tip-answers">
+                <li><div class="sentence-row"><span>Yes, I'm happy.</span><button type="button" class="audio-button" data-text="Yes, I'm happy." aria-label="Listen: Yes, I'm happy." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>No, I'm not.</span><button type="button" class="audio-button" data-text="No, I'm not." aria-label="Listen: No, I'm not." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+</article>
+
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 3
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+            <div class="sentence-row">
+                <h3>Are you sad?</h3>
+                <button type="button" class="audio-button" data-text="Are you sad?" aria-label="Listen: Are you sad?" title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+            </div>
+        </div>
+
+        <div class="vietnamese-help">
+            <button type="button" class="help-button" onclick="toggleVietnamese(3)">💡 Need help?</button>
+            <p id="vietnamese3" class="vietnamese-text">Bạn có buồn không?</p>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn" onclick="showAnswer(3)">Show English</button>
+
+    <div id="answer3" class="answer">
+        <div class="answer-label">Example answer</div>
+        <div class="sentence-row english-answer">
+            <span>No, I'm not.</span>
+            <button type="button" class="audio-button" data-text="No, I'm not." aria-label="Listen: No, I'm not." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="sentence-row english-answer">
+            <span>I'm happy.</span>
+            <button type="button" class="audio-button" data-text="I'm happy." aria-label="Listen: I'm happy." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="speak-tip">
+            🗣️ You can also say:
+            <ul class="tip-answers">
+                <li><div class="sentence-row"><span>Yes, I am.</span><button type="button" class="audio-button" data-text="Yes, I am." aria-label="Listen: Yes, I am." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>No, I'm not.</span><button type="button" class="audio-button" data-text="No, I'm not." aria-label="Listen: No, I'm not." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I'm a little sad.</span><button type="button" class="audio-button" data-text="I'm a little sad." aria-label="Listen: I'm a little sad." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+</article>
+
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 4
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+            <div class="sentence-row">
+                <h3>Are you tired?</h3>
+                <button type="button" class="audio-button" data-text="Are you tired?" aria-label="Listen: Are you tired?" title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+            </div>
+        </div>
+
+        <div class="vietnamese-help">
+            <button type="button" class="help-button" onclick="toggleVietnamese(4)">💡 Need help?</button>
+            <p id="vietnamese4" class="vietnamese-text">Bạn có mệt không?</p>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn" onclick="showAnswer(4)">Show English</button>
+
+    <div id="answer4" class="answer">
+        <div class="answer-label">Example answer</div>
+        <div class="sentence-row english-answer">
+            <span>Yes, I am.</span>
+            <button type="button" class="audio-button" data-text="Yes, I am." aria-label="Listen: Yes, I am." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="sentence-row english-answer">
+            <span>I'm tired.</span>
+            <button type="button" class="audio-button" data-text="I'm tired." aria-label="Listen: I'm tired." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="speak-tip">
+            🗣️ You can also say:
+            <ul class="tip-answers">
+                <li><div class="sentence-row"><span>No, I'm not.</span><button type="button" class="audio-button" data-text="No, I'm not." aria-label="Listen: No, I'm not." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I'm a little tired.</span><button type="button" class="audio-button" data-text="I'm a little tired." aria-label="Listen: I'm a little tired." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I'm very tired.</span><button type="button" class="audio-button" data-text="I'm very tired." aria-label="Listen: I'm very tired." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+</article>
+
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 5
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+            <div class="sentence-row">
+                <h3>Are you hungry?</h3>
+                <button type="button" class="audio-button" data-text="Are you hungry?" aria-label="Listen: Are you hungry?" title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+            </div>
+        </div>
+
+        <div class="vietnamese-help">
+            <button type="button" class="help-button" onclick="toggleVietnamese(5)">💡 Need help?</button>
+            <p id="vietnamese5" class="vietnamese-text">Bạn có đói không?</p>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn" onclick="showAnswer(5)">Show English</button>
+
+    <div id="answer5" class="answer">
+        <div class="answer-label">Example answer</div>
+        <div class="sentence-row english-answer">
+            <span>Yes, I am.</span>
+            <button type="button" class="audio-button" data-text="Yes, I am." aria-label="Listen: Yes, I am." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="sentence-row english-answer">
+            <span>I'm hungry.</span>
+            <button type="button" class="audio-button" data-text="I'm hungry." aria-label="Listen: I'm hungry." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="speak-tip">
+            🗣️ You can also say:
+            <ul class="tip-answers">
+                <li><div class="sentence-row"><span>No, I'm not.</span><button type="button" class="audio-button" data-text="No, I'm not." aria-label="Listen: No, I'm not." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I'm a little hungry.</span><button type="button" class="audio-button" data-text="I'm a little hungry." aria-label="Listen: I'm a little hungry." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I'm very hungry.</span><button type="button" class="audio-button" data-text="I'm very hungry." aria-label="Listen: I'm very hungry." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+</article>
+
+
+<article class="practice-card">
+
+    <div class="question-number">
+        Question 6
+    </div>
+
+    <div class="question-columns">
+
+        <div class="english-question">
+            <div class="sentence-row">
+                <h3>How do you feel today?</h3>
+                <button type="button" class="audio-button" data-text="How do you feel today?" aria-label="Listen: How do you feel today?" title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+            </div>
+        </div>
+
+        <div class="vietnamese-help">
+            <button type="button" class="help-button" onclick="toggleVietnamese(6)">💡 Need help?</button>
+            <p id="vietnamese6" class="vietnamese-text">Hôm nay bạn cảm thấy thế nào?</p>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn" onclick="showAnswer(6)">Show English</button>
+
+    <div id="answer6" class="answer">
+        <div class="answer-label">Example answer</div>
+        <div class="sentence-row english-answer">
+            <span>I feel great today.</span>
+            <button type="button" class="audio-button" data-text="I feel great today." aria-label="Listen: I feel great today." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+        </div>
+        <div class="speak-tip">
+            🗣️ You can also say:
+            <ul class="tip-answers">
+                <li><div class="sentence-row"><span>I feel happy.</span><button type="button" class="audio-button" data-text="I feel happy." aria-label="Listen: I feel happy." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I feel good.</span><button type="button" class="audio-button" data-text="I feel good." aria-label="Listen: I feel good." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I feel tired.</span><button type="button" class="audio-button" data-text="I feel tired." aria-label="Listen: I feel tired." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+                <li><div class="sentence-row"><span>I feel excited.</span><button type="button" class="audio-button" data-text="I feel excited." aria-label="Listen: I feel excited." title="Listen" onclick="speakText(this.dataset.text)">🔊</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+</article>
+
+
+<h2 class="section-title">
+🎯 Speaking Challenge
+</h2>
+
+
+<div class="complete-box">
+
+<h3>
+Can you talk about how you feel?
+</h3>
+
+<p>
+Try to answer these questions without looking at the example answers.
+</p>
+
+<div class="challenge-starters">
+    <p>I'm ...</p>
+    <div class="sentence-row">
+        <span>Yes, I am.</span>
+        <button type="button" class="audio-button" data-text="Yes, I am." aria-label="Listen: Yes, I am." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+    </div>
+    <div class="sentence-row">
+        <span>No, I'm not.</span>
+        <button type="button" class="audio-button" data-text="No, I'm not." aria-label="Listen: No, I'm not." title="Listen" onclick="speakText(this.dataset.text)">🔊</button>
+    </div>
+    <p>I feel ...</p>
+    <p>Today, I feel ...</p>
+</div>
+
+<p id="audioStatus" role="status" aria-live="polite"></p>
+
+<button type="button" class="btn" onclick="completeLevel()">
+    ✓ I Can Do It
+</button>
+
+<p id="completeMessage" role="status" aria-live="polite"></p>
+
+</div>
+
+
+</div>
+
+
+<script src="../../assets/js/speaking.js"></script>
+
+<script>
+function speakText(text) {
+    if (!("speechSynthesis" in window) ||
+        !("SpeechSynthesisUtterance" in window)) {
+        document.getElementById("audioStatus").textContent =
+            "Audio is not available in this browser.";
+        return;
+    }
+
+    const speech = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    const englishVoice = speech.getVoices().find(function (voice) {
+        return voice.lang.toLowerCase() === "en-us";
+    }) || speech.getVoices().find(function (voice) {
+        return voice.lang.toLowerCase().indexOf("en-") === 0 ||
+            voice.lang.toLowerCase() === "en";
+    });
+
+    utterance.lang = "en-US";
+    utterance.rate = 0.85;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    if (englishVoice) {
+        utterance.voice = englishVoice;
+    }
+
+    speech.cancel();
+    speech.speak(utterance);
+}
+
+document.querySelectorAll(".audio-button").forEach(function (button) {
+    button.addEventListener("click", function () {
+        document.getElementById("audioStatus").textContent = "";
+    });
+});
+
+if (!("speechSynthesis" in window) ||
+    !("SpeechSynthesisUtterance" in window)) {
+    document.querySelectorAll(".audio-button").forEach(function (button) {
+        button.disabled = true;
+        button.setAttribute("aria-disabled", "true");
+        button.title = "Audio is not supported in this browser";
+    });
+    document.getElementById("audioStatus").textContent =
+        "Audio is not available in this browser.";
+}
+
+window.completeLevel = function () {
+    const completionMessage = document.getElementById("completeMessage");
+
+    completionMessage.textContent =
+        "🎉 Great job! You completed Level 2.";
+
+    try {
+        const completedLevels = JSON.parse(
+            localStorage.getItem("grade1SpeakingCompletedLevels") || "[]"
+        );
+
+        if (!Array.isArray(completedLevels)) {
+            throw new Error("Saved speaking progress is not a list.");
+        }
+
+        if (completedLevels.indexOf(2) === -1) {
+            completedLevels.push(2);
+        }
+
+        localStorage.setItem(
+            "grade1SpeakingCompletedLevels",
+            JSON.stringify(completedLevels)
+        );
+    } catch (error) {
+        console.error("Could not save Level 2 speaking progress.", error);
+        completionMessage.textContent +=
+            " Your completion could not be saved on this browser.";
+    }
+};
+</script>
+
+</body>
+</html>
